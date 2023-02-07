@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="header-group">
+        <p>Space Cases</p>
+      </div>
+      <div class="header-group">
+        <p id="login">Login</p>
+        <div class="menu-btn">
+          <div class="burger-btn"></div>
+        </div>
+      </div>
+    </div>
+    <div class="front-page">
+      <img src="{{ url_for('static', filename='images/dust2.png') }}" />
+      <div>
+        <p>Premier CSGO Case Bot</p>
+        <div class="invite-btn">
+          <a href="{{oauth_url}}"><button>Invite Now</button></a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

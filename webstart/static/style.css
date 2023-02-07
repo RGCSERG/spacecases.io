@@ -1,0 +1,112 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: 'LexendDeca';
+    src: url(./fonts/LexendDeca-VariableFont_wght.ttf);
+}
+html {
+    background-color: #000;
+    font-family: 'LexendDeca', Helvetica, sans-serif;
+    scroll-behavior: smooth;
+}
+.header {
+    z-index: 9;
+    position: fixed;    
+    background: transparent;
+    height: 100px;
+    width: 100vw;
+    display: flex;
+    justify-content:space-between;
+    align-items: center
+}
+.header p {
+    color: #49c5b6;
+    font-size: 3vw; 
+    text-transform: uppercase;
+    font-weight: bold;
+}
+#login {
+    cursor: pointer;
+}
+.header-group {
+    width: 25%;
+    height: 100px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.header-group:nth-child(2){
+    width: 20%;
+}
+.menu-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;  
+}
+.burger-btn {
+    width: 50px;
+    height: 6px;
+    background: #49c5b6;
+    border-radius: 5px;
+    transition: all .5s ease-in-out;
+}
+.burger-btn::before,
+.burger-btn::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 6px;
+    background: #49c5b6;
+    border-radius: 5px;
+    transition: all .5s ease-in-out;
+}
+.burger-btn::after {
+    transform: translateY(16px);
+}
+.burger-btn::before {
+    transform: translateY(-16px);
+}
+.front-page img {
+    width: auto;
+    height: 100vh;
+    position: relative;
+    filter: blur(4px) grayscale(0.5) hue-rotate(90deg) brightness(0.5);
+}
+.front-page p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 5vw;
+    text-align: center;
+    color: #49c5b6;
+    font-weight: bold;
+}
+.front-page .invite-btn {
+    background-color: #c5c6c7;
+    position: absolute;
+    height: 7%;
+    width: 14%;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%,0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    cursor: grab;
+    border-radius: 5px;
+}
+.invite-btn p {
+    font-size: 1vw;
+    color: #000;
+}
+.invite-btn:hover {
+    opacity: 0.8;
+}
