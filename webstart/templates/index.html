@@ -3,9 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=yes"
+    />
     <title>Document</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
   </head>
   <body>
     <div class="header">
@@ -13,7 +19,7 @@
         <p>Space Cases</p>
       </div>
       <div class="header-group">
-        <p id="login">Login</p>
+        <a href="{{oauth_url}}" id="login">Login</a>
         <div class="menu-btn">
           <div class="burger-btn"></div>
         </div>
@@ -24,7 +30,7 @@
       <div>
         <p>Premier CSGO Case Bot</p>
         <div class="invite-btn">
-          <a href="{{oauth_url}}"><button>Invite Now</button></a>
+          <a>Invite Now</a>
         </div>
       </div>
     </div>
