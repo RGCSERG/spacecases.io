@@ -22,7 +22,7 @@ html {
     justify-content:space-between;
     align-items: center
 }
-.header p {
+p,#login {
     color: #49c5b6;
     font-size: 3vw; 
     text-transform: uppercase;
@@ -106,6 +106,9 @@ html {
 .invite-btn p {
     font-size: 1vw;
     color: #000;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
 }
 .invite-btn:hover {
     opacity: 0.8;
