@@ -7,10 +7,17 @@
     font-family: 'LexendDeca';
     src: url(./fonts/LexendDeca-VariableFont_wght.ttf);
 }
+:root{
+    --main-colour: #000;
+    --secondry-colour: #49c5b6;
+    --tertiary-colour: #c5c6c7;
+    --quaternary--colour: #0000;
+}
 html {
-    background-color: #000;
+    background-color: var(--main-colour);
     font-family: 'LexendDeca', Helvetica, sans-serif;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 .header {
     z-index: 9;
@@ -23,7 +30,7 @@ html {
     align-items: center
 }
 p,#login {
-    color: #49c5b6;
+    color: var(--secondry-colour);
     font-size: 3vw; 
     text-transform: uppercase;
     font-weight: bold;
@@ -52,7 +59,7 @@ p,#login {
 .burger-btn {
     width: 50px;
     height: 6px;
-    background: #49c5b6;
+    background: var(--secondry-colour);
     border-radius: 5px;
     transition: all .5s ease-in-out;
 }
@@ -62,7 +69,7 @@ p,#login {
     position: absolute;
     width: 50px;
     height: 6px;
-    background: #49c5b6;
+    background: var(--secondry-colour);
     border-radius: 5px;
     transition: all .5s ease-in-out;
 }
@@ -73,9 +80,13 @@ p,#login {
     transform: translateY(-16px);
 }
 .front-page img {
-    width: auto;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100vh;
-    position: relative;
+    position: absolute;
+    object-fit: cover;
+    z-index: -1;
     filter: blur(4px) grayscale(0.5) hue-rotate(90deg) brightness(0.5);
 }
 .front-page p {
@@ -85,11 +96,11 @@ p,#login {
     transform: translate(-50%,-50%);
     font-size: 5vw;
     text-align: center;
-    color: #49c5b6;
+    color: var(--secondry-colour);
     font-weight: bold;
 }
 .front-page .invite-btn {
-    background-color: #c5c6c7;
+    background-color: var(--tertiary-colour);
     position: absolute;
     height: 7%;
     width: 14%;
@@ -105,7 +116,7 @@ p,#login {
 }
 .invite-btn p {
     font-size: 1vw;
-    color: #000;
+    color: var(--main-colour);
     background-color: transparent;
     border: 0;
     padding: 0;
