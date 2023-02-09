@@ -23,3 +23,7 @@ def callback():
 def logout():
     session.clear()
     return redirect("/")
+
+@app.route('/test')
+def test():
+    return render_template('test.html')
