@@ -1,61 +1,103 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 @font-face {
     font-family: 'LexendDeca';
     src: url(./fonts/LexendDeca-VariableFont_wght.ttf);
 }
-:root{
-    --main-colour: #000;
-    --secondry-colour: #49c5b6;
-    --tertiary-colour: #c5c6c7;
-    --quaternary--colour: #0000;
+
+:root {
+    --main-colour: hsl(0, 2%, 17%);
+    --secondry-colour: hsl(51, 53%, 52%);
+    --tertiary-colour: hsl(217, 53%, 52%);
+    --quaternary-colour: hsl(0, 100%, 94%);
 }
+
 html {
     background-color: var(--main-colour);
     font-family: 'LexendDeca', Helvetica, sans-serif;
     scroll-behavior: smooth;
-    overflow-x: hidden;
+    overflow: hidden;
 }
+
 .header {
     z-index: 9;
-    position: fixed;    
+    position: fixed;
     background: transparent;
     height: 100px;
     width: 100vw;
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
     align-items: center
 }
-p,#login {
+
+p,
+#login {
     color: var(--secondry-colour);
-    font-size: 3vw; 
+    font-size: 3vw;
     text-transform: uppercase;
     font-weight: bold;
 }
-#login {
+
+#login,
+.header-group img {
     cursor: pointer;
+    margin: 0px;
 }
+
+.user-tag {
+    color: var(--tertiary-colour);
+}
+
+a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.header-group img {
+    height: auto;
+    width: 70px;
+    border-radius: 50%;
+    border: var(--secondry-colour) 3px solid;
+}
+
+.header-group img:hover,
+#login:hover,
+.invite-btn:hover {
+    filter: grayscale();
+    opacity: 0.8;
+}
+
 .header-group {
-    width: 25%;
+    width: 50%;
     height: 100px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: start;
     align-items: center;
 }
-.header-group:nth-child(2){
-    width: 20%;
+
+.header-group:nth-child(2) {
+    justify-content: end;
 }
+
+.header-child {
+    margin: 25px;
+}
+
 .menu-btn {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 50px;
     height: 50px;
-    cursor: pointer;  
+    cursor: pointer;
 }
+
 .burger-btn {
     width: 50px;
     height: 6px;
@@ -63,6 +105,7 @@ p,#login {
     border-radius: 5px;
     transition: all .5s ease-in-out;
 }
+
 .burger-btn::before,
 .burger-btn::after {
     content: '';
@@ -73,12 +116,36 @@ p,#login {
     border-radius: 5px;
     transition: all .5s ease-in-out;
 }
+
 .burger-btn::after {
     transform: translateY(16px);
 }
+
 .burger-btn::before {
     transform: translateY(-16px);
 }
+
+.burger-menu {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background-color: var(--main-colour);
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(-100%, 0);
+}
+
+.burger-menu a {
+    display: block;
+    color: var(--quaternary-colour);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 4vw;
+}
+
 .front-page img {
     top: 0;
     left: 0;
@@ -87,40 +154,67 @@ p,#login {
     position: absolute;
     object-fit: cover;
     z-index: -1;
-    filter: blur(4px) grayscale(0.5) hue-rotate(90deg) brightness(0.5);
+    filter: blur(4px) grayscale(1) brightness(0.5);
 }
+
+.color-filter {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    object-fit: cover;
+    z-index: 0;
+    background-color: var(--secondry-colour);
+    opacity: 0.15;
+}
+
 .front-page p {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     font-size: 5vw;
     text-align: center;
-    color: var(--secondry-colour);
+    color: var(--quaternary-colour);
     font-weight: bold;
 }
-.front-page .invite-btn {
+
+.invite-btn,
+.discord-invite {
     background-color: var(--tertiary-colour);
-    position: absolute;
-    height: 7%;
-    width: 14%;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%,0);
+    height: 8vh;
+    width: 14vw;
     display: flex;
     justify-content: center;
     align-items: center;
     text-transform: uppercase;
-    cursor: grab;
+    cursor: pointer;
     border-radius: 5px;
+    font-weight: bold;
+    color: var(--secondry-colour);
 }
-.invite-btn p {
-    font-size: 1vw;
-    color: var(--main-colour);
-    background-color: transparent;
-    border: 0;
-    padding: 0;
+
+.main-button-container {
+    width: 30vw;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 15vh);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
-.invite-btn:hover {
-    opacity: 0.8;
+
+.discord-invite {
+    background-color: var(--secondry-colour);
+    color: var(--tertiary-colour);
+}
+
+.page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform: translate(100%, 0);
 }
