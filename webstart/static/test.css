@@ -61,6 +61,13 @@ header {
     width: 100%;
     pointer-events: none;
 }
+#case2{
+    width: 50%;
+}
+#case{
+    width: 50%;
+    transform: scaleX(-1);
+}
 .sec {
     position: relative;
     background: #1e1f1f;
