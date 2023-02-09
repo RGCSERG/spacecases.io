@@ -10,6 +10,9 @@ Website for SpaceCases discord bot
 - [@RGCSERG](https://github.com/RGCSERG)
 - [@Spacerulerwill](https://github.com/Spacerulerwill)
 
+## Dontate to us
+
+- [patreon]()
 
 ## Features
 
