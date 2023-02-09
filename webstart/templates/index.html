@@ -7,11 +7,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=yes"
     />
-    {% if title %}
-      <title>CSGO Case Bot  - {{title}}</title>
-    {% else %}
-      <title>CSGO Case Bot</title>
-    {% endif %}
+    <title>Document</title>
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
@@ -20,27 +16,49 @@
   <body>
     <div class="header">
       <div class="header-group">
-        <p>Space Cases</p>
+        <p class="header-child">Space Cases</p>
       </div>
       <div class="header-group">
         {% if current_user %}
-          <a href="{{ url_for('logout') }}" id="login"><img src="{{current_user.avatar_url}}" style="height: 50px; width:50; border-radius: 50%;" alt=""></a>
-          <h1>{{current_user.username}}#{{current_user.discriminator}}</h1>
+        <p class="header-child user-tag">{{current_user.username}}#{{current_user.discriminator}}</p>
+        <a href="{{ url_for('logout') }}" id=
+          >
+          <img class="header-child"
+            src="{{current_user.avatar_url}}"
+            alt=""
+        />
+        </a>
         {% else %}
-          <a href="{{oauth_url}}" id="login">Login</a>
+        <a class="header-child" href="{{oauth_url}}" id="login">Login</a>
         {% endif %}
-        <div class="menu-btn">
+        <div class="menu-btn header-child">
           <div class="burger-btn"></div>
+        </div>
+        <div class="burger-menu">
+          <a>Test1</a>
+          <a>Test2</a>
+          <a>Test3</a>
+          <a>Test4</a>
         </div>
       </div>
     </div>
-    <div class="front-page">
-      <img src="{{ url_for('static', filename='images/dust2.png') }}" />
-      <div>
-        <p>Premier CSGO Case Bot</p>
-        <div class="invite-btn">
-          <a>Invite Now</a>
+    <div class="slideshow">
+      <div class="page">
+        <div class="header-group">
+          <p class="header-child">Sample Title</p>
         </div>
+      </div>
+      <div class="front-page">
+        <img src="{{ url_for('static', filename='images/dust2.png') }}" />
+        <div class ="color-filter"></div>
+          <p>Premier CSGO Case Bot</p>
+          <div class="main-button-container">
+            <div class="invite-btn">
+              <a>Invite Now</a>
+            </div>
+            <div class="invite-btn discord-invite">
+              <a>Join Our Discord</a>
+            </div>
       </div>
     </div>
   </body>
