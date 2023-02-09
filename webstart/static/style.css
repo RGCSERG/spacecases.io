@@ -3,26 +3,22 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 @font-face {
     font-family: 'LexendDeca';
     src: url(./fonts/LexendDeca-VariableFont_wght.ttf);
 }
-
 :root {
     --main-colour: hsl(0, 2%, 17%);
-    --secondry-colour: hsl(51, 53%, 52%);
-    --tertiary-colour: hsl(217, 53%, 52%);
-    --quaternary-colour: hsl(0, 100%, 94%);
+    --secondry-colour: hsl(84, 70%, 70%);
+    --tertiary-colour: hsl(46, 70%, 70%);
+    --quaternary-colour: hsl(0, 70%, 70%);
 }
-
 html {
     background-color: var(--main-colour);
     font-family: 'LexendDeca', Helvetica, sans-serif;
     scroll-behavior: smooth;
     overflow: hidden;
 }
-
 .header {
     z-index: 9;
     position: fixed;
@@ -33,7 +29,6 @@ html {
     justify-content: space-between;
     align-items: center
 }
-
 p,
 #login {
     color: var(--secondry-colour);
@@ -41,38 +36,31 @@ p,
     text-transform: uppercase;
     font-weight: bold;
 }
-
 #login,
 .header-group img {
     cursor: pointer;
-    margin: 0px;
 }
-
 .user-tag {
     color: var(--tertiary-colour);
 }
-
 a {
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
 }
-
 .header-group img {
     height: auto;
     width: 70px;
     border-radius: 50%;
     border: var(--secondry-colour) 3px solid;
 }
-
 .header-group img:hover,
 #login:hover,
 .invite-btn:hover {
     filter: grayscale();
     opacity: 0.8;
 }
-
 .header-group {
     width: 50%;
     height: 100px;
@@ -80,72 +68,43 @@ a {
     justify-content: start;
     align-items: center;
 }
-
 .header-group:nth-child(2) {
     justify-content: end;
 }
-
-.header-child {
+.header-child,.profile-pic {
     margin: 25px;
+    z-index: 10;
 }
-
-.menu-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-}
-
-.burger-btn {
-    width: 50px;
-    height: 6px;
-    background: var(--secondry-colour);
-    border-radius: 5px;
-    transition: all .5s ease-in-out;
-}
-
-.burger-btn::before,
-.burger-btn::after {
-    content: '';
-    position: absolute;
-    width: 50px;
-    height: 6px;
-    background: var(--secondry-colour);
-    border-radius: 5px;
-    transition: all .5s ease-in-out;
-}
-
-.burger-btn::after {
-    transform: translateY(16px);
-}
-
-.burger-btn::before {
-    transform: translateY(-16px);
-}
-
 .burger-menu {
-    width: 100%;
+    width: 25%;
     height: 100vh;
     position: absolute;
     background-color: var(--main-colour);
     top: 0;
-    left: 0;
+    left: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: translate(-100%, 0);
+    flex-direction: column;
+    gap: 100px;
+    border-left: var(--secondry-colour) 5px solid;
+    transition: 0.3s ease;
 }
-
+.burger-menu.active {
+    left: 75%;
+}
 .burger-menu a {
     display: block;
     color: var(--quaternary-colour);
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 4vw;
+    font-size: 3vw;
+    cursor: pointer;
 }
-
+.burger-menu a:hover {
+    filter: grayscale();
+    scale: 1.2;
+}
 .front-page img {
     top: 0;
     left: 0;
@@ -156,7 +115,6 @@ a {
     z-index: -1;
     filter: blur(4px) grayscale(1) brightness(0.5);
 }
-
 .color-filter {
     top: 0;
     left: 0;
@@ -168,7 +126,6 @@ a {
     background-color: var(--secondry-colour);
     opacity: 0.15;
 }
-
 .front-page p {
     position: absolute;
     top: 50%;
@@ -179,7 +136,6 @@ a {
     color: var(--quaternary-colour);
     font-weight: bold;
 }
-
 .invite-btn,
 .discord-invite {
     background-color: var(--tertiary-colour);
@@ -194,7 +150,6 @@ a {
     font-weight: bold;
     color: var(--secondry-colour);
 }
-
 .main-button-container {
     width: 30vw;
     height: auto;
@@ -206,12 +161,10 @@ a {
     justify-content: space-around;
     align-items: center;
 }
-
 .discord-invite {
     background-color: var(--secondry-colour);
     color: var(--tertiary-colour);
 }
-
 .page {
     width: 100%;
     height: 100%;
