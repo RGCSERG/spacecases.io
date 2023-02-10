@@ -9,3 +9,11 @@ window.addEventListener('scroll', () => {
     case1.style.left = value * -1.5 + 'px';
     case2.style.left = value * 1.5 + 'px';
 })
+
+const menu = document.querySelector(".burger-menu");
+const pfp = document.querySelector(".profile-pic");
+
+pfp.addEventListener("click", () => { 
+    menu.classList.toggle("active");
+    pfp.classList.toggle("active");
+})

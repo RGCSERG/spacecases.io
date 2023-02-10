@@ -3,6 +3,7 @@ from zenora import APIClient
 from webstart.config import REDIRECT_URI, OAUTH_URL, CLIENT_SECRET, TOKEN
 from flask import render_template, url_for, flash, redirect, request, session
 
+
 @app.route('/')
 def home():
     if 'token' in session:
@@ -12,18 +13,27 @@ def home():
 
     return render_template('index.html', oauth_url=OAUTH_URL)
 
+
 @app.route('/oauth/callback')
 def callback():
     code = request.args['code']
-    access_token = Client.oauth.get_access_token(code,REDIRECT_URI).access_token
+    access_token = Client.oauth.get_access_token(
+        code, REDIRECT_URI).access_token
     session['token'] = access_token
-    return redirect('/')
+    return redirect('/test')
+
 
 @app.route('/logout')
 def logout():
     session.clear()
     return redirect("/")
 
+
 @app.route('/test')
 def test():
-    return render_template('test.html')
+    if 'token' in session:
+        bearer_client = APIClient(session.get('token'), bearer=True)
+        current_user = bearer_client.users.get_current_user()
+        return render_template('test.html', current_user=current_user)
+
+    return render_template('test.html', oauth_url=OAUTH_URL)
