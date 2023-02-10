@@ -30,23 +30,32 @@
         </nav>
       </div>
     </div>
+    <div class="color-filter"></div>
     <section class="parallax">
+      <img src="{{ url_for('static', filename='images/dust2.png') }}" id="bg" />
       <img
-        src="{{ url_for('static', filename='images/hangar.png') }}"
-        id="bg2"
-      />
-      <img
-        src="{{ url_for('static', filename='images/asiimov.png') }}"
+        src="{{ url_for('static', filename='images/case.png') }}"
         id="case"
       />
       <img
-        src="{{ url_for('static', filename='images/asiimov.png') }}"
+        src="{{ url_for('static', filename='images/case.png') }}"
         id="case2"
       />
-      <h2 id="text">CSGO Case Bot</h2>
+      <h2 id="text">Premier CSGO Case bot</h2>
+      <div class="main-button-container">
+        <div class="invite-btn">
+          <a
+            href="https://discord.com/api/oauth2/authorize?client_id=1025496377939197972&permissions=395136993280&scope=bot"
+            >Invite Now</a
+          >
+        </div>
+        <div class="invite-btn discord-invite">
+          <a href="https://discord.gg/KFCNGB7cz9">Join Our Discord</a>
+        </div>
+      </div>
     </section>
     <section class="main-section">
-      <h2>CSGO Case Bot Info</h2>
+      <h1>CSGO Case Bot Info</h1>
       <p>
         Lorem Ipsum is simply dummy text of the printing and typesetting
         industry. Lorem Ipsum has been the industry's standard dummy text ever
