@@ -6,6 +6,6 @@ window.addEventListener('scroll', () => {
     let value = window.scrollY;
 
     text.style.marginTop = value * 2.5 + 'px';
-    case2.style.marginTop = value * -1.5 + 'px';
-    case1.style.marginTop = value * -1.5 + 'px';
+    case1.style.left = value * -1.5 + 'px';
+    case2.style.left = value * 1.5 + 'px';
 })
