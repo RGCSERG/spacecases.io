@@ -125,17 +125,6 @@ a {
     z-index: -1;
     filter: blur(4px) grayscale(1) brightness(0.5);
 }
-.color-filter {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    object-fit: cover;
-    z-index: 0;
-    background-color: var(--secondry-colour);
-    opacity: 0.15;
-}
 .front-page p {
     position: absolute;
     top: 50%;
@@ -145,35 +134,6 @@ a {
     text-align: center;
     color: var(--quaternary-colour);
     font-weight: bold;
-}
-.invite-btn,
-.discord-invite {
-    background-color: var(--tertiary-colour);
-    height: 8vh;
-    width: 14vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-transform: uppercase;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
-    color: var(--secondry-colour);
-}
-.main-button-container {
-    width: 30vw;
-    height: auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 15vh);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-.discord-invite {
-    background-color: var(--secondry-colour);
-    color: var(--tertiary-colour);
 }
 .page {
     width: 100%;
