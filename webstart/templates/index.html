@@ -17,26 +17,6 @@
       href="{{ url_for('static', filename='style.css') }}"/>
   </head>
   <body>
-    <div class="header">
-      <div class="header-group">
-        <p class="header-child">Space Cases</p>
-      </div>
-      <div class="header-group">
-        {% if current_user %}       
-        <img class="profile-pic"
-          src="{{current_user.avatar_url}}"
-          alt="">
-        {% else %}
-        <a class="header-child" href="{{oauth_url}}" id="login">Login</a>
-        {% endif %}
-        <div class="burger-menu">
-          <a>Patreon</a>
-          <a>Inventory</a>
-          <a>Stats</a>
-          <a>About</a>
-        </div>
-      </div>
-    </div>
     <div class="slideshow">
       <div class="page">
         <div class="header-group">
@@ -52,7 +32,7 @@
               <a>Invite Now</a>
             </div>
             <div class="invite-btn discord-invite">
-              <a>Join Our Discord</a>
+              <a href="{{ url_for('test')}}">Join Our Discord</a>
             </div>
       </div>
     </div>
