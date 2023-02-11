@@ -2,36 +2,57 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .2)
 }
 @font-face {
     font-family: 'LexendDeca';
     src: url(./fonts/LexendDeca-VariableFont_wght.ttf);
 }
 :root {
-    --main-colour: hsl(0, 2%, 17%);
-    --secondry-colour: hsl(84, 70%, 70%);
-    --tertiary-colour: hsl(46, 70%, 70%);
-    --quaternary-colour: hsl(0, 70%, 70%);
+    --colour1: #ffffff;
+    --colour2: #f6f6f6;
+    --colour3: #fb742d;
+    --colour4: #47464d;
+    --colour5: #000;
 }
 html {
     background-color: var(--main-colour);
     font-family: 'LexendDeca', Helvetica, sans-serif;
     scroll-behavior: smooth;
-    overflow: hidden;
+}
+p,
+li, a{
+    color: var(--colour2);
+    font-size: 3vw;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+}
+.color-filter {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 0;
+    background-color: var(--colour3);
+    opacity: 0.15;
 }
 .header {
-    z-index: 9;
+    z-index: 2;
     position: fixed;
     background: transparent;
     height: 100px;
     width: 100vw;
     display: flex;
     justify-content: space-between;
-    align-items: center
+    align-items: center;
+    transition: 0.3s ease;
 }
-p,
 #login {
-    color: var(--secondry-colour);
+    background-color: transparent;
+    color: var(--colour2);
     font-size: 3vw;
     text-transform: uppercase;
     font-weight: bold;
@@ -40,20 +61,14 @@ p,
 .header-group img {
     cursor: pointer;
 }
-.user-tag {
-    color: var(--tertiary-colour);
-}
-a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-}
 .header-group img {
     height: auto;
     width: 70px;
     border-radius: 50%;
-    border: var(--secondry-colour) 3px solid;
+    border: var(--colour3) 3px solid;
+}
+.header-group:nth-child(2) {
+    justify-content: end;
 }
 .header-group img:hover,
 #login:hover,
@@ -68,10 +83,8 @@ a {
     justify-content: start;
     align-items: center;
 }
-.header-group:nth-child(2) {
-    justify-content: end;
-}
-.header-child,.profile-pic {
+.header-child,
+.profile-pic {
     margin: 25px;
     z-index: 10;
 }
@@ -79,7 +92,7 @@ a {
     width: 25%;
     height: 100vh;
     position: absolute;
-    background-color: var(--main-colour);
+    background-color: var(--colour4);
     top: 0;
     left: 100%;
     display: flex;
@@ -87,25 +100,62 @@ a {
     align-items: center;
     flex-direction: column;
     gap: 100px;
-    border-left: var(--secondry-colour) 5px solid;
+    border-left: var(--colour3) 5px solid;
     transition: 0.3s ease;
+    opacity: 0.7;
 }
 .burger-menu.active {
     left: 75%;
 }
 .burger-menu a {
+    color: var(--colour1);
     display: block;
-    color: var(--quaternary-colour);
     text-transform: uppercase;
     font-weight: bold;
     font-size: 3vw;
     cursor: pointer;
 }
 .burger-menu a:hover {
-    filter: grayscale();
-    scale: 1.2;
+    scale: 1.1;
+    transition: 0.1s ease;
 }
-.front-page img {
+.parallax{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    min-height: 500px;
+}
+#front-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.title {
+    transform: translate(0,-50%);
+}
+#front-text p{
+    font-size: 4em;
+    text-align: center;
+}
+.subtext {
+    list-style-type: none;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    height: 30vh;
+    width: 50vw;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .2)
+}
+.subtext li {
+    font-size: 2em;
+    font-weight: 400;
+}
+#bg {
     top: 0;
     left: 0;
     width: 100%;
@@ -113,61 +163,57 @@ a {
     position: absolute;
     object-fit: cover;
     z-index: -1;
-    filter: blur(4px) grayscale(1) brightness(0.5);
+    filter: grayscale(1) brightness(0.5);
 }
-.color-filter {
+.parallax img {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
-    position: absolute;
-    object-fit: cover;
-    z-index: 0;
-    background-color: var(--secondry-colour);
-    opacity: 0.15;
+    pointer-events: none;
 }
-.front-page p {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 5vw;
-    text-align: center;
-    color: var(--quaternary-colour);
-    font-weight: bold;
+#case2,#case{
+    width: 50%;
+    opacity: 0;
 }
-.invite-btn,
-.discord-invite {
-    background-color: var(--tertiary-colour);
-    height: 8vh;
-    width: 14vw;
+#case{
+    transform: scaleX(-1);
+}
+.front-buttons {
+    width: 50vw;
+    height: 10vh;
+    z-index: 1;
+    font-size: 2em;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 5vh;
+    transform: translate(0,50%);
+}
+.front-buttons a {
+    color: var(--colour2);
+    background-color: var(--colour3);
+    padding: 10px;
+    border-radius: 10px;
     text-transform: uppercase;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
-    color: var(--secondry-colour);
+    font-weight: normal;
+    width: auto;
+    height: 7vh;
+    text-shadow: none;
+    font-size: 2vw;
 }
-.main-button-container {
-    width: 30vw;
-    height: auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 15vh);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+.main-section {
+    position: relative;
+    background: var(--colour5);
+    width: 100vw;
+    height: 100vh;
 }
-.discord-invite {
-    background-color: var(--secondry-colour);
-    color: var(--tertiary-colour);
+.main-section h1{
+    font-size: 3em;
+    color: var(--colour2);
 }
-.page {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    transform: translate(100%, 0);
+.main-section p{
+    font-size: 1em;
+    color: var(--colour2);
+    font-weight: 300;
 }
