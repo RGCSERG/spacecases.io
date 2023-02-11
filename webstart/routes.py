@@ -20,7 +20,7 @@ def callback():
     access_token = Client.oauth.get_access_token(
         code, REDIRECT_URI).access_token
     session['token'] = access_token
-    return redirect('/test')
+    return redirect('/')
 
 
 @app.route('/logout')
@@ -29,7 +29,7 @@ def logout():
     return redirect("/")
 
 
-@app.route('/test')
+# @app.route('/test')
 def test():
     if 'token' in session:
         bearer_client = APIClient(session.get('token'), bearer=True)

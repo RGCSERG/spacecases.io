@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=yes"
+    />
+    {% if title %}
+      <title>CSGO Case Bot - {{title}}</title>
+    {%else%}
+      <title>CSGO Case Bot</title>
+    {%endif%}
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"/>
+  </head>
+  <body>
+    <div class="slideshow">
+      <div class="page">
+        <div class="header-group">
+          <p class="header-child">Sample Title</p>
+        </div>
+      </div>
+      <div class="front-page">
+        <img src="{{ url_for('static', filename='images/dust2.png') }}" />
+          <p>Premier CSGO Case Bot</p>
+          <div class="main-button-container">
+            <div class="invite-btn">
+              <a>Invite Now</a>
+            </div>
+            <div class="invite-btn discord-invite">
+              <a href="{{ url_for('test')}}">Join Our Discord</a>
+            </div>
+      </div>
+    </div>
+  </body>
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
+</html>
