@@ -3,38 +3,110 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=yes"
-    />
-    {% if title %}
-      <title>CSGO Case Bot - {{title}}</title>
-    {%else%}
-      <title>CSGO Case Bot</title>
-    {%endif%}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Space Cases</title>
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}"/>
+      href="{{ url_for('static', filename='style.css') }}"
+    />
   </head>
+
   <body>
-    <div class="slideshow">
-      <div class="page">
-        <div class="header-group">
-          <p class="header-child">Sample Title</p>
-        </div>
+    <div class="header">
+      <div class="header-group">
+        <p class="header-child">Space Cases</p>
       </div>
-      <div class="front-page">
-        <img src="{{ url_for('static', filename='images/dust2.png') }}" />
-          <p>Premier CSGO Case Bot</p>
-          <div class="main-button-container">
-            <div class="invite-btn">
-              <a>Invite Now</a>
-            </div>
-            <div class="invite-btn discord-invite">
-              <a href="{{ url_for('test')}}">Join Our Discord</a>
-            </div>
+      <div class="header-group">
+        {% if current_user %}
+        <img class="profile-pic" src="{{current_user.avatar_url}}" alt="" />
+        {% else %}
+        <a class="header-child" href="{{oauth_url}}" id="login">Login</a>
+        {% endif %}
+        <nav class="burger-menu">
+          <a>Patreon</a>
+          <a>Inventory</a>
+          <a>Stats</a>
+          <a href="{{ url_for('logout') }}">Logout</a>
+        </nav>
       </div>
     </div>
+    <div class="color-filter"></div>
+    <section class="parallax">
+      <img src="{{ url_for('static', filename='images/dust2.png') }}" id="bg" />
+      <img
+        src="{{ url_for('static', filename='images/case.png') }}"
+        id="case"
+      />
+      <img
+        src="{{ url_for('static', filename='images/case.png') }}"
+        id="case2"
+      />
+      <div id="front-text">
+        <p class="title">Premier CSGO Case bot</p>
+        <div class="subtext">
+          <li>#1 CSGO case unboxing & economy simulator</li>
+          <li>Trade with friends & compete on the leaderboards</li>
+          <li>Take risks & play games for currency</li>
+        </div>
+      </div>
+      <div class="front-buttons">
+        <a
+          href="https://discord.com/api/oauth2/authorize?client_id=1025496377939197972&permissions=395136993280&scope=bot"
+          >Add to Discord</a
+        >
+        <a href="https://discord.gg/4H8Kc5muxU">Discord Server</a>
+      </div>
+    </section>
+    <section class="main-section">
+      <h1>CSGO Case Bot Info</h1>
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry's standard dummy text ever
+        since the 1500s, when an unknown printer took a galley of type and
+        scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining
+        essentially unchanged. It was popularised in the 1960s with the release
+        of Letraset sheets containing Lorem Ipsum passages, and more recently
+        with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum. <br /><br />
+        Contrary to popular belief, Lorem Ipsum is not simply random text. It
+        has roots in a piece of classical Latin literature from 45 BC, making it
+        over 2000 years old. Richard McClintock, a Latin professor at
+        Hampden-Sydney College in Virginia, looked up one of the more obscure
+        Latin words, consectetur, from a Lorem Ipsum passage, and going through
+        the cites of the word in classical literature, discovered the
+        undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33
+        of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by
+        Cicero, written in 45 BC. This book is a treatise on the theory of
+        ethics, very popular during the Renaissance. The first line of Lorem
+        Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section
+        1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is
+        reproduced below for those interested. Sections 1.10.32 and 1.10.33 from
+        "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their
+        exact original form, accompanied by English versions from the 1914
+        translation by H. Rackham.<br /><br />
+        It is a long established fact that a reader will be distracted by the
+        readable content of a page when looking at its layout. The point of
+        using Lorem Ipsum is that it has a more-or-less normal distribution of
+        letters, as opposed to using 'Content here, content here', making it
+        look like readable English. Many desktop publishing packages and web
+        page editors now use Lorem Ipsum as their default model text, and a
+        search for 'lorem ipsum' will uncover many web sites still in their
+        infancy. Various versions have evolved over the years, sometimes by
+        accident, sometimes on purpose (injected humour and the like).<br /><br />
+        There are many variations of passages of Lorem Ipsum available, but the
+        majority have suffered alteration in some form, by injected humour, or
+        randomised words which don't look even slightly believable. If you are
+        going to use a passage of Lorem Ipsum, you need to be sure there isn't
+        anything embarrassing hidden in the middle of text. All the Lorem Ipsum
+        generators on the Internet tend to repeat predefined chunks as
+        necessary, making this the first true generator on the Internet. It uses
+        a dictionary of over 200 Latin words, combined with a handful of model
+        sentence structures, to generate Lorem Ipsum which looks reasonable. The
+        generated Lorem Ipsum is therefore always free from repetition, injected
+        humour, or non-characteristic words etc.<br /><br />
+      </p>
+    </section>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
   </body>
-  <script src="{{ url_for('static', filename='main.js') }}"></script>
 </html>
