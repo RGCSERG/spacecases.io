@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .2)
 }
 @font-face {
     font-family: 'LexendDeca';
@@ -19,6 +20,14 @@ html {
     font-family: 'LexendDeca', Helvetica, sans-serif;
     scroll-behavior: smooth;
 }
+p,
+li, a{
+    color: var(--colour2);
+    font-size: 3vw;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+}
 .color-filter {
     position: fixed;
     top: 0;
@@ -26,19 +35,20 @@ html {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    z-index: 3;
+    z-index: 0;
     background-color: var(--colour3);
     opacity: 0.15;
 }
 .header {
-    z-index: 9;
+    z-index: 2;
     position: fixed;
     background: transparent;
     height: 100px;
     width: 100vw;
     display: flex;
     justify-content: space-between;
-    align-items: center
+    align-items: center;
+    transition: 0.3s ease;
 }
 #login {
     background-color: transparent;
@@ -46,24 +56,10 @@ html {
     font-size: 3vw;
     text-transform: uppercase;
     font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, .2)
-}
-p,li {
-    color: var(--colour2);
-    font-size: 3vw;
-    text-transform: uppercase;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, .2)
 }
 #login,
 .header-group img {
     cursor: pointer;
-}
-a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
 }
 .header-group img {
     height: auto;
@@ -118,7 +114,6 @@ a {
     font-weight: bold;
     font-size: 3vw;
     cursor: pointer;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, .2)
 }
 .burger-menu a:hover {
     scale: 1.1;
@@ -130,6 +125,7 @@ a {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    min-height: 500px;
 }
 #front-text {
     display: flex;
@@ -153,6 +149,7 @@ a {
     text-align: center;
     height: 30vh;
     width: 50vw;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .2)
 }
 .subtext li {
     font-size: 2em;
@@ -166,7 +163,7 @@ a {
     position: absolute;
     object-fit: cover;
     z-index: -1;
-    filter: grayscale(1) brightness(0.5)   ;
+    filter: grayscale(1) brightness(0.5);
 }
 .parallax img {
     position: absolute;
@@ -182,6 +179,29 @@ a {
 #case{
     transform: scaleX(-1);
 }
+.front-buttons {
+    width: 50vw;
+    height: 10vh;
+    z-index: 1;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5vh;
+    transform: translate(0,50%);
+}
+.front-buttons a {
+    color: var(--colour2);
+    background-color: var(--colour3);
+    padding: 10px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-weight: normal;
+    width: auto;
+    height: 7vh;
+    text-shadow: none;
+    font-size: 2vw;
+}
 .main-section {
     position: relative;
     background: var(--colour5);
@@ -191,7 +211,6 @@ a {
 .main-section h1{
     font-size: 3em;
     color: var(--colour2);
-    margin-bottom: 10px;
 }
 .main-section p{
     font-size: 1em;
