@@ -12,7 +12,7 @@
     --colour1: #ffffff;
     --colour2: #f6f6f6;
     --colour3: #fb742d;
-    --colour4: rgb(39, 41, 51);
+    --colour4:  #292b33;
     --colour5: #000;
 }
 html {
@@ -101,8 +101,11 @@ li, a{
     flex-direction: column;
     gap: 100px;
     border-left: var(--colour3) 5px solid;
-    transition: 0.3s ease;
     opacity: 0.7;
+    transition: 0.3s ease;
+}
+.burger-menu.no-transition {
+    transition: none;
 }
 .burger-menu.active {
     left: 75%;
@@ -206,7 +209,7 @@ li, a{
     position: relative;
     background: var(--colour4);
     width: 100vw;
-    height: 400vh;
+    height: 130vh;
 }
 .section {
     height: 65vh;
@@ -262,4 +265,45 @@ li, a{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.custom-shape-divider-top-1676236236 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1676236236 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 150px;
+    box-shadow: 10px 10px rgba(0, 0, 0, .2);
+}
+
+.custom-shape-divider-top-1676236236 .shape-fill {
+    fill: var(--colour3);
+    box-shadow: 10px 10px rgba(0, 0, 0, .2);
+}
+.custom-shape-divider-bottom-1676237379 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1676237379 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 150px;
+}
+
+.custom-shape-divider-bottom-1676237379 .shape-fill {
+    fill: var(--colour3);
 }
