@@ -12,7 +12,7 @@
     --colour1: #ffffff;
     --colour2: #f6f6f6;
     --colour3: #fb742d;
-    --colour4: #47464d;
+    --colour4: rgb(39, 41, 51);
     --colour5: #000;
 }
 html {
@@ -204,16 +204,62 @@ li, a{
 }
 .main-section {
     position: relative;
-    background: var(--colour5);
+    background: var(--colour4);
     width: 100vw;
-    height: 100vh;
+    height: 400vh;
 }
-.main-section h1{
-    font-size: 3em;
-    color: var(--colour2);
+.section {
+    height: 65vh;
+    width: 100vw;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15vh;
+    gap: 50px;
 }
-.main-section p{
-    font-size: 1em;
+.text-side {
+    height: 100%;
+    width: auto;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+} 
+.text-side p {
+    font-weight: normal;
+    font-size: 1.5vw;
+    text-shadow: none;
+    text-transform: none;
+}
+.text-side h1 {
     color: var(--colour2);
-    font-weight: 300;
+    font-size: 3vw;
+}
+.image-stack img {
+    border-radius: 10px;
+    height: 25vh;
+    width: auto;
+    position: absolute;
+    box-shadow: 10px 10px rgba(0, 0, 0, .2);
+}
+.example-img {
+    position: relative;
+    height: 25vh;
+    width: 35vw;
+    background-color: transparent;
+
+}
+.image-stack img:nth-child(2) { /*about me*/
+    z-index: 2;
+    transform: translate(5vh, -10vh); /*trade offer*/
+}
+.image-stack img:nth-child(3) {
+    z-index: 1;
+    transform: translate(-5vh,10vh);
+}
+.image-stack {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

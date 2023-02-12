@@ -3,6 +3,8 @@ let buttons = document.querySelector('.front-buttons')
 let case2 = document.getElementById('case2');
 let case1 = document.getElementById('case');
 let header = document.querySelector('.header')
+const menu = document.querySelector(".burger-menu");
+const pfp = document.querySelector(".profile-pic");
 
 window.addEventListener('scroll', () => {
     let value = window.scrollY;
@@ -12,18 +14,16 @@ window.addEventListener('scroll', () => {
     //case2.style.left = value * 1.5 + 'px';
     //case2.style.opacity = 1 - (value*0.001)*2;
     //case1.style.opacity = 1 - (value*0.01)*2;
-    text.style.opacity = 1 - (value * 0.001) * 2;
-    buttons.style.opacity = 1 - (value * 0.001) * 3;
+    text.style.opacity = 1 - (value * 0.001) * 3;
+    buttons.style.opacity = 1 - (value * 0.001) * 4;
 
     if (value > 400) {
         header.style.top = "-100px";
+        menu.classList.remove("active");
     } else { 
         header.style.top = "0"
     }
 })
-
-const menu = document.querySelector(".burger-menu");
-const pfp = document.querySelector(".profile-pic");
 
 pfp.addEventListener("click", () => { 
     
