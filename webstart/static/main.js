@@ -16,8 +16,14 @@ window.addEventListener('scroll', () => {
     //case1.style.opacity = 1 - (value*0.01)*2;
     text.style.opacity = 1 - (value * 0.001) * 3;
     buttons.style.opacity = 1 - (value * 0.001) * 4;
+    menu.style.top = -(value) + '%'
 
-    if (value > 400) {
+    if (value > 0) {
+        menu.classList.add("no-transition")
+    } else { 
+        menu.classList.remove("no-transition")
+    }
+    if (value > 844) {
         header.style.top = "-100px";
         menu.classList.remove("active");
     } else { 
@@ -26,7 +32,7 @@ window.addEventListener('scroll', () => {
 })
 
 pfp.addEventListener("click", () => { 
-    
+    menu.classList.remove('no-transition')
     menu.classList.toggle("active");
     pfp.classList.toggle("active");
 })
