@@ -1,241 +1,133 @@
 * {
     margin: 0;
-    padding: 0;
     box-sizing: border-box;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, .2)
 }
 @font-face {
     font-family: 'LexendDeca';
     src: url(./fonts/LexendDeca-VariableFont_wght.ttf);
 }
 :root {
-    --colour1: #ffffff;
-    --colour2: #f6f6f6;
-    --colour3: #fb742d;
-    --colour4: rgba(30,31,46);
-    --colour5: #000;
+    --colour1: hsl(0, 0%, 100%);
+    --colour2: hsl(0, 0%, 90%);
+    --colour3: hsl(259, 96%, 58%);
+    --colour4: hsl(228, 11%, 18%);
+    --colour5: hsl(0, 0%, 0%);
+    --colour6: hsl(228, 11%, 40%);
 }
 html {
     background-color: var(--main-colour);
     font-family: 'LexendDeca', Helvetica, sans-serif;
     scroll-behavior: smooth;
+    background-color: var(--colour4);
 }
 p,
 li, a{
-    color: var(--colour2);
-    font-size: 3vw;
-    text-transform: uppercase;
-    font-weight: bold;
+    color: var(--colour6);
+    font-size: 1.5vw;
     text-decoration: none;
 }
-.color-filter {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    z-index: 0;
-    background-color: var(--colour3);
-    opacity: 0.15;
+h1 {
+    color: var(--colour2);
+    font-size: 3vw;
+}
+.logo{
+    width: auto;
+    height: 5vh;
 }
 .header {
-    z-index: 2;
-    position: fixed;
-    background: transparent;
-    height: 100px;
+    z-index: 3;
+    height: 7vh;
     width: 100vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: 0.3s ease;
+    padding-left: 10vw;
+    padding-right: 10vw;
 }
-#login {
-    background-color: transparent;
-    color: var(--colour2);
-    font-size: 3vw;
-    text-transform: uppercase;
-    font-weight: bold;
-}
-#login,
-.header-group img {
-    cursor: pointer;
-}
-.header-group img {
-    height: auto;
-    width: 70px;
-    border-radius: 50%;
-    border: var(--colour3) 3px solid;
-}
-.header-group:nth-child(2) {
-    justify-content: end;
-}
-.header-group img:hover,
-#login:hover,
-.invite-btn:hover {
-    filter: grayscale();
-    opacity: 0.8;
-}
-.header-group {
-    width: 50%;
-    height: 100px;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-}
-.header-child,
 .profile-pic {
-    margin: 25px;
     z-index: 10;
+    border-radius: 50%;
+    border: var(--colour4) 3px solid;
+    height: 6vh
 }
-.burger-menu {
-    width: 25%;
-    height: 100vh;
-    position: absolute;
-    background-color: var(--colour4);
-    top: 0;
-    left: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 100px;
-    border-left: var(--colour3) 5px solid;
-    transition: 0.3s ease;
-    opacity: 0.7;
+.header a {
+    font-weight: normal;
+    text-transform: capitalize;
+    color: var(--colour6);
+    font-size: 1.5vw;
 }
-.burger-menu.active {
-    left: 75%;
-}
-.burger-menu a {
-    color: var(--colour1);
-    display: block;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 3vw;
-    cursor: pointer;
-}
-.burger-menu a:hover {
-    scale: 1.1;
-    transition: 0.1s ease;
-}
-.parallax{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    min-height: 500px;
-}
-#front-text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-}
-.title {
-    transform: translate(0,-50%);
-}
-#front-text p{
-    font-size: 4em;
-    text-align: center;
-}
-.subtext {
-    list-style-type: none;
-    flex-direction: column;
+.nav-links {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    text-align: center;
-    height: 30vh;
-    width: 50vw;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, .2)
+    width: 40vw;
+    height: auto;
 }
-.subtext li {
-    font-size: 2em;
-    font-weight: 400;
+.title-screen {
+    height: 93vh;
+    width: 100vw;
+    padding-left: 10vw;
+    padding-right: 10vw;
 }
-#bg {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    object-fit: cover;
-    z-index: -1;
-    filter: grayscale(1) brightness(0.5);
-}
-.parallax img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    pointer-events: none;
-}
-#case2,#case{
-    width: 50%;
-    opacity: 0;
-}
-#case{
-    transform: scaleX(-1);
-}
-.front-buttons {
-    width: 50vw;
-    height: 10vh;
-    z-index: 1;
-    font-size: 2em;
+.title-text {
+    padding-top: 15vh;
+    width: 40vw;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5vh;
-    transform: translate(0,50%);
+    flex-direction: column;
+    text-align: center;
+    gap: 7vh;
 }
-.front-buttons a {
-    color: var(--colour2);
-    background-color: var(--colour3);
-    padding: 10px;
-    border-radius: 10px;
+.main-text {
+    font-size: 4vw;
     text-transform: uppercase;
-    font-weight: normal;
-    width: auto;
-    height: 7vh;
-    text-shadow: none;
+}
+.sub-text {
     font-size: 2vw;
 }
-.main-section {
-    position: relative;
-    background: var(--colour4);
-    width: 100vw;
-    height: 400vh;
+.front-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 35vw;
+    height: auto;
 }
+.front-buttons a {
+    background-color: var(--colour3);
+    color: var(--colour2);
+    height: 8vh;
+    width: 15vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px ;
+}
+.front-buttons a:nth-child(2) {
+    background-color: var(--colour6);
+}
+
 .section {
     height: 65vh;
     width: 100vw;   
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15vh;
     gap: 50px;
+    padding-left: 10vw;
+    padding-right: 10vw;
 }
 .text-side {
     height: 100%;
     width: auto;
     flex-direction: column;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 50px;
     align-items: center;
     text-align: center;
 } 
-.text-side p {
-    font-weight: normal;
-    font-size: 1.5vw;
-    text-shadow: none;
-    text-transform: none;
-}
-.text-side h1 {
-    color: var(--colour2);
-    font-size: 3vw;
-}
 .image-stack img {
     border-radius: 10px;
     height: 25vh;
@@ -250,9 +142,9 @@ li, a{
     background-color: transparent;
 
 }
-.image-stack img:nth-child(2) { /*about me*/
+.image-stack img:nth-child(2) {
     z-index: 2;
-    transform: translate(5vh, -10vh); /*trade offer*/
+    transform: translate(5vh, -10vh);
 }
 .image-stack img:nth-child(3) {
     z-index: 1;
