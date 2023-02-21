@@ -14,59 +14,38 @@
       href="{{ url_for('static', filename='style.css') }}"
     />
   </head>
-
   <body>
-    <div class="header">
-      <div class="header-group">
-        <p class="header-child">Space Cases</p>
-      </div>
-      <div class="header-group">
+    <nav class="header">
+      <img class="logo"src="{{ url_for('static',filename='images/discord-mark-white.svg') }}"></img>
+      <div class ="nav-links">
+        <a href="temp">Support Server</a>
+        <a>Patreon</a>
+        <a>Premium</a>
         {% if current_user %}
         <img class="profile-pic" src="{{current_user.avatar_url}}" alt="" />
         {% else %}
-        <a class="header-child" href="{{oauth_url}}" id="login">Login</a>
+        <a href="{{oauth_url}}" id="login">Login</a>
         {% endif %}
-        <nav class="burger-menu">
-          <a>Patreon</a>
-          <a>Inventory</a>
-          <a>Stats</a>
-          <a href="{{ url_for('logout') }}">Logout</a>
-        </nav>
       </div>
-    </div>
+    </nav>
     <section class="main-section">
-      <div class="section">
-        <div class="custom-shape-divider-top-1676236236">
-          <svg
-            data-name="Layer 1"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1200 120"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-              class="shape-fill"
-            ></path>
-          </svg>
+      <div class="title-screen">
+        <div class ="title-text">
+          <h1 class ="main-text">Space Cases</h1>
+          <li class="sub-text">Premier CSGO case unboxing simulator</li>
+          <li class="sub-text">Built from the ground up for the discord platform</li>
+          <div class="front-buttons">
+            <a href="https://discord.com/api/oauth2/authorize?client_id=1025496377939197972&permissions=395136993280&scope=bot"> Invite Now</a>
+            <a href="#first-section"> See Features</a>
+          </div>
         </div>
-        <div class="custom-shape-divider-bottom-1676237379">
-          <svg
-            data-name="Layer 1"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1200 120"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-              class="shape-fill"
-            ></path>
-          </svg>
-        </div>
+      </div>
+      <div class="section" id="first-section">
         <div class="text-side">
           <h1>Unbox and trade your dream skins</h1>
           <p>
             Unbox skins from every CSGO case, and fledge out your inventory with
-            trade offers. Evaluate using hourly market price updates.
+            trade offers. Evaluate your items using hourly market price updates.
           </p>
         </div>
         <div class="image-stack">
@@ -80,12 +59,6 @@
             alt="Discord Trade Offer"
           />
         </div>
-      </div>
-      <div class="front-button">
-        <a
-          href="https://discord.com/api/oauth2/authorize?client_id=1025496377939197972&permissions=395136993280&scope=bot"
-          >Invite Now
-        </a>
       </div>
       <div class="section">
         <div class="image-stack">
