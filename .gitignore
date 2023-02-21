@@ -1,6 +1,7 @@
 # tokens and keys
 client_secret.txt
 bot_token.txt
+database_pass.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
