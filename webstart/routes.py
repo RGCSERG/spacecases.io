@@ -28,8 +28,7 @@ def logout():
     session.clear()
     return redirect("/")
 
-
-# @app.route('/test')
+@app.route('/test')
 def test():
     if 'token' in session:
         bearer_client = APIClient(session.get('token'), bearer=True)
