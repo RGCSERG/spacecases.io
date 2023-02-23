@@ -3,7 +3,6 @@ from zenora import APIClient
 from webstart.config import REDIRECT_URI, OAUTH_URL, CLIENT_SECRET, TOKEN, INVITE_URL
 from flask import render_template, url_for, flash, redirect, request, session
 
-
 @app.route('/')
 @app.route('/home')
 def home():

@@ -36,3 +36,7 @@ pfp.addEventListener("click", () => {
     menu.classList.toggle("active");
     pfp.classList.toggle("active");
 })
+
+function goBack() {
+    window.history.back();
+  }
