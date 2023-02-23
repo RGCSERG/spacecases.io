@@ -1,2 +1,4 @@
 Zenora
 flask
+certifi
+pymongo
