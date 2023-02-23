@@ -29,8 +29,7 @@ window.addEventListener('scroll', () => {
         header.style.top = "0"
     }
 })
-
-pfp.addEventListener("click", () => { 
+pfp.addEventListener("click", () => {
     menu.classList.remove('no-transition')
     menu.classList.toggle("active");
     pfp.classList.toggle("active");
