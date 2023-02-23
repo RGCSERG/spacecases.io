@@ -21,7 +21,7 @@
         <a href="temp">Support Server</a>
         <a>Socials</a>
         <a>Premium</a>
-        <a>Leaderboards</a>
+        <a href="{{url_for('leaderboard')}}">Leaderboards</a>
       <div>
           {% if current_user %}
         <img class="profile-pic" id="button" src="{{current_user.avatar_url}}" alt="" />
