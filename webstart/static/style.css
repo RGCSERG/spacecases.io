@@ -11,7 +11,7 @@
     --colour2: hsl(0, 0%, 90%);
     --colour3: hsl(259, 96%, 58%);
     --colour4: hsl(228, 11%, 18%);
-    --colour5: hsl(0, 0%, 0%);
+    --colour5: hsl(223, 11%, 11%);
     --colour6: hsl(228, 11%, 40%);
 }
 html {
@@ -36,7 +36,7 @@ h1 {
 }
 .header {
     z-index: 3;
-    height: 7vh;
+    height: 10vh;
     width: 100vw;
     display: flex;
     justify-content: space-between;
@@ -54,7 +54,13 @@ h1 {
     font-weight: normal;
     text-transform: capitalize;
     color: var(--colour6);
-    font-size: 1.5vw;
+    font-size: 1.3vw;
+}
+#login {
+    background-color: var(--colour3);
+    color: var(--colour2);
+    border-radius: 5px;
+    padding: 10px;
 }
 .nav-links {
     display: flex;
@@ -64,7 +70,7 @@ h1 {
     height: auto;
 }
 .title-screen {
-    height: 93vh;
+    height: 90vh;
     width: 100vw;
     padding-left: 10vw;
     padding-right: 10vw;
@@ -107,7 +113,14 @@ h1 {
 .front-buttons a:nth-child(2) {
     background-color: var(--colour6);
 }
-
+.page-divider {
+    height: 20vh;
+    width: 100vw;
+    background-color: var(--colour5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .section {
     height: 65vh;
     width: 100vw;   
