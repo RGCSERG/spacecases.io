@@ -118,12 +118,13 @@ h1 {
     height: auto;
     background-color: var(--colour5);
     position: absolute;
-    transform: translate(-9vw,-60vh);
     border-radius: 10px;
-    transition: ease-in-out 150ms;
+    transition: ease-out 100ms;
+    opacity: 0;
+    transform: translate(-9vw,2vh);
 }
-.dropdown:active {
-    transform: translate(0,62vh);
+.dropdown.active {
+    opacity: 1;
 }
 .dropdown p, .dropdown a {
     margin: 25px;
