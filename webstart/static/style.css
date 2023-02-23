@@ -7,12 +7,12 @@
     src: url(./fonts/LexendDeca-VariableFont_wght.ttf);
 }
 :root {
-    --colour1: hsl(0, 0%, 100%);
-    --colour2: hsl(0, 0%, 90%);
-    --colour3: hsl(259, 96%, 58%);
-    --colour4: hsl(228, 11%, 18%);
-    --colour5: hsl(223, 11%, 11%);
-    --colour6: hsl(228, 11%, 40%);
+    --colour1: #ffffff;
+    --colour2: #e6e6e6;
+    --colour3: #6e2dfb;
+    --colour4: #292b33;
+    --colour5: #191b1f;
+    --colour6: #5b5f71;
 }
 html {
     background-color: var(--main-colour);
@@ -112,6 +112,29 @@ h1 {
 }
 .front-buttons a:nth-child(2) {
     background-color: var(--colour6);
+}
+.dropdown {
+    width: 12vw;
+    height: auto;
+    background-color: var(--colour5);
+    position: absolute;
+    transform: translate(-9vw,-60vh);
+    border-radius: 10px;
+    transition: ease-in-out 150ms;
+}
+.dropdown:active {
+    transform: translate(0,62vh);
+}
+.dropdown p, .dropdown a {
+    margin: 25px;
+    font-size: 1.3vw;
+}
+.dropdown p {
+    color: var(--colour2);
+    text-transform: uppercase;
+}
+.dropdown a {
+    display: block;
 }
 .page-divider {
     height: 20vh;
