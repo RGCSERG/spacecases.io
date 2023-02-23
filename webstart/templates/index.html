@@ -13,6 +13,7 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
     />
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
   </head>
   <body>
     <nav class="header">
@@ -21,14 +22,26 @@
         <a href="temp">Support Server</a>
         <a>Socials</a>
         <a>Premium</a>
-        {% if current_user %}
-        <img class="profile-pic" src="{{current_user.avatar_url}}" alt="" />
+        <a>Leaderboards</a>
+      <div>
+          {% if current_user %}
+        <img class="profile-pic" id="button" src="{{current_user.avatar_url}}" alt="" />
         {% else %}
         <a href="{{oauth_url}}" id="login">Login</a>
         {% endif %}
+        <div class="dropdown">
+          <p>title1</p>
+          <a>thing 1</a>
+          <a>thing 2</a>
+          <a>thing 3</a>
+          <p>title2</p>
+          <a>thing 4</a>
+          <a>thing 5</a>
+          <a>thing 6</a>
+        </div>
+      </div>
       </div>
     </nav>
     {% block content %}{% endblock %}
-    <script src="{{ url_for('static', filename='main.js') }}"></script>
   </body>
 </html>

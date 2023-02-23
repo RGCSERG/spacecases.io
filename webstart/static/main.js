@@ -5,7 +5,6 @@ let case1 = document.getElementById('case');
 let header = document.querySelector('.header')
 const menu = document.querySelector(".burger-menu");
 const pfp = document.querySelector(".profile-pic");
-
 window.addEventListener('scroll', () => {
     let value = window.scrollY;
 
@@ -40,3 +39,16 @@ pfp.addEventListener("click", () => {
 function goBack() {
     window.history.back();
   }
+  
+function setUpEvents() { 
+    let content = document.querySelector(".dropdown");
+    let button = document.getElementById("button");
+
+    button.addEventListener("click", function() { 
+        content.classList.toggle("active");
+    })
+}
+
+window.onload = function(){ 
+    setUpEvents();
+}
