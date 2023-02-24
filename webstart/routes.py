@@ -37,6 +37,9 @@ def invite_server():
         bearer_client = APIClient(session.get('token'), bearer=True)
         current_user = bearer_client.users.get_current_user()
         guilds = bearer_client.users.get_my_guilds()
+        for guild in guilds:
+            if guild.owner == True:
+                print(guild)
         return render_template('invite_Server.html', current_user=current_user, guilds=guilds, invite_url=INVITE_URL)
     return render_template('invite_server.html', oauth_url=OAUTH_URL, invite_url=INVITE_URL)
 

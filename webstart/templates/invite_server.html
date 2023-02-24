@@ -5,7 +5,11 @@
     <div class="section" id="first-section">
         <div class="front-buttons">
             <button onclick="goBack()" target="_blank">Go Back</button>
-            <p>{{guilds}}</p>
+            {% for guild in guilds %}
+            <p>
+                    {{guild.name}}
+            </p>
+            {% endfor %}
         </div>
     </div>
 </section>
