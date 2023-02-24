@@ -57,7 +57,9 @@ h1 {
     font-size: 1.3vw;
 }
 #login {
-    background-color: var(--colour3);
+    background: linear-gradient(-45deg, #845EC2, #2C73D2, #0081CF, #0089BA, #008E9B, #008F7A);
+    background-size: 400%;
+    animation: gradient 10s ease infinite;
     color: var(--colour2);
     border-radius: 5px;
     padding: 10px;
@@ -91,7 +93,7 @@ h1 {
     text-transform: uppercase;
 }
 .sub-text {
-    font-size: 2vw;
+    font-size: 1.5vw;
 }
 .front-buttons {
     display: flex;
@@ -101,7 +103,9 @@ h1 {
     height: auto;
 }
 .front-buttons a {
-    background-color: var(--colour3);
+    background: linear-gradient(-45deg,#845EC2,#2C73D2,#0081CF,#0089BA,#008E9B,#008F7A);
+    background-size: 400%;
+    animation: gradient 10s ease infinite;
     color: var(--colour2);
     height: 8vh;
     width: 15vw;
@@ -111,7 +115,25 @@ h1 {
     border-radius: 5px ;
 }
 .front-buttons a:nth-child(2) {
+    background: none;
     background-color: var(--colour6);
+}
+.svg {
+    width: 20px;
+    height: auto;
+    stroke: var(--colour6);
+    transform: rotate(180deg);
+    transition: ease-out 100ms;
+}
+.svg.active {
+    transform: rotate(-360deg);
+}
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5vw;
+    cursor: pointer;
 }
 .dropdown {
     width: 12vw;
@@ -121,7 +143,7 @@ h1 {
     border-radius: 10px;
     transition: ease-out 100ms;
     opacity: 0;
-    transform: translate(-9vw,2vh);
+    transform: translate(-6.5vw,1vh);
 }
 .dropdown.active {
     opacity: 1;
@@ -140,10 +162,23 @@ h1 {
 .page-divider {
     height: 20vh;
     width: 100vw;
-    background-color: var(--colour5);
     display: flex;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(-45deg, #845EC2, #2C73D2, #0081CF, #0089BA, #008E9B, #008F7A);
+    background-size: 400%;
+    animation: gradient 10s ease infinite;
+}
+@keyframes gradient {
+    0% {
+        background-position: 0%,50%;
+    }
+    50% {
+        background-position: 100%,50%;
+    }
+    100% {
+        background-position: 0%,50%;
+    }
 }
 .section {
     height: 65vh;

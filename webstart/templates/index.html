@@ -10,7 +10,7 @@
     <title>Space Cases</title>
     {% endif %}
     <link
-      rel="stylesheet"
+      rel="stylesheet" 
       href="{{ url_for('static', filename='style.css') }}"
     />
   </head>
@@ -19,16 +19,22 @@
       <img class="logo"src="{{ url_for('static',filename='images/discord-mark-white.svg') }}"></img>
       <div class ="nav-links">
         <a href="temp">Support Server</a>
-        <a>Socials</a>
-        <a>Premium</a>
+        <a href="temp">Socials</a>
+        <a href="temp">Premium</a>
         <a href="{{url_for('leaderboard')}}">Leaderboards</a>
       <div>
           {% if current_user %}
-        <img class="profile-pic" id="button" src="{{current_user.avatar_url}}" alt="" />
-        {% else %}
-        <a href="{{oauth_url}}" id="login">Login</a>
-        {% endif %}
-        <div class="dropdown">
+          <div class="button-wrapper">
+            <img class="profile-pic" id="button" src="{{current_user.avatar_url}}" alt="" />
+            <svg width="100" height="100" viewBox="0 0 100 100"xmlns="http://www.w3.org/2000/svg" class="svg">
+              <line x1="51.3236" y1="35.9372" x2="12.5803" y2="67.5435" stroke="#5b5f71" stroke-width="10"/>
+              <line x1="87.1613" y1="67.5453" x2="48.4196" y2="35.9371" stroke="#5b5f71" stroke-width="10"/>
+            </svg>   
+          </div>   
+            {% else %}
+          <a href="{{oauth_url}}" id="login">Login</a>
+          {% endif %}
+        <div class="dropdown">          
           <p>title1</p>
           <a>thing 1</a>
           <a>thing 2</a>
@@ -36,7 +42,7 @@
           <p>title2</p>
           <a>thing 4</a>
           <a>thing 5</a>
-          <a>thing 6</a>
+          <a href="{{ url_for('logout') }}">Logout</a>
         </div>
       </div>
       </div>
