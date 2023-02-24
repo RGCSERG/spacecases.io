@@ -13,7 +13,6 @@
       rel="stylesheet" 
       href="{{ url_for('static', filename='style.css') }}"
     />
-    <script src="{{ url_for('static', filename='main.js') }}"></script>
   </head>
   <body>
     <nav class="header">
@@ -49,5 +48,6 @@
       </div>
     </nav>
     {% block content %}{% endblock %}
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
   </body>
 </html>
