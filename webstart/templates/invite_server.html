@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+{% block content %}
+{% if guilds %}
+<section class="main-section">
+    <div class="section" id="first-section">
+        <div class="front-buttons">
+            <button onclick="goBack()" target="_blank">Go Back</button>
+            <p>{{guilds}}</p>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endblock %}
