@@ -1,11 +1,20 @@
 {% extends 'index.html' %} {% block content %} {% if guilds %}
 <section class="main-section">
-  <div class="section" id="first-section">
-    <div class="front-buttons">
-      <a onclick="goBack()">Go Back</a>
-      {% for guild in guilds %}
-      <p>{{guild.name}}</p>
-      {% endfor %}
+    <div class="section" id="first-section">
+        <div class="front-buttons">
+            <button onclick="goBack()" target="_blank">Go Back</button>
+            {% for guild in guilds %}
+            <p>
+                    {{guild.name}}
+
+                    {%if guild.description%}
+                        {{guild.description}}
+                    {%endif%}
+            </p>
+            <div class="image-stack">
+                <img src="{{guild.icon_url}}" alt="400 image" />
+            </div>
+            {% endfor %}
     </div>
   </div>
 </section>
