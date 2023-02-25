@@ -113,6 +113,7 @@ h1 {
     justify-content: center;
     align-items: center;
     border-radius: 5px ;
+    cursor: pointer;
 }
 .front-buttons a:nth-child(2) {
     background: none;
@@ -142,11 +143,11 @@ h1 {
     position: absolute;
     border-radius: 10px;
     transition: ease-out 100ms;
-    opacity: 0;
+    visibility: hidden;
     transform: translate(-6.5vw,1vh);
 }
 .dropdown.active {
-    opacity: 1;
+    visibility: visible;
 }
 .dropdown p, .dropdown a {
     margin: 25px;
@@ -235,4 +236,40 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.text-header {
+    height: 15vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1vw;
+}
+.leaderboard{
+    width: 80vw;
+    height: auto;
+    background-color: var(--colour5);
+    display: grid;
+    margin-left: 10vw;
+    justify-items: center;
+}
+.lb_svg {
+    transform: rotate(90deg);
+    cursor: pointer;
+}
+.lb_svg:nth-child(1) {
+    transform: rotate(-90deg);
+}
+.lb {
+    width: 70vw;
+    height: 100vh;
+    background-color: var(--colour4);
+    grid-column: 1;
+    grid-row: 1;
+}
+.server {
+    visibility: hidden;
+}
+.global {
+    visibility: visible;
 }
