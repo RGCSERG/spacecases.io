@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+{%block content%}
+<section class="main-section">
+    <div class="section" id="first-section">
+        <div class="text-side">
+            <h1>Leaderboard</h1>
+            <p> {%if user_data%}
+                    {{user_data}}
+                {%endif%}
+            </p>
+        </div>
+        <div class="front-buttons">
+            <a href="{{url_for('home')}}">Back to home</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
