@@ -64,3 +64,20 @@ def init():
   guild_data = db["guild-data"]
 
   print("Loaded user data")
+"""
+def compute_base_permissions(member, guild):
+    if guild.is_owner(member):
+        return ALL
+
+    role_everyone = guild.get_role(guild.id)  # get @everyone role
+    permissions = role_everyone.permissions
+
+    for role in member.roles:
+        permissions |= role.permissions
+
+    if permissions & ADMINISTRATOR == ADMINISTRATOR:
+        return ALL
+
+    return permissions
+
+"""
