@@ -16,7 +16,7 @@
   </head>
   <body>
     <nav class="header">
-      <img class="logo"src="{{ url_for('static',filename='images/discord-mark-white.svg') }}"></img>
+      <a href="{{url_for('home')}}"><img class="logo"src="{{ url_for('static',filename='images/discord-mark-white.svg') }}"></img></a>
       <div class ="nav-links">
         <a href="temp">Support Server</a>
         <a href="temp">Socials</a>
@@ -35,13 +35,13 @@
           <a href="{{oauth_url}}" id="login">Login</a>
           {% endif %}
         <div class="dropdown">          
-          <p>title1</p>
-          <a>thing 1</a>
-          <a>thing 2</a>
-          <a>thing 3</a>
-          <p>title2</p>
-          <a>thing 4</a>
-          <a>thing 5</a>
+          <p>User</p>
+          <a>Profile</a>
+          <a>Inventory</a>
+          <a>Trades</a>
+          <p>Other</p>
+          <a>About</a>
+          <a>Help</a>
           <a href="{{ url_for('logout') }}">Logout</a>
         </div>
       </div>

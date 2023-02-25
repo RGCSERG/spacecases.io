@@ -1,17 +1,24 @@
-{% extends 'index.html' %}
-{%block content%}
+{% extends 'index.html' %} {%block content%}
 <section class="main-section">
-    <div class="section" id="first-section">
-        <div class="text-side">
-            <h1>Leaderboard</h1>
-            <p> {%if user_data%}
-                    {{user_data}}
-                {%endif%}
-            </p>
-        </div>
-        <div class="front-buttons">
-            <a href="{{url_for('home')}}">Back to home</a>
-        </div>
+  <div class="text-header">
+    <svg width="100" height="100" viewBox="0 0 100 100"xmlns="http://www.w3.org/2000/svg" class="svg lb_svg">
+      <line x1="51.3236" y1="35.9372" x2="12.5803" y2="67.5435" stroke="#5b5f71" stroke-width="10"/>
+      <line x1="87.1613" y1="67.5453" x2="48.4196" y2="35.9371" stroke="#5b5f71" stroke-width="10"/>
+    </svg>   
+    <h1 id="lbtext">Global Leaderboard</h1>
+    <svg width="100" height="100" viewBox="0 0 100 100"xmlns="http://www.w3.org/2000/svg" class="svg lb_svg">
+      <line x1="51.3236" y1="35.9372" x2="12.5803" y2="67.5435" stroke="#5b5f71" stroke-width="10"/>
+      <line x1="87.1613" y1="67.5453" x2="48.4196" y2="35.9371" stroke="#5b5f71" stroke-width="10"/>
+    </svg>  
+  </div>
+  <dåiv class="leaderboard">
+    <div class="lb global">
+      <p>{%if user_data%} {{user_data}} {%endif%}</p>
     </div>
+    <div class="lb server">
+      <p>LOL</p>
+    </div>
+  </div>
 </section>
 {% endblock %}
+

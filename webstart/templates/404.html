@@ -1,14 +1,16 @@
-{% extends 'index.html' %}
-{%block content%}
+{% extends 'index.html' %} {%block content%}
 <section class="main-section">
-    <div class="section" id="first-section">
-        <div class="image-stack">
-        <img src="{{ url_for('static', filename='images/404.jpg') }}" alt="404 image" />
-        </div>
-        <div class="front-buttons">
-            <a href="{{url_for('home')}}">Back to home</a>
-            <!--<button onclick="goBack()">Go Back</button>-->
-        </div>
+  <div class="error-section" id="first-section">
+    <div class="image-stack">
+      <img
+        src="{{ url_for('static', filename='images/404.jpg') }}"
+        alt="404 image"
+      />
     </div>
+    <div class="front-buttons">
+      <a href="{{url_for('home')}}">Back to home</a>
+      <!--<button onclick="goBack()">Go Back</button>-->
+    </div>
+  </div>
 </section>
 {% endblock %}

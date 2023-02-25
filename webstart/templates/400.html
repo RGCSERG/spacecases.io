@@ -1,21 +1,18 @@
-{% extends 'index.html' %}
-{%block content%}
+{% extends 'index.html' %} {%block content%}
 <section class="main-section">
-    <div class="section" id="first-section">
-        <!--
+  <div class="error-section" id="first-section">
+    <!--
         <div class="image-stack">
         <img src="{{ url_for('static', filename='images/404.jpg') }}" alt="400 image" />
         </div>
         -->
-        <div class="text-side">
-            <h1>400 Bad Request</h1>
-            <p>
-                the url you have tried to acces is 'bad request'
-            </p>
-        </div>
-        <div class="front-buttons">
-            <a href="{{url_for('home')}}">Back to home</a>
-        </div>
+    <div class="text-side">
+      <h1>400 Bad Request</h1>
+      <p>the url you have tried to acces is 'bad request'</p>
     </div>
+    <div class="front-buttons">
+      <a href="{{url_for('home')}}">Back to home</a>
+    </div>
+  </div>
 </section>
 {% endblock %}

@@ -1,6 +1,4 @@
-{% extends 'index.html' %}
-{% block content %}
-{% if guilds %}
+{% extends 'index.html' %} {% block content %} {% if guilds %}
 <section class="main-section">
     <div class="section" id="first-section">
         <div class="front-buttons">
@@ -17,8 +15,7 @@
                 <img src="{{guild.icon_url}}" alt="400 image" />
             </div>
             {% endfor %}
-        </div>
     </div>
+  </div>
 </section>
-{% endif %}
-{% endblock %}
+{% endif %} {% endblock %}
