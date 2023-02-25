@@ -180,6 +180,15 @@ h1 {
         background-position: 0%,50%;
     }
 }
+.error-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 90vh;
+    gap: 20vh;
+}
 .section {
     height: 65vh;
     width: 100vw;   
