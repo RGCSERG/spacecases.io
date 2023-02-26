@@ -137,6 +137,7 @@ h1 {
     cursor: pointer;
 }
 .dropdown {
+    z-index: 10;
     width: 12vw;
     height: auto;
     background-color: var(--colour5);
@@ -272,4 +273,41 @@ h1 {
 }
 .global {
     visibility: visible;
+}
+.server-grid {
+    display: grid;
+    grid-template-columns: repeat(3,30vw);
+    justify-items: center;
+    gap: 2vw;
+}
+.server-page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 90vh;
+}
+.server-wrapper {
+    background: var(--colour5);
+    box-shadow: 10px 10px rgba(0, 0, 0, .2);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 25vw;
+    height: auto;
+    gap: 1vh;
+    padding: 3vw;
+}
+.server-wrapper a {
+    display: block;
+}
+.server-wrapper img {
+    border-radius: 10px;
+    height: clamp(5vh,20vh,30vh);
+    width: auto;
+}
+.server-wrapper p {
+    text-align: center;
 }
