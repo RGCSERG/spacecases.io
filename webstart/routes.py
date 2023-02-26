@@ -42,7 +42,7 @@ def invite_server():
         for guild in gs:
             if check_permissions(guild) == True:
                 guilds.append(guild)
-        return render_template('invite_Server.html', current_user=current_user, guilds=guilds, invite_url=INVITE_URL)
+        return render_template('invite_Server.html', current_user=current_user, guilds=guilds, invite_url=INVITE_URL, str=str)
     return render_template('invite_server.html', oauth_url=OAUTH_URL, invite_url=INVITE_URL)
 
 @app.route('/logout')

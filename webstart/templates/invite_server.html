@@ -12,9 +12,15 @@
                     {%endif%}
             </p>
             <div class="image-stack">
-                <img src="{{guild.icon_url}}" alt="400 image" />
+                {% if guild.icon_url%}
+                <img src="{{guild.icon_url}}" alt="guild image" />
+                {% else %}
+                <img src="{{ url_for('static',filename='images/discord-mark-white.svg') }}" alt="guild image" />
+                {%endif%}
+                <a href="https://discord.com/api/oauth2/authorize?client_id=1025496377939197972&permissions=395136993280&guild_id={{str(guild.id)}}&scope=bot" target="_blank">Setup</a>
             </div>
             {% endfor %}
+        </div>
     </div>
   </div>
 </section>
