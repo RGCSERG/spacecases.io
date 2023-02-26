@@ -1,6 +1,7 @@
 from webstart import app, Client, db
 from zenora import APIClient
 from webstart.config import REDIRECT_URI, OAUTH_URL, CLIENT_SECRET, TOKEN, INVITE_URL
+from webstart.guild_calculations import check_permissions
 from flask import render_template, url_for, flash, redirect, request, session
 
 @app.route('/')
@@ -34,13 +35,14 @@ def leaderboard():
 @app.route('/invite_server')
 def invite_server():
     if 'token' in session:
+        guilds = []
         bearer_client = APIClient(session.get('token'), bearer=True)
         current_user = bearer_client.users.get_current_user()
-        guilds = bearer_client.users.get_my_guilds()
-        for guild in guilds:
-            if guild.owner == True:
-                print(guild)
-        return render_template('invite_Server.html', current_user=current_user, guilds=guilds, invite_url=INVITE_URL)
+        gs = bearer_client.users.get_my_guilds()
+        for guild in gs:
+            if check_permissions(guild) == True:
+                guilds.append(guild)
+        return render_template('invite_Server.html', current_user=current_user, guilds=guilds, invite_url=INVITE_URL, str=str)
     return render_template('invite_server.html', oauth_url=OAUTH_URL, invite_url=INVITE_URL)
 
 @app.route('/logout')
