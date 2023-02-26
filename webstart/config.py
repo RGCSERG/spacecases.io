@@ -17,4 +17,4 @@ except FileNotFoundError:
 
 REDIRECT_URI = 'http://localhost:5000/oauth/callback'
 OAUTH_URL = f'https://discord.com/api/oauth2/authorize?client_id=1025496377939197972&redirect_uri={parse.quote(REDIRECT_URI)}&response_type=code&scope=identify%20email%20guilds%20applications.commands.permissions.update'
-INVITE_URL = 'https://discord.com/api/oauth2/authorize?client_id=1025496377939197972&permissions=395136993280&scope=bot'
+INVITE_URL = 'https://discord.com/api/oauth2/authorize?client_id=1025496377939197972&permissions=395136993280&guild_id=1050490944232890389&scope=bot'
