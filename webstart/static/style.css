@@ -36,13 +36,13 @@ h1 {
 }
 .header {
     z-index: 3;
-    height: 10vh;
-    width: 100vw;
+    height: clamp(70px,10vh,200px);
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 10vw;
-    padding-right: 10vw;
+    padding-left: clamp(25px,10vw,300px);
+    padding-right: clamp(25px,10vw,300px);
 }
 .profile-pic {
     z-index: 10;
@@ -54,7 +54,8 @@ h1 {
     font-weight: normal;
     text-transform: capitalize;
     color: var(--colour6);
-    font-size: 1.3vw;
+    font-size: clamp(10px,1.3vw,60px);
+    text-align: center;
 }
 #login {
     background: linear-gradient(-45deg, #845EC2, #2C73D2, #0081CF, #0089BA, #008E9B, #008F7A);
@@ -66,19 +67,22 @@ h1 {
 }
 .nav-links {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    width: 40vw;
+    width: clamp(250px,40vw,1500px);
     height: auto;
+    gap: 2vw;
 }
 .title-screen {
     height: 90vh;
     width: 100vw;
-    padding-left: 10vw;
-    padding-right: 10vw;
+    padding-left: clamp(25px,10vw,1000px);
+    padding-right: clamp(25px,10vw,1000px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .title-text {
-    padding-top: 15vh;
     width: 40vw;
     height: auto;
     display: flex;
@@ -86,29 +90,29 @@ h1 {
     align-items: center;
     flex-direction: column;
     text-align: center;
-    gap: 7vh;
+    gap: 8vh;
+    transform: translate(0,-10vh);
 }
 .main-text {
-    font-size: 4vw;
+    font-size: clamp(30px,4vw,150px);
     text-transform: uppercase;
 }
 .sub-text {
-    font-size: 1.5vw;
+    font-size: clamp(10px,1.5vw,150px);
 }
 .front-buttons {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 35vw;
-    height: auto;
+    gap: 2vw;
 }
 .front-buttons a {
     background: linear-gradient(-45deg,#845EC2,#2C73D2,#0081CF,#0089BA,#008E9B,#008F7A);
     background-size: 400%;
     animation: gradient 10s ease infinite;
     color: var(--colour2);
-    height: 8vh;
-    width: 15vw;
+    width: clamp(80px,15vw,500px);
+    aspect-ratio: 8/3 ;
     display: flex;
     justify-content: center;
     align-items: center;
