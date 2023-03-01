@@ -28,5 +28,5 @@ To deploy this project run (in working directory for project)
 ```bash
   python run.py
 ```
-apple users might run into some issues for running with local host and command line methods
+apple users might run into some issues for running with local host and command line methods - when logging in on apple change 'localhost' in the url to 127.0.0.1 to access login functionality.
 
