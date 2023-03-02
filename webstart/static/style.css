@@ -18,6 +18,7 @@ html {
     background-color: var(--main-colour);
     font-family: 'LexendDeca', Helvetica, sans-serif;
     scroll-behavior: smooth;
+    overflow-x: none;
     background-color: var(--colour4);
 }
 p,
@@ -69,15 +70,15 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: clamp(250px,40vw,1500px);
+    width: clamp(250px,45vw,1500px);
     height: auto;
-    gap: 2vw;
+    gap: 1.5vw;
 }
 .title-screen {
     height: 90vh;
     width: 100vw;
-    padding-left: clamp(25px,10vw,1000px);
-    padding-right: clamp(25px,10vw,1000px);
+    padding-left: clamp(20px,10vw,1000px);
+    padding-right: clamp(20px,10vw,1000px);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -94,11 +95,11 @@ h1 {
     transform: translate(0,-10vh);
 }
 .main-text {
-    font-size: clamp(30px,4vw,150px);
+    font-size: clamp(40px,4vw,150px);
     text-transform: uppercase;
 }
 .sub-text {
-    font-size: clamp(10px,1.5vw,150px);
+    font-size: clamp(15px,1.5vw,150px);
 }
 .front-buttons {
     display: flex;
@@ -314,4 +315,11 @@ h1 {
 }
 .server-wrapper p {
     text-align: center;
+}
+.user-splash-cover {
+    width: 100vw;
+    height: 30vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
