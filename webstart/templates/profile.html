@@ -1,0 +1,7 @@
+{% extends 'index.html' %} {%block content%}
+<div class="user-splash-cover">
+  <img src="{{current_user.avatar_url}}" alt="" />
+  <p>temp</p>
+</div>
+<div class="stats">{%if user_data%} {{user_data}} {%endif%}</div>
+{% endblock %}
