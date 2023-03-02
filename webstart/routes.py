@@ -1,11 +1,16 @@
 from webstart import app, Client, db
 from zenora import APIClient
 from webstart.config import REDIRECT_URI, OAUTH_URL, CLIENT_SECRET, TOKEN, INVITE_URL
-from webstart.guild_calculations import check_permissions
-from flask import render_template, url_for, flash, redirect, request, session
+from webstart.calculations import check_permissions
+from flask import render_template, url_for, flash, redirect, request, session, make_response
+from datetime import timedelta, datetime
 
 
 @app.route('/')
+def check_for_user():
+    return redirect('/get')
+
+
 @app.route('/home')
 def home():
     if 'token' in session:
@@ -19,10 +24,12 @@ def home():
 @app.route('/oauth/callback')
 def callback():
     code = request.args['code']
+    session['user_code'] = request.args['code']
     access_token = Client.oauth.get_access_token(
         code, REDIRECT_URI).access_token
     session['token'] = access_token
-    return redirect('/')
+    session.permanent = True
+    return redirect('/set')
 
 
 @app.route('/leaderboard')
@@ -53,6 +60,22 @@ def invite_server():
 def logout():
     session.clear()
     return redirect("/")
+
+
+@app.route('/set')
+def set_cookie():
+    resp = make_response('Remembering User')
+    resp.set_cookie('token', session['token'])
+    return resp
+
+
+@app.route('/get')
+def getcookie():
+    if request.cookies.get('token'):
+        token = request.cookies.get('token')
+        session['token'] = token
+        return redirect('/home')
+    return redirect('/home')
 
 
 @app.route('/test')
