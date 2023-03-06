@@ -1,7 +1,7 @@
 {% extends 'index.html' %} {%block content%}
 <section class="main-section">
   <div class="title-screen">
-    <div class="title-text">
+    <div class="title-divs" id="left-side">
       <h1 class="main-text">Space Cases</h1>
       <li class="sub-text">Premier CSGO case unboxing simulator</li>
       <li class="sub-text">
@@ -11,6 +11,12 @@
         <a href="{{url_for('invite_server')}}">Invite Now</a>
         <a href="#first-section"> See Features</a>
       </div>
+    </div>
+    <div class="title-divs" id="right-side">
+      <img
+        src="{{ url_for('static', filename='images/AboutMe.png') }}"
+        alt=""
+      />
     </div>
   </div>
   <div class="page-divider">
@@ -58,4 +64,4 @@
   </section>
   <div class="page-divider"></div>
 </section>
-{% endblock %}
+{% include "footer.html" %} {% endblock %}
