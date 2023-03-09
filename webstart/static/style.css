@@ -44,11 +44,15 @@ h1 {
     align-items: center;
     padding-left: 10vw;
     padding-right: 10vw;
+    border-bottom: 5px solid var(--colour5);
+    animation: gradient 20s infinite alternate;
+    background: linear-gradient(-45deg, #282933, #1f2437, #1a1f38, #131a38);
+    background-size: 200%;
 }
 .profile-pic {
     z-index: 10;
     border-radius: 50%;
-    border: var(--colour4) 3px solid;
+    border: var(--colour5) 3px solid;
     height: 6vh
 }
 .header a {
@@ -64,8 +68,8 @@ h1 {
 }
 #login {
     background: linear-gradient(-45deg, #845EC2, #2C73D2, #0081CF, #0089BA, #008E9B, #008F7A);
-    background-size: 400%;
-    animation: gradient 10s ease infinite;
+    animation: gradient 20s infinite alternate;
+    background-size: 200%;
     color: var(--colour2);
     border-radius: 5px;
     padding: 10px;
@@ -78,6 +82,9 @@ h1 {
     height: auto;
     gap: 1.5vw;
 }
+.nav-links a {
+    color: var(--colour2)
+}
 .title-screen {
     height: 90vh;
     width: 100vw;
@@ -85,14 +92,22 @@ h1 {
     justify-content: center;
     align-items: center;
 }
+.title-bg {
+    position: absolute;
+    width: 100vw;
+    height: 90vh;
+}
 .title-divs {
     width: 50vw;
     height: auto;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     text-align: center;
+    
+}
+#left-side {
+    gap: 10vh;
 }
 .title-divs img {
     scale: 0.5;
@@ -111,9 +126,12 @@ h1 {
     gap: 2vw;
 }
 .front-buttons a, .website-button {
-    background: linear-gradient(-45deg,#845EC2,#2C73D2,#0081CF,#0089BA,#008E9B,#008F7A);
-    background-size: 400%;
-    animation: gradient 10s ease infinite;
+    background: linear-gradient(-45deg,#282933,
+        #1f2437,
+        #1a1f38,
+        #131a38);
+        background-size: 200%;
+    animation: gradient 20s infinite alternate;
     color: var(--colour2);
     width: 15vw;
     aspect-ratio: 8/3 ;
@@ -169,6 +187,7 @@ h1 {
 .dropdown a {
     display: block;
     text-align: left;
+    color: var(--colour6);
 }
 .page-divider {
     height: clamp(50px,20vh,100px);
@@ -176,9 +195,9 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(-45deg, #845EC2, #2C73D2, #0081CF, #0089BA, #008E9B, #008F7A);
-    background-size: 400%;
-    animation: gradient 10s ease infinite;
+    background: linear-gradient(-45deg, #282933,#1f2437,#1a1f38,#131a38);
+    animation: gradient 20s alternate infinite;
+    background-size: 200%;
 }
 @keyframes gradient {
     0% {
@@ -190,6 +209,19 @@ h1 {
     100% {
         background-position: 0%,50%;
     }
+}
+@keyframes background {
+    0% {
+            background-position: 0%, 50%;
+        }
+    
+        50% {
+            background-position: 100%, 50%;
+        }
+    
+        100% {
+            background-position: 0%, 50%;
+        }
 }
 .error-section {
     display: flex;
@@ -333,13 +365,13 @@ h1 {
 }
 .footer {
     width: 100vw;
-    height: 40vh;
+    height: 30vh;
     background: var(--colour5);
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.footer div {
+.footer-section {
     background: none;
     width: 20vw;
     height: 100%;
@@ -347,11 +379,17 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
     gap: 2vh;
 }
-.footer div:nth-child(4) {
+.footer-section:nth-child(4) {
     width: 40vw;
+}
+.footer-text-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    gap: 2vh;
 }
 .footer-logo {
     width: 50%;
@@ -373,7 +411,7 @@ h1 {
     background-color: transparent;
     color: var(--colour6);
     font-family: 'LexendDeca', Helvetica, sans-serif;
-    outline: none;
+    outline-color: transparent;
     margin-bottom: 10px ;
 }
 .form-control:nth-child(1),.form-control:nth-child(2) {

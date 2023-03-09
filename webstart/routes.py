@@ -71,6 +71,7 @@ def set_cookie():
 
 @app.route('/get')
 def getcookie():
+    Client.oauth.refresh_access_token(session['token'])
     if request.cookies.get('token'):
         token = request.cookies.get('token')
         session['token'] = token
