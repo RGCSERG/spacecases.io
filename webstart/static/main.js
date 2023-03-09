@@ -2,10 +2,15 @@ function goBack() {
     window.history.back();
   }
   
-function setUpEvents() { 
+function setUpEvents() {
     let content = document.querySelector(".dropdown");
     let button = document.querySelector(".button-wrapper");
     let svg = document.querySelector(".svg")
+    let titleScreen = document.querySelector(".title-screen")
+
+    titleScreen.addEventListener("click", function () {   
+        content.classList.remove("active");
+    })
 
     button.addEventListener("click", function() { 
         content.classList.toggle("active");
