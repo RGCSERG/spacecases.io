@@ -7,17 +7,19 @@
     src: url(./fonts/LexendDeca-VariableFont_wght.ttf);
 }
 :root {
-    --colour1: #ffffff;
-    --colour2: #e6e6e6;
-    --colour3: #6e2dfb;
-    --colour4: #292b33;
-    --colour5: #191b1f;
-    --colour6: #5b5f71;
-}
+    --colour1: #e6e6e6;
+    --colour2: #202536;
+    --colour3: #191b1f;
+    --colour4: #5b5f71;
+    --gradient1: linear-gradient(-45deg, #041435, #1e223c, #202237, #181338);
+    --gradient2: linear-gradient(-45deg,#2C73D2,#0081CF,#0089BA,#008E9B,#008F7A);
+    }
+
 html {
     background-color: var(--main-colour);
     font-family: 'LexendDeca', Helvetica, sans-serif;
-    background-color: var(--colour4);
+    background-color: var(--colour2);
+    scroll-behavior: smooth;
 }
 html,body {
     overflow-x: hidden;
@@ -27,13 +29,21 @@ body {
 }
 p,
 li, a{
-    color: var(--colour6);
-    font-size: 1.5vw;
+    color: var(--colour4);
+    font-size: 1.4vw;
     text-decoration: none;
 }
 h1 {
-    color: var(--colour2);
-    font-size: 3vw;
+    color: var(--colour1);
+    font-size: 2.3vw;
+}
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 .header {
     z-index: 3;
@@ -44,21 +54,21 @@ h1 {
     align-items: center;
     padding-left: 10vw;
     padding-right: 10vw;
-    border-bottom: 5px solid var(--colour5);
+    border-bottom: 1px solid var(--colour4);
     animation: gradient 20s infinite alternate;
-    background: linear-gradient(-45deg, #282933, #1f2437, #1a1f38, #131a38);
+    background: var(--gradient1);
     background-size: 200%;
 }
 .profile-pic {
     z-index: 10;
     border-radius: 50%;
-    border: var(--colour5) 3px solid;
+    border: var(--colour3) 3px solid;
     height: 6vh
 }
 .header a {
     font-weight: normal;
     text-transform: capitalize;
-    color: var(--colour6);
+    color: var(--colour4);
     font-size: 1.3vw;
     text-align: center;
 }
@@ -67,10 +77,10 @@ h1 {
     height: 5vh;
 }
 #login {
-    background: linear-gradient(-45deg, #845EC2, #2C73D2, #0081CF, #0089BA, #008E9B, #008F7A);
+    background: var(--gradient2);
     animation: gradient 20s infinite alternate;
     background-size: 200%;
-    color: var(--colour2);
+    color: var(--colour1);
     border-radius: 5px;
     padding: 10px;
 }
@@ -83,41 +93,50 @@ h1 {
     gap: 1.5vw;
 }
 .nav-links a {
-    color: var(--colour2)
+    color: var(--colour1);
+    z-index: 5;
+}
+#premium {
+    color: gold;
+    background-color: rgba(218, 165, 32, 0.408);
+    padding: 10px;
+    border-radius: 5px;
 }
 .title-screen {
-    height: 90vh;
+    height: 77vh;
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.title-bg {
-    position: absolute;
-    width: 100vw;
-    height: 90vh;
+    background: var(--gradient1);
+    background-size: 200%;
+animation: gradient 20s infinite alternate;
 }
 .title-divs {
     width: 50vw;
-    height: auto;
+    height: 90vw;
     display: flex;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
-    text-align: center;
-    
-}
-#left-side {
-    gap: 10vh;
 }
 .title-divs img {
     scale: 0.5;
 }
 .main-text {
-    font-size: 4vw;
-    text-transform: uppercase;
+    font-size: 7vw;
+    text-transform: capitalize;
 }
 .sub-text {
-    font-size: 1.5vw;
+    font-size: 2vw;
+}
+.left-side-title {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    gap: 2vw;
+    width: min-content;
 }
 .front-buttons {
     display: flex;
@@ -126,29 +145,39 @@ h1 {
     gap: 2vw;
 }
 .front-buttons a, .website-button {
-    background: linear-gradient(-45deg,#282933,
-        #1f2437,
-        #1a1f38,
-        #131a38);
+    background: var(--gradient2);
         background-size: 200%;
     animation: gradient 20s infinite alternate;
-    color: var(--colour2);
+    color: var(--colour1);
     width: 15vw;
-    aspect-ratio: 8/3 ;
+    aspect-ratio: 9/3;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
-    border-radius: 5px ;
+    border-radius: 5px;
     cursor: pointer;
+    font-size: 1.3vw;
+    box-sizing: content-box;
+    padding: 0 0.5vw  ;
+}
+.front-buttons img {
+    width: 5vw;
+}
+.section-invite img {
+    width: 3vw;
+}
+.section-invite a {
+    justify-content: space-around;
 }
 .front-buttons a:nth-child(2) {
+    justify-content: center;
     background: none;
-    background-color: var(--colour6);
+    background-color: var(--colour4);
 }
 .svg {
     width: 20px;
     height: auto;
-    stroke: var(--colour6);
+    stroke: var(--colour4);
     transform: rotate(180deg);
     transition: ease-out 100ms;
 }
@@ -166,7 +195,7 @@ h1 {
     z-index: 10;
     width: 12vw;
     height: auto;
-    background-color: var(--colour5);
+    background-color: var(--colour3);
     position: absolute;
     border-radius: 10px;
     transition: ease-out 100ms;
@@ -181,23 +210,21 @@ h1 {
     font-size: 1.3vw;
 }
 .dropdown p {
-    color: var(--colour2);
+    color: var(--colour1);
     text-transform: uppercase;
 }
 .dropdown a {
     display: block;
     text-align: left;
-    color: var(--colour6);
+    color: var(--colour4);
 }
 .page-divider {
-    height: clamp(50px,20vh,100px);
+    height: 13vh;
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(-45deg, #282933,#1f2437,#1a1f38,#131a38);
-    animation: gradient 20s alternate infinite;
-    background-size: 200%;
+    background: var(--colour3);
 }
 @keyframes gradient {
     0% {
@@ -238,19 +265,18 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 50px;
+    gap: 100px;
     padding-left: 10vw;
     padding-right: 10vw;
 }
 .text-side {
-    height: 100%;
-    width: auto;
+    height: auto;
+    width: 45%;
     flex-direction: column;
     display: flex;
     justify-content: center;
-    gap: 50px;
-    align-items: center;
-    text-align: center;
+    gap: 25px;
+    align-items: start;
 } 
 .image-stack img {
     border-radius: 10px;
@@ -284,20 +310,23 @@ h1 {
     justify-content: center;
 }
 .text-header {
-    height: 15vh;
+    height: 10vh;
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1vw;
+    background-color: var(--colour3);
 }
 .leaderboard{
-    width: 80vw;
-    height: auto;
-    background-color: var(--colour5);
-    display: grid;
-    margin-left: 10vw;
-    justify-items: center;
+    width: 100vw;
+    height: 80vh;
+    background: var(--gradient1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: 200%;
+    animation: gradient 20s infinite alternate;
 }
 .lb_svg {
     transform: rotate(90deg);
@@ -307,11 +336,10 @@ h1 {
     transform: rotate(-90deg);
 }
 .lb {
-    width: 70vw;
-    height: 100vh;
-    background-color: var(--colour4);
-    grid-column: 1;
-    grid-row: 1;
+    width: 60vw;
+    height: 60vh;
+    background-color: var(--colour3);
+    position: absolute;
 }
 .server {
     visibility: hidden;
@@ -333,7 +361,7 @@ h1 {
     height: 90vh;
 }
 .server-wrapper {
-    background: var(--colour5);
+    background: var(--colour3);
     box-shadow: 10px 10px rgba(0, 0, 0, .2);
     border-radius: 10px;
     display: flex;
@@ -366,7 +394,7 @@ h1 {
 .footer {
     width: 100vw;
     height: 30vh;
-    background: var(--colour5);
+    background: var(--colour3);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -407,12 +435,12 @@ h1 {
     flex-basis: 100%;
     font-size: 1.4vw;
     border: none;
-    border-bottom: 3px solid var(--colour4);
+    border-bottom: 3px solid var(--colour2);
     background-color: transparent;
-    color: var(--colour6);
+    color: var(--colour4);
     font-family: 'LexendDeca', Helvetica, sans-serif;
-    outline-color: transparent;
     margin-bottom: 10px ;
+    outline: none;
 }
 .form-control:nth-child(1),.form-control:nth-child(2) {
     flex-basis: 45%;
@@ -425,20 +453,12 @@ h1 {
     font-size: 1.5vw;
 }
 .news-text {
-    color: var(--colour2);
+    color: var(--colour1);
     text-transform: uppercase;
 }
 @media (max-width:500px) {
     .nav-links a {
         visibility: hidden;
-    }
-    #right-side {
-        display: none;
-    }
-    #left-side {
-        width: 100vw;
-        gap: 5vh;
-        padding: 10vh;
     }
     .main-text {
         font-size: 10vh;

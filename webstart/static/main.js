@@ -8,14 +8,17 @@ function setUpEvents() {
     let svg = document.querySelector(".svg")
     let titleScreen = document.querySelector(".title-screen")
 
-    titleScreen.addEventListener("click", function () {   
-        content.classList.remove("active");
-    })
-
-    button.addEventListener("click", function() { 
+    if (titleScreen !== null) {
+        titleScreen.addEventListener("click", function () {
+            content.classList.remove("active");
+        })
+    }
+    if (button !== null) {
+    button.addEventListener("click", function () {
         content.classList.toggle("active");
         svg.classList.toggle("active")
     })
+    }
 }
 
 function leaderboardCycle() { 
