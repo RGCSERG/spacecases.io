@@ -1,24 +1,26 @@
 {% extends 'index.html' %} {%block content%}
 <section class="main-section">
-  <div class="title-bg"></div>
   <div class="title-screen">
-    <div class="title-divs" id="left-side">
-      <h1 class="main-text">Space Cases</h1>
-      <li class="sub-text">Premier CSGO case unboxing simulator</li>
-      <li class="sub-text">
-        Built from the ground up for the discord platform
-      </li>
-      <div class="front-buttons">
-        <a href="{{url_for('invite_server')}}">Invite Now</a>
-        <a href="#first-section"> See Features</a>
+    <div class="title-divs">
+      <div class="left-side-title">
+        <h1 class="main-text">Space Cases</h1>
+        <p class="sub-text">
+          The Premier CSGO case unboxing simulator built from the ground up for
+          the discord platform.
+        </p>
+        <div class="front-buttons">
+          <a href="{{url_for('invite_server')}}">
+            <img
+              src="{{url_for('static',filename='images/discord-mark-white.svg')}}"
+              alt=""
+            />
+            Add to Discord</a
+          >
+          <a href="#first-section"> See Features</a>
+        </div>
       </div>
     </div>
-    <div class="title-divs" id="right-side">
-      <img
-        src="{{ url_for('static', filename='images/AboutMe.png') }}"
-        alt=""
-      />
-    </div>
+    <div class="title-divs"></div>
   </div>
   <div class="page-divider">
     <p>Sample Text Goes here</p>
@@ -30,6 +32,15 @@
         Unbox skins from every CSGO case, and fledge out your inventory with
         trade offers. Evaluate your items using hourly market price updates.
       </p>
+      <div class="front-buttons section-invite">
+        <a href="{{url_for('invite_server')}}">
+          <img
+            src="{{url_for('static',filename='images/discord-mark-white.svg')}}"
+            alt=""
+          />
+          Add to Discord</a
+        >
+      </div>
     </div>
     <div class="image-stack">
       <div class="example-img"></div>
@@ -61,6 +72,15 @@
         Choose from a ragne of fun minigames to earn balance, or take a risk and
         upgrade your items.
       </p>
+      <div class="front-buttons section-invite">
+        <a href="{{url_for('invite_server')}}">
+          <img
+            src="{{url_for('static',filename='images/discord-mark-white.svg')}}"
+            alt=""
+          />
+          Add to Discord</a
+        >
+      </div>
     </div>
   </section>
   <div class="page-divider"></div>
