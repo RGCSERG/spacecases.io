@@ -28,7 +28,11 @@ def callback():
     session['token'] = resp.access_token
     session['refresh_token'] = resp.refresh_token
     session.permanent = True
-    return redirect('/set')
+    print(resp.scope)
+    cookie_set = make_response(redirect('/home'))
+    cookie_set.set_cookie('tokens', resp.access_token + ':' + resp.refresh_token)
+
+    return cookie_set
 
 
 @app.route('/leaderboard')
@@ -60,20 +64,13 @@ def logout():
     session.clear()
     return redirect("/")
 
-
-@app.route('/set')
-def set_cookie():
-    resp = make_response(redirect('/home'))
-    resp.set_cookie('token', session['token'])
-    return resp
-
-
 @app.route('/get')
 def getcookie():
-    # Client.oauth.refresh_access_token(session['token'])
-    if request.cookies.get('token'):
-        token = request.cookies.get('token')
-        session['token'] = token
+    'w6DmIf1wRp2xvbVRnk3ULMyBjMZwEc:gXMfQbzYvwWtjY1Epou8QQNPRnoKzl'
+    if request.cookies.get('tokens'):
+        refresh_token = request.cookies.get('tokens').split(':')[1]
+        print(Client.oauth.refresh_access_token(refresh_token=refresh_token))
+        session['token'] = Client.oauth.refresh_access_token(refresh_token=refresh_token)
         return redirect('/home')
     return redirect('/home')
 
