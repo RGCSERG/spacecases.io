@@ -1,5 +1,5 @@
 from webstart import app, Client, db
-from zenora import APIClient
+from zenora import APIClient, OauthResponse, OauthAPI
 from webstart.config import REDIRECT_URI, OAUTH_URL, CLIENT_SECRET, TOKEN, INVITE_URL
 from webstart.calculations import check_permissions
 from flask import render_template, url_for, flash, redirect, request, session, make_response
@@ -24,10 +24,9 @@ def home():
 @app.route('/oauth/callback')
 def callback():
     code = request.args['code']
-    session['user_code'] = request.args['code']
-    access_token = Client.oauth.get_access_token(
-        code, REDIRECT_URI).access_token
-    session['token'] = access_token
+    resp = Client.oauth.get_access_token(code,REDIRECT_URI)
+    session['token'] = resp.access_token
+    session['refresh_token'] = resp.refresh_token
     session.permanent = True
     return redirect('/set')
 
@@ -64,14 +63,14 @@ def logout():
 
 @app.route('/set')
 def set_cookie():
-    resp = make_response('Remembering User')
+    resp = make_response(redirect('/home'))
     resp.set_cookie('token', session['token'])
     return resp
 
 
 @app.route('/get')
 def getcookie():
-    Client.oauth.refresh_access_token(session['token'])
+    # Client.oauth.refresh_access_token(session['token'])
     if request.cookies.get('token'):
         token = request.cookies.get('token')
         session['token'] = token

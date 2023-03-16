@@ -10,7 +10,7 @@
     --colour1: #e6e6e6;
     --colour2: #202536;
     --colour3: #191b1f;
-    --colour4: #5b5f71;
+    --colour4: #9397a4;
     --gradient1: linear-gradient(-45deg, #041435, #1e223c, #202237, #181338);
     --gradient2: linear-gradient(-45deg,#2C73D2,#0081CF,#0089BA,#008E9B,#008F7A);
     }
@@ -143,6 +143,7 @@ animation: gradient 20s infinite alternate;
     align-items: center;
     justify-content: space-around;
     gap: 2vw;
+    text-align: center;
 }
 .front-buttons a{
     background: var(--gradient2);
@@ -159,6 +160,9 @@ animation: gradient 20s infinite alternate;
     font-size: 1.3vw;
     box-sizing: content-box;
     padding: 0 0.5vw  ;
+}
+.error-buttons a {
+    justify-content: center ;
 }
 .front-buttons img {
     width: 5vw;
