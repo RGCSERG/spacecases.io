@@ -76,7 +76,7 @@ h1 {
     width: auto;
     height: 5vh;
 }
-#login {
+#login,.website-button {
     background: var(--gradient2);
     animation: gradient 20s infinite alternate;
     background-size: 200%;
@@ -144,7 +144,7 @@ animation: gradient 20s infinite alternate;
     justify-content: space-around;
     gap: 2vw;
 }
-.front-buttons a, .website-button {
+.front-buttons a{
     background: var(--gradient2);
         background-size: 200%;
     animation: gradient 20s infinite alternate;
