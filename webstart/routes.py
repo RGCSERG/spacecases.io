@@ -28,7 +28,6 @@ def callback():
     session['token'] = resp.access_token
     session['refresh_token'] = resp.refresh_token
     session.permanent = True
-    print(resp.scope)
     cookie_set = make_response(redirect('/home'))
     cookie_set.set_cookie('tokens', resp.access_token + ':' + resp.refresh_token)
 
@@ -52,9 +51,7 @@ def invite_server():
         bearer_client = APIClient(session.get('token'), bearer=True)
         current_user = bearer_client.users.get_current_user()
         gs = bearer_client.users.get_my_guilds()
-        for guild in gs:
-            if check_permissions(guild) == True:
-                guilds.append(guild)
+        for guild in gs: guilds.append(guild) if check_permissions(guild) == True else False
         return render_template('invite_Server.html', current_user=current_user, guilds=guilds, invite_url=INVITE_URL, str=str)
     return render_template('invite_server.html', oauth_url=OAUTH_URL, invite_url=INVITE_URL)
 
@@ -66,11 +63,10 @@ def logout():
 
 @app.route('/get')
 def getcookie():
-    'w6DmIf1wRp2xvbVRnk3ULMyBjMZwEc:gXMfQbzYvwWtjY1Epou8QQNPRnoKzl'
     if request.cookies.get('tokens'):
         refresh_token = request.cookies.get('tokens').split(':')[1]
-        print(Client.oauth.refresh_access_token(refresh_token=refresh_token))
-        session['token'] = Client.oauth.refresh_access_token(refresh_token=refresh_token)
+        resp = Client.oauth.refresh_access_token(refresh_token)
+        session['token'] = resp.access_token
         return redirect('/home')
     return redirect('/home')
 
