@@ -92,8 +92,11 @@ h1 {
     height: auto;
     gap: 1.5vw;
 }
-.nav-links a {
+.nav-links a{
     color: var(--colour1);
+    z-index: 5;
+}
+.login-button {
     z-index: 5;
 }
 #premium {
