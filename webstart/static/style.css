@@ -83,6 +83,8 @@ h1 {
     color: var(--colour1);
     border-radius: 5px;
     padding: 10px;
+    z-index: 5;
+    cursor: pointer;
 }
 .nav-links {
     display: flex;
@@ -406,6 +408,15 @@ animation: gradient 20s infinite alternate;
     justify-content: center;
     align-items: center;
 }
+.bottom-footer {
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background: var(--colour3);
+    padding-left: 5vw;
+}
 .footer-section {
     background: none;
     width: 20vw;
@@ -461,7 +472,7 @@ animation: gradient 20s infinite alternate;
 }
 .news-text {
     color: var(--colour1);
-    text-transform: uppercase;
+    text-transform: capitalize;
 }
 @media (max-width:500px) {
     .nav-links a {
