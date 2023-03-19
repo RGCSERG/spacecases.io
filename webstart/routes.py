@@ -1,4 +1,5 @@
 from webstart import app, Client, db
+from webstart.database_commands import get_leaderboard
 from zenora import APIClient, OauthResponse, OauthAPI
 from webstart.config import REDIRECT_URI, OAUTH_URL, CLIENT_SECRET, TOKEN, INVITE_URL
 from webstart.calculations import check_permissions
@@ -39,8 +40,9 @@ def leaderboard():
     if 'token' in session:
         bearer_client = APIClient(session.get('token'), bearer=True)
         current_user = bearer_client.users.get_current_user()
-        user_data: dict = db.user_data.find_one({"_id": current_user.id})
-        return render_template('leaderboard.html', current_user=current_user, user_data=user_data)
+        Leaderboard = db.leaderboard
+        # user_data: dict = db.user_data.find_one({"_id": current_user.id})
+        # return render_template('leaderboard.html', current_user=current_user, user_data=user_data)
     return render_template('leaderboard.html', oauth_url=OAUTH_URL)
 
 
