@@ -6,11 +6,13 @@ from pymongo.collection import Collection
 from timeit import default_timer as timer
 from datetime import timedelta
 
+
 NO_PRICE_FOUND = 300000
 
 user_data: Collection  # user data - mongodb
 trade_requests: Collection  # trade requests - mongodb
 guild_data: Collection  # guild data - mongodb
+skin_data_collection:Collection # skin data - mongodb
 
 mongo_client: pymongo.MongoClient
 
@@ -23,20 +25,18 @@ containers = {}
 word_list = []
 
 
+
 # update the leaderboard
 def get_leaderboard():
-    global leaderboard
+  global leaderboard
 
-    start = timer()
-    all_users_data = user_data.find({}).batch_size(4)
+  start = timer()
+  all_users_data = user_data.find({}).batch_size(4)
 
-    leaderboard = sorted([(user_data["_id"], sum([skin_data["skins"][item["name"]]["price"]
-                         for item in user_data["inventory"]])) for user_data in all_users_data], key=lambda x: x[1], reverse=True)
-    end = timer()
+  leaderboard = sorted([(user_data["_id"], sum([skin_data["skins"][item["name"]]["price"] for item in user_data["inventory"]])) for user_data in all_users_data], key=lambda x: x[1], reverse=True)
+  end = timer()
 
-    print(f"Generated leaderboard in {timedelta(seconds=end-start)}")
-
-# setup database and data
+  print(f"Generated leaderboard in {timedelta(seconds=end-start)}")
 
 
 def init():
@@ -65,24 +65,11 @@ def init():
     user_data = db["user-data"]
     trade_requests = db["trade-requests"]
     guild_data = db["guild-data"]
+    skin_data_collection = db["skin-data"] # load skin data collection ( 2files )
+    skin_data = skin_data_collection.find_one({"_id": "skin-data"}) # load skin data file
 
-    print("Loaded user data")
+
+    print("Loaded user data + skin data")
 
 
-"""
-def compute_base_permissions(member, guild):
-    if guild.is_owner(member):
-        return ALL
 
-    role_everyone = guild.get_role(guild.id)  # get @everyone role
-    permissions = role_everyone.permissions
-
-    for role in member.roles:
-        permissions |= role.permissions
-
-    if permissions & ADMINISTRATOR == ADMINISTRATOR:
-        return ALL
-
-    return permissions
-
-"""
