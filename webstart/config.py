@@ -2,13 +2,17 @@ import os
 from urllib import parse
 
 #try read tokens from text file, if it fails use environment variables
-
+#"".join(secrets.choice(string.ascii_letters + string.punctuation + string.digits) for i in range(200))
 try:
     with open("bot_token.txt", "r") as file:
         TOKEN = file.read()
 except FileNotFoundError:
     TOKEN = os.environ["BOT_TOKEN"]
-
+try:
+    with open("secret_key.txt", "r") as file:
+        SECRET_KEY = file.read()
+except FileNotFoundError:
+    SECRET_KEY = os.environ["SECRET_KEY"]
 try:
     with open("client_secret.txt", "r") as file:
         CLIENT_SECRET = file.read()
