@@ -2,7 +2,7 @@ from webstart import app, Client, db
 from webstart.database_commands import get_leaderboard
 from zenora import APIClient, OauthResponse, OauthAPI
 from webstart.config import REDIRECT_URI, OAUTH_URL, CLIENT_SECRET, TOKEN, INVITE_URL
-from webstart.calculations import permissions
+from webstart.calculations import permissions, iscasesin
 from flask import render_template, url_for, flash, redirect, request, session, make_response
 from datetime import timedelta, datetime
 
@@ -37,13 +37,15 @@ def callback():
 
 @app.route('/leaderboard')
 def leaderboard():
+    get_leaderboard()
+    Leaderboard = db.leaderboard
     if 'token' in session:
         bearer_client = APIClient(session.get('token'), bearer=True)
         current_user = bearer_client.users.get_current_user()
-        Leaderboard = db.leaderboard
-        # user_data: dict = db.user_data.find_one({"_id": current_user.id})
-        # return render_template('leaderboard.html', current_user=current_user, user_data=user_data)
-    return render_template('leaderboard.html', oauth_url=OAUTH_URL)
+        gs = bearer_client.users.get_my_guilds()
+        guilds = [guild for guild in gs if iscasesin(guild) == True]
+        return render_template('leaderboard.html', oauth_url=OAUTH_URL, Leaderboard=Leaderboard, Client=Client, current_user=current_user, guilds = gs , str=str)
+    return render_template('leaderboard.html', oauth_url=OAUTH_URL, Leaderboard=Leaderboard, Client=Client)
 
 
 @app.route('/invite_server')
