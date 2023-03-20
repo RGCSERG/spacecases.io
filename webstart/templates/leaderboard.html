@@ -53,17 +53,47 @@
   </div>
   <div class="leaderboard">
     <div class="lb global">
-      {%if user_data%}
+      {%if Leaderboard%}
       <div>
-        <p>{{user_data}}</p>
-        <p>{{user_data.balance}}</p>
-        <p>{{user_data.stats}}</p>
-        <p>{{user_data.claim-streak}}</p>
+        {%for id in Leaderboard%}
+          <div class="button-wrapper">
+            <img class="profile-pic" id="button" src="{{Client.users.get_user(id[0]).avatar_url}}" alt="" />
+          </div>
+          <p>{{Client.users.get_user(id[0]).username}}</p>
+          <p>Money = ${{id[1] / 100}}</p>
+        {%endfo%}
       </div>
       {%endif%}
     </div>
     <div class="lb server">
-      <p>LOL</p>
+      {% if current_user and guilds %}
+
+        <p>Add thingy button that says click for server leaderboard idk and i know how bad this looks right now</p>
+        <section class="server-page-wrapper">
+          <div class="server-grid">
+            {% for guild in guilds %}
+            <div class="server-wrapper">
+              <a
+                href="https://discord.com/api/oauth2/authorize?client_id=1025496377939197972&permissions=395136993280&guild_id={{str(guild.id)}}&scope=bot"
+                target="_blank"
+              >
+                {% if guild.icon_url%}
+                <img src="{{guild.icon_url}}" alt="guild image" />
+                {% else %}
+                <img
+                  src="{{ url_for('static',filename='images/discord-mark-white.svg') }}"
+                  alt="guild image"
+                />
+                {%endif%}
+              </a>
+              <p>
+                {{guild.name}} {%if guild.description%} {{guild.description}} {%endif%}
+              </p>
+            </div>
+            {% endfor %}
+          </div>
+        </section>
+      {%endif%}
     </div>
   </div>
 </section>
