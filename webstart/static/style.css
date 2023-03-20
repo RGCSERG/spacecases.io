@@ -11,6 +11,7 @@
     --colour2: #202536;
     --colour3: #191b1f;
     --colour4: #9397a4;
+    --colour5: #282036;
     --gradient1: linear-gradient(-45deg, #041435, #1e223c, #202237, #181338);
     --gradient2: linear-gradient(-45deg,#2C73D2,#0081CF,#0089BA,#008E9B,#008F7A);
     }
@@ -30,12 +31,12 @@ body {
 p,
 li, a{
     color: var(--colour4);
-    font-size: 1.4vw;
+    font-size: 1.25vw;
     text-decoration: none;
 }
-h1 {
+h1,.text-header-summary {
     color: var(--colour1);
-    font-size: 2.3vw;
+    font-size: 2.2vw;
 }
 .noselect {
     -webkit-touch-callout: none;
@@ -278,6 +279,9 @@ animation: gradient 20s infinite alternate;
     padding-left: 10vw;
     padding-right: 10vw;
 }
+.language-section {
+    background: var(--colour5);
+}
 .text-side {
     height: auto;
     width: 45%;
@@ -401,9 +405,9 @@ animation: gradient 20s infinite alternate;
     align-items: center;
 }
 .footer {
-    padding-top: 3vh;
+    padding-top: 4vh;
     width: 100vw;
-    height: 33vh;
+    height: 36vh;
     background: var(--colour3);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 2fr;
