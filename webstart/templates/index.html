@@ -15,9 +15,9 @@
     />
   </head>
   <body>
-    <nav class="header noselect">
-      <a href="{{url_for('home')}}"><img class="logo"src="{{url_for('static',filename='images/discord-mark-white.svg')}}"></img></a>
-      <div class ="nav-links">
+    <main class="header noselect">
+      <a href="{{url_for('home')}}"><img class="logo"src="{{url_for('static',filename='images/svg/discord-mark-white.svg')}}"></img></a>
+      <nav class ="nav-links">
         <a href="https://discord.gg/JAkGbVsdEe">Support Server</a>
         <a href="temp">Socials</a>
         <a href="{{url_for('leaderboard')}}">Leaderboards</a>
@@ -34,7 +34,7 @@
             {% else %}
           <a href="{{oauth_url}}" id="login">Login</a>
           {% endif %}
-        <div class="dropdown">          
+        <nav class="dropdown">          
           <p>User</p>
           <a href="{{url_for('profile')}}">Profile</a>
           <a>Inventory</a>
@@ -43,10 +43,10 @@
           <a>About</a>
           <a>Help</a>
           <a href="{{ url_for('logout') }}">Logout</a>
-        </div>
-      </div>
+        </nav>
       </div>
     </nav>
+    </main>
     {% block content %}{% endblock %}
     <script src="{{ url_for('static', filename='main.js') }}"></script>
   </body>
