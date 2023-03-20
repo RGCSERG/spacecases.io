@@ -37,23 +37,14 @@ def callback():
 
 @app.route('/leaderboard')
 def leaderboard():
-    try:
-        if 'token' in session:
-            bearer_client = APIClient(session.get('token'), bearer=True)
-            current_user = bearer_client.users.get_current_user()
-            gs = bearer_client.users.get_my_guilds()
-            guilds = [guild for guild in gs if iscasesin(guild) == True]
-            return render_template('leaderboard.html', oauth_url=OAUTH_URL, Leaderboard=Leaderboard, Client=Client, current_user=current_user, guilds = gs , str=str)
-        return render_template('leaderboard.html', oauth_url=OAUTH_URL, Leaderboard=Leaderboard, Client=Client)
-    except NameError:
-        Leaderboard = updateLD(Client, get_leaderboard, db)
-        if 'token' in session:
-            bearer_client = APIClient(session.get('token'), bearer=True)
-            current_user = bearer_client.users.get_current_user()
-            gs = bearer_client.users.get_my_guilds()
-            guilds = [guild for guild in gs if iscasesin(guild) == True]
-            return render_template('leaderboard.html', oauth_url=OAUTH_URL, Leaderboard=Leaderboard, Client=Client, current_user=current_user, guilds = gs , str=str)
-        return render_template('leaderboard.html', oauth_url=OAUTH_URL, Leaderboard=Leaderboard, Client=Client)
+    Leaderboard = updateLD(Client, get_leaderboard, db)
+    if 'token' in session:
+        bearer_client = APIClient(session.get('token'), bearer=True)
+        current_user = bearer_client.users.get_current_user()
+        gs = bearer_client.users.get_my_guilds()
+        guilds = [guild for guild in gs if iscasesin(guild) == True]
+        return render_template('leaderboard.html', oauth_url=OAUTH_URL, Leaderboard=Leaderboard, current_user=current_user, guilds = guilds , str=str)
+    return render_template('leaderboard.html', oauth_url=OAUTH_URL, Leaderboard=Leaderboard, Client=Client)
 
 
 @app.route('/invite_server')
