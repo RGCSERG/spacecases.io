@@ -1,30 +1,20 @@
 from os import environ
 import pymongo
-import json
 import certifi
 from pymongo.collection import Collection
 from timeit import default_timer as timer
 from datetime import timedelta
 
-
-NO_PRICE_FOUND = 300000
-
-user_data: Collection  # user data - mongodb
-trade_requests: Collection  # trade requests - mongodb
-guild_data: Collection  # guild data - mongodb
-skin_data_collection:Collection # skin data - mongodb
+# MongoDB collections
+user_data: Collection
+trade_requests: Collection
+guild_data: Collection
+skin_data_collection:Collection
 
 mongo_client: pymongo.MongoClient
 
-leaderboard = []  # user leaderboard
-rooms = {}
-wordle_games = {}
+leaderboard = []
 skin_data = {}
-skin_data_hl = {}  # SKIN DATA for higher lower game - does not include knives, glov
-containers = {}
-word_list = []
-
-
 
 # update the leaderboard
 def get_leaderboard():
@@ -52,7 +42,7 @@ def init():
         # read password from environment variable
         PASS = environ["MONGO_DB_PASS"]
 
-    # setup mongodb database
+    # connect to MongoDB
     mongo_url = f"mongodb+srv://admin:{PASS}@csgo-case-bot.odtd2un.mongodb.net/?retryWrites=true&w=majority"
     mongo_client = pymongo.MongoClient(mongo_url, tlsCAFile=certifi.where())
 
@@ -61,15 +51,13 @@ def init():
     # load the csgo bot database
     db = mongo_client['csgo-case-bot']
 
-    # user data collection
+    # load all collections from the database
     user_data = db["user-data"]
     trade_requests = db["trade-requests"]
     guild_data = db["guild-data"]
-    skin_data_collection = db["skin-data"] # load skin data collection ( 2files )
-    skin_data = skin_data_collection.find_one({"_id": "skin-data"}) # load skin data file
-
+    skin_data_collection = db["skin-data"]
+    
+    # load our skin data
+    skin_data = skin_data_collection.find_one({"_id": "skin-data"})
 
     print("Loaded user data + skin data")
-
-
-

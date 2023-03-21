@@ -57,15 +57,16 @@
       <div>
         {%for id in Leaderboard%}
           <div class="button-wrapper">
-            <img class="profile-pic" id="button" src="{{Client.users.get_user(id[0]).avatar_url}}" alt="" />
+            <img class="profile-pic" id="button" src="{{id[2]}}" alt="" />
           </div>
-          <p>{{Client.users.get_user(id[0]).username}}</p>
+          <p>{{id[0]}}</p>
           <p>Money = ${{id[1] / 100}}</p>
-        {%endfo%}
+        {%endfor%}
       </div>
       {%endif%}
     </div>
     <div class="lb server">
+      <!--
       {% if current_user and guilds %}
 
         <p>Add thingy button that says click for server leaderboard idk and i know how bad this looks right now</p>
@@ -94,7 +95,8 @@
           </div>
         </section>
       {%endif%}
+      -->
     </div>
   </div>
 </section>
-{% endblock %}
+{% include "footer.html" %} {% endblock %}
