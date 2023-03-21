@@ -9,7 +9,7 @@ from datetime import timedelta
 user_data: Collection
 trade_requests: Collection
 guild_data: Collection
-skin_data_collection:Collection
+skin_data_collection: Collection
 
 mongo_client: pymongo.MongoClient
 
