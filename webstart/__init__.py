@@ -1,7 +1,7 @@
 
 from flask import Flask
 from zenora import APIClient
-from webstart.config import CLIENT_SECRET, TOKEN , SECRET_KEY
+from .config import CLIENT_SECRET, TOKEN , SECRET_KEY
 import webstart.database_commands as db
 import os
 

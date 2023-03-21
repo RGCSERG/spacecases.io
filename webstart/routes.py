@@ -1,8 +1,9 @@
 from webstart import app, Client, db
-from webstart.database_commands import get_leaderboard
-from zenora import APIClient, OauthResponse, OauthAPI
-from webstart.config import REDIRECT_URI, OAUTH_URL, CLIENT_SECRET, TOKEN, INVITE_URL
-from webstart.calculations import permissions, iscasesin
+from .database_commands import get_leaderboard
+from zenora import APIClient, OauthResponse, OauthAPI, Snowflake
+from zenora.models.snowflake import convert_snowflake
+from .config import REDIRECT_URI, OAUTH_URL, CLIENT_SECRET, TOKEN, INVITE_URL
+from .calculations import permissions, iscasesin
 from flask import render_template, url_for, flash, redirect, request, session, make_response
 from datetime import timedelta, datetime
 
@@ -28,6 +29,7 @@ def callback():
     resp = Client.oauth.get_access_token(code,REDIRECT_URI)
     session['token'] = resp.access_token
     session['refresh_token'] = resp.refresh_token
+    print(resp.expires_in)
     session.permanent = True
     cookie_set = make_response(redirect('/home'))
     cookie_set.set_cookie('tokens', resp.access_token + ':' + resp.refresh_token)
