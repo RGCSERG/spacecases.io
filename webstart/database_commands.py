@@ -31,7 +31,7 @@ def get_leaderboard():
 
 def init():
 
-    global user_data, trade_requests, mongo_client, skin_data, skin_data_hl, containers, guild_data, word_list
+    global user_data, trade_requests, mongo_client, skin_data, guild_data
 
     # try read mongodb database password from database_pass.txt, if fails read from environment variable
     try:
