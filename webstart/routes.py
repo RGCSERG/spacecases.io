@@ -29,7 +29,6 @@ def callback():
     resp = Client.oauth.get_access_token(code,REDIRECT_URI)
     session['token'] = resp.access_token
     session['refresh_token'] = resp.refresh_token
-    print(resp.expires_in)
     session.permanent = True
     cookie_set = make_response(redirect('/home'))
     cookie_set.set_cookie('tokens', resp.access_token + ':' + resp.refresh_token)
