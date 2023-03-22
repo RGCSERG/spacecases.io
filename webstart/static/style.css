@@ -11,7 +11,7 @@
     --colour2: #202536;
     --colour3: #191b1f;
     --colour4: #9397a4;
-    --colour5: #282036;
+    --colour5: #242036;
     --gradient1: linear-gradient(-45deg, #041435, #1e223c, #202237, #181338);
     --gradient2: linear-gradient(-45deg,#2C73D2,#0081CF,#0089BA,#008E9B,#008F7A);
     }
@@ -270,32 +270,41 @@ animation: gradient 20s infinite alternate;
     gap: 20vh;
 }
 .section {
-    height: 65vh;
+    height: 280vh;
     width: 100vw;   
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 100px;
-    padding-left: 10vw;
-    padding-right: 10vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
 }
 .language-section {
     background: var(--colour5);
+    height: 140vh;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-top: 10vh;
+    flex-direction: column;
+    gap: 50px;
+}
+.language-section img {
+    width: 25vw;
+}
+.language-section p {
+    width: 50%;
+    text-align: center;
 }
 .text-side {
-    height: auto;
-    width: 45%;
-    flex-direction: column;
+    width: 65%;
+    gap: 25px;
     display: flex;
     justify-content: center;
-    gap: 25px;
     align-items: start;
+    flex-direction: column;
 } 
 .image-stack img {
     border-radius: 10px;
     height: auto;
-    width: 30vw;
-    aspect-ratio: auto;
+    width: 27vw;
     position: absolute;
     box-shadow: 10px 10px rgba(0, 0, 0, .2);
 }
