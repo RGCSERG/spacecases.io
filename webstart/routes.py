@@ -66,9 +66,11 @@ def logout():
 def getcookie():
     if request.cookies.get('tokens'):
         refresh_token = request.cookies.get('tokens').split(':')[1]
-        resp = Client.oauth.refresh_access_token(refresh_token)
-        session['token'] = resp.access_token
-        return redirect('/home')
+        try:
+            resp = Client.oauth.refresh_access_token(refresh_token)
+            session['token'] = resp.access_token
+        except KeyError:
+            return redirect('/home')
     return redirect('/home')
 
 @app.route('/profile')
