@@ -3,7 +3,7 @@ import pymongo
 import certifi
 from pymongo.collection import Collection
 from timeit import default_timer as timer
-from datetime import timedelta
+from datetime import timedelta, datetime
 try:
     from leaderboard import Leaderboard
 except FileNotFoundError:
@@ -23,6 +23,9 @@ skin_data = {}
 # update the leaderboard
 def get_leaderboard():
     global leaderboard
+    if (datetime.now()- datetime.fromtimestamp(os.path.getmtime('leaderboard.py'))) < 8600:
+        leaderboard = Leaderboard
+        return
 
     start = timer()
     all_users_data = user_data.find({}).batch_size(4)
@@ -44,7 +47,7 @@ def init():
         PASS = f.read()
     except:
         # read password from environment variable
-        PASS = environ["MONGO_DB_PASS"]
+        PASS = os.environ["MONGO_DB_PASS"]
 
     # connect to MongoDB
     mongo_url = f"mongodb+srv://admin:{PASS}@csgo-case-bot.odtd2un.mongodb.net/?retryWrites=true&w=majority"
