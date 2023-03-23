@@ -43,8 +43,8 @@ def leaderboard():
         bearer_client = APIClient(session.get('token'), bearer=True)
         current_user = bearer_client.users.get_current_user()
         guilds = iscasesin(bearer_client.users.get_my_guilds(), Client.users.get_my_guilds())
-        return render_template('leaderboard.html', oauth_url=OAUTH_URL, Leaderboard=Leaderboard[:10], current_user=current_user, guilds = guilds , str=str) # remove [:10] when updateLD is fixed and not using setlist
-    return render_template('leaderboard.html', oauth_url=OAUTH_URL, Leaderboard=Leaderboard[:10], Client=Client) # remove [:10] when updateLD is fixed and not using setlist
+        return render_template('leaderboard.html', oauth_url=OAUTH_URL, Leaderboard=Leaderboard, current_user=current_user, guilds = guilds , str=str) # remove [:10] when updateLD is fixed and not using setlist
+    return render_template('leaderboard.html', oauth_url=OAUTH_URL, Leaderboard=Leaderboard, Client=Client) # remove [:10] when updateLD is fixed and not using setlist
 
 
 @app.route('/invite_server')
