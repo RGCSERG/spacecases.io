@@ -16,17 +16,53 @@ function setUpEvents() {
     if (button !== null) {
     button.addEventListener("click", function () {
         content.classList.toggle("active");
-        svg.classList.toggle("active")
+        svg.classList.toggle("active");
     })
     }
 }
 
+function cookieMenu() { 
+    let cookieMenu = document.querySelector(".cookie-menu")
+    let cookieReject = document.querySelector(".cookie-reject")
+    let cookieAccept = document.querySelector(".cookie-accept")
+    let cookieCustomise = document.querySelector(".cookie-customise")
+    let cookieToggle = document.querySelector(".cookie-toggle")
+
+    if (cookieMenu != null) {
+        cookieReject.addEventListener("click", function () { 
+            cookieMenu.style.transitionProperty = "none";
+            cookieMenu.style.visibility = "hidden";
+            cookieMenu.classList.remove("active");
+        })
+        cookieAccept.addEventListener("click", function () { 
+            cookieMenu.style.transitionProperty = "none";
+            cookieMenu.style.visibility = "hidden";
+            cookieMenu.classList.remove("active");
+        })
+        cookieCustomise.addEventListener("click", function () { 
+            if (cookieMenu.classList.contains("active")) {
+                cookieMenu.style.transitionProperty = "none";
+                cookieMenu.classList.toggle("active");
+            } else { 
+                cookieMenu.style.transition = "0.3s ease-out";
+                cookieMenu.classList.toggle("active");
+            }
+        })
+        cookieToggle.addEventListener("click", function () { 
+            cookieMenu.classList.add("active");
+            cookieMenu.style.transition = "0.3s ease-out";
+            cookieMenu.style.visibility = "visible";
+        })
+    }
+    
+}
+
 function leaderboardCycle() { 
-    var arrows = document.querySelectorAll(".lb_svg")
-    var count = 1
-    var text = document.getElementById("lbtext")
-    var globalLB = document.querySelector(".global")
-    var serverLB = document.querySelector(".server")
+    let arrows = document.querySelectorAll(".lb_svg")
+    let count = 1
+    let text = document.getElementById("lbtext")
+    let globalLB = document.querySelector(".global")
+    let serverLB = document.querySelector(".server")
 
     for (var i = 0; i < arrows.length; i++) {
         arrows[i].addEventListener("click", function () {
@@ -50,4 +86,5 @@ function leaderboardCycle() {
 window.onload = function(){ 
     setUpEvents();
     leaderboardCycle();
+    cookieMenu();
 }
