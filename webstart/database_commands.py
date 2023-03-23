@@ -23,8 +23,9 @@ skin_data = {}
 # update the leaderboard
 def get_leaderboard():
     global leaderboard
-    if (datetime.now()- datetime.fromtimestamp(os.path.getmtime('leaderboard.py'))) < 86400:
+    if (datetime.now()- datetime.fromtimestamp(os.path.getmtime('leaderboard.py'))).seconds < 86400:
         leaderboard = Leaderboard
+        print('Leaderboard retrived')
         return
 
     start = timer()
