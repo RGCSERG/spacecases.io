@@ -42,8 +42,7 @@ def leaderboard():
     if 'token' in session:
         bearer_client = APIClient(session.get('token'), bearer=True)
         current_user = bearer_client.users.get_current_user()
-        gs = bearer_client.users.get_my_guilds()
-        guilds = [guild for guild in gs if iscasesin(guild) == True]
+        guilds = iscasesin(bearer_client.users.get_my_guilds(), Client.users.get_my_guilds())
         return render_template('leaderboard.html', oauth_url=OAUTH_URL, Leaderboard=Leaderboard[:10], current_user=current_user, guilds = guilds , str=str) # remove [:10] when updateLD is fixed and not using setlist
     return render_template('leaderboard.html', oauth_url=OAUTH_URL, Leaderboard=Leaderboard[:10], Client=Client) # remove [:10] when updateLD is fixed and not using setlist
 
@@ -53,8 +52,8 @@ def invite_server():
     if 'token' in session:
         bearer_client = APIClient(session.get('token'), bearer=True)
         current_user = bearer_client.users.get_current_user()
-        gs = bearer_client.users.get_my_guilds()
-        guilds = [guild for guild in gs if permissions(guild) == True]
+        guilds = bearer_client.users.get_my_guilds()
+        guilds = [guild for guild in guilds if permissions(guild) == True]
         return render_template('invite_Server.html', current_user=current_user, guilds=guilds, invite_url=INVITE_URL, str=str)
     return render_template('invite_server.html', oauth_url=OAUTH_URL, invite_url=INVITE_URL)
 
