@@ -47,13 +47,53 @@
       </div>
     </nav>
     </main>
-    <div class="cookie-menu noselect">
+    <div class="cookie-menu">
       <p class="cookie-title">Privacy Settings</p>
       <p>We use and store your cookies to enhance your user experience and enable full site functionality. By clicking accept you consent to us using these cookies. <a class="cookie-link">Cookie Policy</a></p>
       <div class="cookie-buttons">
         <a class="cookie-customise">Customise</a>
         <a class="cookie-reject">Reject</a>
         <a class="cookie-accept">Accept</a>
+      </div>
+    </div>
+    <div class="cookie-custom-wrapper">
+      <div class="cookie-preface">
+        <p class="cookie-title">Customise cookie preferences</p>
+        <p class="preface-desc">We utilise cookies on our website to help increase site functionality as well as enable certain features 
+          to work to their full extent. Click on the title of each cookie to find more information about what we are storing. 
+        </p>
+      </div>
+      <div class="cookie-select-wrapper">
+        <div class="cookie-grid">
+          <p class="cookie-title">Necessary</p>
+          <p class="active-cookie"> Always Active</p>
+          <p class="cookie-description"> These cookies are required for the site to work and ensure essential functionality such as logging in securely.</p>
+        </div>
+        <div class="cookie-grid">
+          <p class="cookie-title">Temp</p>
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </label>
+          <p class="cookie-description"> Blink hard if you need help</p>
+        </div>
+        <div class="cookie-grid">
+          <p class="cookie-title">Pain</p>
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </label>
+          <p class="cookie-description"> I'm getting gapped by my own css</p>
+        </div>
+        <div class="cookie-grid">
+          <p class="cookie-title">will please fix the database</p>
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </label>
+          <p class="cookie-description"> and can we finish the back end x</p>
+        </div>
+        </div>
       </div>
     </div>
     <img class="cookie-toggle" src="{{url_for('static',filename='images/main/question.png')}}">
