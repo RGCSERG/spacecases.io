@@ -44,8 +44,8 @@ def leaderboard():
         current_user = bearer_client.users.get_current_user()
         gs = bearer_client.users.get_my_guilds()
         guilds = [guild for guild in gs if iscasesin(guild) == True]
-        return render_template('leaderboard.html', oauth_url=OAUTH_URL, Leaderboard=Leaderboard, current_user=current_user, guilds = guilds , str=str)
-    return render_template('leaderboard.html', oauth_url=OAUTH_URL, Leaderboard=Leaderboard, Client=Client)
+        return render_template('leaderboard.html', oauth_url=OAUTH_URL, Leaderboard=Leaderboard[:10], current_user=current_user, guilds = guilds , str=str) # remove [:10] when updateLD is fixed and not using setlist
+    return render_template('leaderboard.html', oauth_url=OAUTH_URL, Leaderboard=Leaderboard[:10], Client=Client) # remove [:10] when updateLD is fixed and not using setlist
 
 
 @app.route('/invite_server')

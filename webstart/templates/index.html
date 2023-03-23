@@ -34,7 +34,7 @@
             {% else %}
           <a href="{{oauth_url}}" id="login">Login</a>
           {% endif %}
-        <div class="dropdown">          
+        <nav class="dropdown">          
           <p>User</p>
           <a href="{{url_for('profile')}}">Profile</a>
           <a>Inventory</a>
@@ -43,10 +43,19 @@
           <a>About</a>
           <a>Help</a>
           <a href="{{ url_for('logout') }}">Logout</a>
-        </div>
-      </div>
+        </nav>
       </div>
     </nav>
+    </main>
+    <div class="cookie-menu">
+      <p class="cookie-title">Privacy Settings</p>
+      <p>We use and store your cookies to enhance your user experience and enable full site functionality. By clicking accept you consent to us using these cookies. <a class="cookie-link">Cookie Policy</a></p>
+      <div class="cookie-buttons">
+        <a>Customize</a>
+        <a>Reject</a>
+        <a>Accept</a>
+      </div>
+    </div>
     {% block content %}{% endblock %}
     <script src="{{ url_for('static', filename='main.js') }}"></script>
   </body>

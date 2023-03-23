@@ -1,18 +1,16 @@
 {% extends 'index.html' %} {%block content%}
-<section class="main-section">
-  <div class="error-section" id="first-section">
-    <!--
-        <div class="image-stack">
-        <img src="{{ url_for('static', filename='images/404.jpg') }}" alt="400 image" />
-        </div>
-        -->
+<main class="main-section">
+  <section class="error-section" id="first-section">
+    <span class="image-stack">
+      <img src="{{ url_for('static', filename='images/404.jpg') }}" alt="400 image" />
+    </span>
     <div class="text-side">
       <h1>401 Unauthorised</h1>
       <p>you do not have authorised access to this url</p>
     </div>
-    <div class="front-buttons error-buttons">
+    <span class="front-buttons error-buttons">
       <a href="{{url_for('home')}}">Back to home</a>
-    </div>
-  </div>
-</section>
+    </span>
+  </section>
+</main>
 {% include "footer.html" %} {% endblock %}
