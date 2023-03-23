@@ -47,15 +47,16 @@
       </div>
     </nav>
     </main>
-    <div class="cookie-menu">
+    <div class="cookie-menu noselect">
       <p class="cookie-title">Privacy Settings</p>
       <p>We use and store your cookies to enhance your user experience and enable full site functionality. By clicking accept you consent to us using these cookies. <a class="cookie-link">Cookie Policy</a></p>
       <div class="cookie-buttons">
-        <a>Customize</a>
-        <a>Reject</a>
-        <a>Accept</a>
+        <a class="cookie-customise">Customise</a>
+        <a class="cookie-reject">Reject</a>
+        <a class="cookie-accept">Accept</a>
       </div>
     </div>
+    <img class="cookie-toggle" src="{{url_for('static',filename='images/main/question.png')}}">
     {% block content %}{% endblock %}
     <script src="{{ url_for('static', filename='main.js') }}"></script>
   </body>
