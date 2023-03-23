@@ -9,7 +9,7 @@ from datetime import timedelta
 user_data: Collection
 trade_requests: Collection
 guild_data: Collection
-skin_data_collection:Collection
+skin_data_collection: Collection
 
 mongo_client: pymongo.MongoClient
 
@@ -31,7 +31,7 @@ def get_leaderboard():
 
 def init():
 
-    global user_data, trade_requests, mongo_client, skin_data, skin_data_hl, containers, guild_data, word_list
+    global user_data, trade_requests, mongo_client, skin_data, guild_data
 
     # try read mongodb database password from database_pass.txt, if fails read from environment variable
     try:
