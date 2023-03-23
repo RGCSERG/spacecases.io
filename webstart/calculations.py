@@ -1,5 +1,5 @@
-def permissions(guild):
-    return (int(guild.permissions) & 0x20) == 0x20 # returns True if User has Manage Server privilages
+def permissions(guilds):
+    return [guild for guild in guilds if int(guild.permissions) & 0x20 == 0x20] # returns True if User has Manage Server privilages
 
 def iscasesin(guilds, Client_guilds):
     return [guild for guild in guilds if guild.id in [guild.id for guild in Client_guilds]] # returns servers if server is in discord bot server list
