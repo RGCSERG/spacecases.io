@@ -1,9 +1,13 @@
-from os import environ
+import os
 import pymongo
 import certifi
 from pymongo.collection import Collection
 from timeit import default_timer as timer
-from datetime import timedelta
+from datetime import timedelta, datetime
+try:
+    from leaderboard import Leaderboard
+except FileNotFoundError:
+    Leaderboard = os.environ["Leaderboard"]
 
 # MongoDB collections
 user_data: Collection
@@ -18,15 +22,19 @@ skin_data = {}
 
 # update the leaderboard
 def get_leaderboard():
-  global leaderboard
+    global leaderboard
+    if (datetime.now()- datetime.fromtimestamp(os.path.getmtime('leaderboard.py'))).seconds < 86400:
+        leaderboard = Leaderboard
+        print('Leaderboard retrived')
+        return
 
-  start = timer()
-  all_users_data = user_data.find({}).batch_size(4)
+    start = timer()
+    all_users_data = user_data.find({}).batch_size(4)
 
-  leaderboard = sorted([(user_data["_id"], sum([skin_data["skins"][item["name"]]["price"] for item in user_data["inventory"]])) for user_data in all_users_data], key=lambda x: x[1], reverse=True)
-  end = timer()
-
-  print(f"Generated leaderboard in {timedelta(seconds=end-start)}")
+    leaderboard = sorted([(user_data["_id"], sum([skin_data["skins"][item["name"]]["price"] for item in user_data["inventory"]])) for user_data in all_users_data], key=lambda x: x[1], reverse=True)
+    end = timer()
+    #add update file section
+    print(f"Generated leaderboard in {timedelta(seconds=end-start)}")
 
 
 def init():
@@ -40,7 +48,7 @@ def init():
         PASS = f.read()
     except:
         # read password from environment variable
-        PASS = environ["MONGO_DB_PASS"]
+        PASS = os.environ["MONGO_DB_PASS"]
 
     # connect to MongoDB
     mongo_url = f"mongodb+srv://admin:{PASS}@csgo-case-bot.odtd2un.mongodb.net/?retryWrites=true&w=majority"
