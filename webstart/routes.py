@@ -6,7 +6,7 @@ from .config import REDIRECT_URI, OAUTH_URL, CLIENT_SECRET, TOKEN, INVITE_URL
 from .calculations import permissions, iscasesin, updateLD
 from flask import render_template, url_for, flash, redirect, request, session, make_response
 from datetime import timedelta, datetime
-
+#add token session expired try for check
 
 @app.route('/')
 def check_for_user():
@@ -43,8 +43,8 @@ def leaderboard():
         bearer_client = APIClient(session.get('token'), bearer=True)
         current_user = bearer_client.users.get_current_user()
         guilds = iscasesin(bearer_client.users.get_my_guilds(), Client.users.get_my_guilds())
-        return render_template('leaderboard.html', oauth_url=OAUTH_URL, Leaderboard=Leaderboard, current_user=current_user, guilds = guilds , str=str) # remove [:10] when updateLD is fixed and not using setlist
-    return render_template('leaderboard.html', oauth_url=OAUTH_URL, Leaderboard=Leaderboard) # remove [:10] when updateLD is fixed and not using setlist
+        return render_template('leaderboard.html', oauth_url=OAUTH_URL, Leaderboard=Leaderboard, current_user=current_user, guilds = guilds , str=str, len=len) # remove [:10] when updateLD is fixed and not using setlist
+    return render_template('leaderboard.html', oauth_url=OAUTH_URL, Leaderboard=Leaderboard,len=len) # remove [:10] when updateLD is fixed and not using setlist
 
 
 @app.route('/invite_server')
