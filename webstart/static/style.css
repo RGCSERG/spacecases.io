@@ -6,15 +6,50 @@
     font-family: 'LexendDeca';
     src: url(./fonts/LexendDeca-VariableFont_wght.ttf);
 }
+@keyframes gradient {
+    0% {
+        background-position: 0%,50%;
+    }
+    50% {
+        background-position: 100%,50%;
+    }
+    100% {
+        background-position: 0%,50%;
+    }
+}
+@keyframes background {
+    0% {
+            background-position: 0%, 50%;
+        }
+    
+        50% {
+            background-position: 100%, 50%;
+        }
+    
+        100% {
+            background-position: 0%, 50%;
+        }
+}
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: translateX(-5vw);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0vw);
+    }
+}
 :root {
     --colour1: #e6e6e6;
     --colour2: #202536;
     --colour3: #191b1f;
     --colour4: #9397a4;
-    --colour5: #242036;
+    --colour5: #2c2036;
     --colour6: #2196F3;
-    --gradient1: linear-gradient(-45deg, #041435, #1e223c, #202237, #181338);
-    --gradient2: linear-gradient(-45deg,#2C73D2,#0081CF,#0089BA,#008E9B,#008F7A);
+    /* --gradient1: linear-gradient(-45deg, #041435, #1e223c, #202237, #181338); */
+    --gradient1: linear-gradient(-45deg,#0f2027, #203a43, #2c5364);
+    --gradient2: linear-gradient(-45deg,#315f9b,#0c4eb7);
     }
 
 html {
@@ -38,6 +73,7 @@ li, a{
 h1,.text-header-summary {
     color: var(--colour1);
     font-size: 2.2vw;
+    font-weight: bold;
 }
 .noselect {
     -webkit-touch-callout: none;
@@ -54,7 +90,7 @@ h1,.text-header-summary {
     background-color: var(--colour1);
     bottom: 0%;
     z-index: 10;
-    box-shadow: 10px -5px rgba(0, 0, 0, .2);
+    box-shadow: 0px -3px rgba(0, 0, 0, .2);
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -65,7 +101,6 @@ h1,.text-header-summary {
     grid-template-areas: 
     "header header" 
     "text buttons";
-    border-bottom: 1px solid var(--colour4);    
 }
 .cookie-toggle {
     aspect-ratio: 1/1;
@@ -81,7 +116,7 @@ h1,.text-header-summary {
     cursor: pointer;
 }
 .cookie-menu.active {
-    bottom: 50%;
+    bottom: 55%;
 }
 .cookie-title {
     grid-area: header;
@@ -91,6 +126,7 @@ h1,.text-header-summary {
 }
 .cookie-preface, .cookie-menu {
     padding-bottom: 1vh;
+    border-bottom: 1px solid var(--colour4); 
 }
 .cookie-link {
     text-decoration: underline;
@@ -100,7 +136,7 @@ h1,.text-header-summary {
 .cookie-buttons {
     scale: 0.9;
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
     gap: 2vw;
 }
@@ -112,12 +148,28 @@ h1,.text-header-summary {
     color: var(--colour6);
     border-radius: 2px;
 }
+.cookie-save {
+    height: 10vh;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    background: var(--colour1);
+}
+.cookie-save-button {
+    font-size: 1.4vw;
+    cursor: pointer;
+    outline: var(--colour6) 3px solid;
+    padding: 1vw;
+    color: var(--colour6);
+    border-radius: 2px;
+    scale: 0.9;
+}
 .cookie-buttons a:nth-child(3) {
     color: var(--colour1);
     background: var(--colour6);
 }
 .cookie-custom-wrapper {
-    height: 50vh;
+    height: 55vh;
     width: 100vw;
     position: fixed;
     top: 100%;
@@ -127,7 +179,7 @@ h1,.text-header-summary {
     padding-right: 2vw;
 }
 .cookie-custom-wrapper.active {
-    top: 50%;
+    top: 45%;
 }
 .cookie-preface {
     height: 15vh;
@@ -157,6 +209,7 @@ h1,.text-header-summary {
     height: 15vh;
     width: 100%;
     background: var(--colour1);
+    border-bottom: 1px solid var(--colour4); 
 }
 .cookie-description {
     grid-area: "text";
@@ -241,9 +294,10 @@ h1,.text-header-summary {
 .header a {
     font-weight: normal;
     text-transform: capitalize;
-    color: var(--colour4);
+    color: var(--colour5);
     font-size: 1.3vw;
     text-align: center;
+    animation: fade-in 0.5s ease-in-out;
 }
 .logo {
     width: auto;
@@ -273,6 +327,7 @@ h1,.text-header-summary {
 }
 .login-button {
     z-index: 5;
+    animation: fade-in 0.5s ease-in-out;
 }
 #premium {
     color: gold;
@@ -304,9 +359,11 @@ animation: gradient 20s infinite alternate;
 .main-text {
     font-size: 7vw;
     text-transform: capitalize;
+    animation: fade-in 0.5s ease-in-out;
 }
 .sub-text {
     font-size: 2vw;
+    animation: fade-in 0.7s ease-in-out;
 }
 .left-side-title {
     display: flex;
@@ -322,6 +379,9 @@ animation: gradient 20s infinite alternate;
     justify-content: space-around;
     gap: 2vw;
     text-align: center;
+}
+.title-front-buttons {
+    animation: fade-in 0.9s ease-in-out;
 }
 .front-buttons a{
     background: var(--gradient2);
@@ -347,6 +407,7 @@ animation: gradient 20s infinite alternate;
 }
 .section-invite img {
     width: 3vw;
+    animation: none;
 }
 .section-invite a {
     justify-content: space-around;
@@ -408,30 +469,6 @@ animation: gradient 20s infinite alternate;
     align-items: center;
     background: var(--colour3);
 }
-@keyframes gradient {
-    0% {
-        background-position: 0%,50%;
-    }
-    50% {
-        background-position: 100%,50%;
-    }
-    100% {
-        background-position: 0%,50%;
-    }
-}
-@keyframes background {
-    0% {
-            background-position: 0%, 50%;
-        }
-    
-        50% {
-            background-position: 100%, 50%;
-        }
-    
-        100% {
-            background-position: 0%, 50%;
-        }
-}
 .error-section {
     display: flex;
     align-items: center;
@@ -473,7 +510,19 @@ animation: gradient 20s infinite alternate;
     justify-content: center;
     align-items: start;
     flex-direction: column;
-} 
+}
+.reveal {
+    opacity: 0;
+    transform: translateX(-20vw);
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateX(0vw);
+    transition: 0.8s ease-in-out;
+}
+.slowerReveal.reveal.active{
+    transition: 1s ease-in-out;
+}
 .image-stack img {
     border-radius: 10px;
     height: auto;
@@ -579,12 +628,20 @@ animation: gradient 20s infinite alternate;
 .server-wrapper p {
     text-align: center;
 }
-.user-splash-cover {
-    width: 100vw;
-    height: 30vh;
+.profile-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    width: 100vw;
+    height: 10vh;
+}
+.profile-grid {
+    width: 100vw;
+    height: 90vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 2fr 1fr;
+    justify-items: center;
 }
 .footer {
     padding-top: 4vh;
