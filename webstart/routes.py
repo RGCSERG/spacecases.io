@@ -38,13 +38,13 @@ def callback():
 
 @app.route('/leaderboard')
 def leaderboard():
-    Leaderboard = updateLD(Client, get_leaderboard, db)
+    Leaderboard, status = updateLD(Client, get_leaderboard, db)
     if 'token' in session:
         bearer_client = APIClient(session.get('token'), bearer=True)
         current_user = bearer_client.users.get_current_user()
         guilds = iscasesin(bearer_client.users.get_my_guilds(), Client.users.get_my_guilds())
-        return render_template('leaderboard.html', oauth_url=OAUTH_URL, Leaderboard=Leaderboard, current_user=current_user, guilds = guilds , str=str, len=len) # remove [:10] when updateLD is fixed and not using setlist
-    return render_template('leaderboard.html', oauth_url=OAUTH_URL, Leaderboard=Leaderboard,len=len) # remove [:10] when updateLD is fixed and not using setlist
+        return render_template('leaderboard.html',oauth_url=OAUTH_URL,Leaderboard=Leaderboard,current_user=current_user,guilds=guilds,str=str,len=len,interate=status) # remove [:10] when updateLD is fixed and not using setlist
+    return render_template('leaderboard.html',oauth_url=OAUTH_URL,Leaderboard=Leaderboard,len=len,iterate=status) # remove [:10] when updateLD is fixed and not using setlist
 
 
 @app.route('/invite_server')
