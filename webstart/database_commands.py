@@ -6,8 +6,8 @@ from timeit import default_timer as timer
 from datetime import timedelta, datetime
 try:
     from leaderboard import Leaderboard
-except FileNotFoundError:
-    Leaderboard = os.environ["Leaderboard"]
+except ModuleNotFoundError:
+    Leaderboard = ['404 NO LEADERBOARD FOUND']
 
 # MongoDB collections
 user_data: Collection
