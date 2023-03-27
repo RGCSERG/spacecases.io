@@ -55,14 +55,18 @@
     <div class="lb global">
       {%if Leaderboard%}
       <div>
-        {%for id in Leaderboard%}
-          <div class="button-wrapper">
-            <img class="profile-pic" id="button" src="{{id[2]}}" alt="" />
-          </div>
-          <p>{{id[0]}}</p>
-          <p>Money = ${{id[1] / 100}}</p>
-        {%endfor%}
-      </div>
+        {% if interate %}
+          {%for id in Leaderboard%}
+            <div class="button-wrapper">
+              <img class="profile-pic" id="button" src="{{id[2]}}" alt="" />
+            </div>
+            <p>{{id[0]}}</p>
+            <p>Money = ${{id[1] / 100}}</p>
+          {%endfor%}
+        {%else%}
+            <p>Leaderboard[0]</p>
+        {%endif%}
+        </div>
       {%endif%}
     </div>
     <div class="lb server">
