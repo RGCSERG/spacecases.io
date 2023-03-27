@@ -28,6 +28,7 @@ function cookieMenu() {
     let cookieCustomise = document.querySelector(".cookie-customise")
     let cookieToggle = document.querySelector(".cookie-toggle")
     let cookieCustomWrapper = document.querySelector(".cookie-custom-wrapper")
+    let cookieSave = document.querySelector(".cookie-save-button")
 
     if (cookieMenu != null) {
         cookieReject.addEventListener("click", function () { 
@@ -62,6 +63,13 @@ function cookieMenu() {
             cookieCustomWrapper.style.transition = "0.3s ease-out";
             cookieMenu.style.visibility = "visible";
             cookieCustomWrapper.classList.toggle("active")
+        })
+        cookieSave.addEventListener("click", function () { 
+                        cookieMenu.style.transitionProperty = "none";
+            cookieCustomWrapper.style.transitionProperty = "none";
+            cookieMenu.style.visibility = "hidden";
+            cookieMenu.classList.remove("active");
+            cookieCustomWrapper.classList.remove("active");
         })
     }
     
