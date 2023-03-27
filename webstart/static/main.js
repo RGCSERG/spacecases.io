@@ -75,6 +75,23 @@ function cookieMenu() {
     
 }
 
+function scrollReveal() { 
+    let reveals = document.querySelectorAll(".reveal")
+    for (var i = 0; i < reveals.length; i++) {
+        let windowHeight = window.innerHeight
+        let revealTop = reveals[i].getBoundingClientRect().top;
+        let revealPoint = 300
+
+        if (revealTop < windowHeight - revealPoint) {
+            reveals[i].classList.add("active")
+        }
+        else { 
+            // reveals[i].classList.remove("active")
+        };
+    }
+
+}
+
 function leaderboardCycle() { 
     let arrows = document.querySelectorAll(".lb_svg")
     let count = 1
@@ -105,4 +122,5 @@ window.onload = function(){
     setUpEvents();
     leaderboardCycle();
     cookieMenu();
+    window.addEventListener("scroll", scrollReveal);
 }
