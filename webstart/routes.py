@@ -7,7 +7,7 @@ from .calculations import permissions, iscasesin, updateLD
 from flask import render_template, url_for, flash, redirect, request, session, make_response
 from datetime import timedelta, datetime
 #add token session expired try for check
-#check if current_user in session works
+#check if current_user in session works -- can confirm you can't add current_user to json file as it is a class
 
 @app.route('/')
 def check_for_user():
@@ -16,14 +16,10 @@ def check_for_user():
 
 @app.route('/home')
 def home():
-    '''
     if 'token' in session:
         bearer_client = APIClient(session.get('token'), bearer=True)
         current_user = bearer_client.users.get_current_user()
         return render_template('home.html', current_user=current_user)
-    '''
-    if 'current_user' in session:
-        return render_template('home.html', current_user=session.get('current_user'))
     return render_template('home.html', oauth_url=OAUTH_URL)
 
 
@@ -34,9 +30,6 @@ def callback():
     session['token'] = resp.access_token
     session['refresh_token'] = resp.refresh_token
     session.permanent = True
-    bearer_client = APIClient(resp.access_token, bearer=True)
-    current_user = bearer_client.users.get_current_user()
-    session['current_user'] = current_user
     cookie_set = make_response(redirect('/home'))
     cookie_set.set_cookie('tokens', resp.access_token + ':' + resp.refresh_token)
 
