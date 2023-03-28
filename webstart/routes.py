@@ -92,6 +92,23 @@ def profile():
 
     return render_template('profile.html', oauth_url=OAUTH_URL)
 
+@app.route('/socials')
+def socials():
+    if 'token' in session:
+        bearer_client = APIClient(session.get('token'), bearer=True)
+        current_user = bearer_client.users.get_current_user()
+        return render_template('profile.html', current_user=current_user)
+
+    return render_template('profile.html', oauth_url=OAUTH_URL)
+
+@app.route('/premium')
+def premium():
+    if 'token' in session:
+        bearer_client = APIClient(session.get('token'), bearer=True)
+        current_user = bearer_client.users.get_current_user()
+        return render_template('profile.html', current_user=current_user)
+
+    return render_template('profile.html', oauth_url=OAUTH_URL)
 
 @app.route('/test')
 def test():
