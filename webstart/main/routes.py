@@ -1,6 +1,7 @@
 from flask import render_template, request, Blueprint, session
 from zenora import APIClient
 from webstart.config import _blueprint_config_data
+from zenora.exceptions import BadTokenError
 #instead of using discord ouath to return bot info about user return by batabse ID to save Client acess rate
 #release notes page
 #Devs page
