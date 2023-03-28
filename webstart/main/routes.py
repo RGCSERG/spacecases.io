@@ -10,6 +10,7 @@ from zenora.exceptions import BadTokenError
 #add if statement for invite server
 #can remove cookies ask for now
 #check if current_user in session works -- can confirm you can't add current_user to json file as it is a class
+#add json return file for error handling pages and probaly for the BadTokenErrors aswell to regulate traffic and spot regular patterns
 
 main = Blueprint('main', __name__)
 
