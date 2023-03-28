@@ -1,19 +1,19 @@
 
 from flask import Flask
 from zenora import APIClient
-from .config import CLIENT_SECRET, TOKEN , SECRET_KEY, Config
+from .config import Config_data
 import webstart.database_commands as db
 import os
 
-app = Flask(__name__)
-app.config['SECRET_KEY'] = SECRET_KEY
-Client = APIClient(TOKEN, client_secret=CLIENT_SECRET)
+# app = Flask(__name__)
+# app.config['SECRET_KEY'] = SECRET_KEY
+# Client = APIClient(TOKEN, client_secret=CLIENT_SECRET)
 
 
 
-def create_app(config_class=Config):
+def create_app(config_class=Config_data):
     app = Flask(__name__)
-    app.config.from_object(Config)
+    app.config.from_object(Config_data)
     db.init()
 
     from .bot_management.routes import bot_management
