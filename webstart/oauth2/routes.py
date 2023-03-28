@@ -17,7 +17,7 @@ def callback():
     # cookie_set = make_response(redirect('/spacecases/home'))
     # cookie_set.set_cookie('tokens', resp.access_token + ':' + resp.refresh_token + ':' + resp.scope  + ':' + resp.token_type)
 
-    return redirect('main.home')
+    return redirect('/main.home')
 
 # @app.route('/spacecases/get')
 # def getcookie():
