@@ -80,7 +80,7 @@ function scrollReveal() {
     for (var i = 0; i < reveals.length; i++) {
         let windowHeight = window.innerHeight
         let revealTop = reveals[i].getBoundingClientRect().top;
-        let revealPoint = 300
+        let revealPoint = 450
 
         if (revealTop < windowHeight - revealPoint) {
             reveals[i].classList.add("active")

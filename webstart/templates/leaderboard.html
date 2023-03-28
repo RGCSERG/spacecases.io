@@ -54,15 +54,23 @@
   <div class="leaderboard">
     <div class="lb global">
       {%if Leaderboard%}
-      <div>
+        <div class="lb-partition">
+          <p class="lb-number">#</p>
+          <p>Name</p>
+          <p>Balance</p>
+          <p>Claim-streak</p>
+        </div>
         {%for id in Leaderboard%}
-          <div class="button-wrapper">
+        <div class="lb-partition">
+          <p class="lb-number">1</p>
+          <span class="lb-user">
             <img class="profile-pic" id="button" src="{{id[2]}}" alt="" />
-          </div>
-          <p>{{id[0]}}</p>
-          <p>Money = ${{id[1] / 100}}</p>
+            <p>{{id[0]}}</p>
+          </span>
+          <p>${{id[1] / 100}}</p>
+          <p>Claim-streak {{id[3]}}</p>
+        </div>
         {%endfor%}
-      </div>
       {%endif%}
     </div>
     <div class="lb server">
