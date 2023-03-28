@@ -5,8 +5,7 @@ from .config import Config_data, _blueprint_config_data
 import webstart.database_commands as db
 import os
 
-# app = Flask(__name__)
-# app.config['SECRET_KEY'] = SECRET_KEY
+
 Client = APIClient(_blueprint_config_data.TOKEN, client_secret=_blueprint_config_data.CLIENT_SECRET)
 
 
