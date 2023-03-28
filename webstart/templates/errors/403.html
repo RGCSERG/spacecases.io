@@ -1,0 +1,16 @@
+{% extends 'index.html' %} {%block content%}
+<main class="main-section">
+  <section class="error-section" id="first-section">
+    <span class="image-stack">
+      <img src="{{ url_for('static', filename='images/404.jpg') }}" alt="400 image" />
+    </span>
+    <div class="text-side">
+      <h1>403 Forbidden</h1>
+      <p>Forbidden pre</p>
+    </div>
+    <span class="front-buttons error-buttons">
+      <a href="{{url_for('home')}}">Back to home</a>
+    </span>
+  </section>
+</main>
+{% include "footer.html" %} {% endblock %}
