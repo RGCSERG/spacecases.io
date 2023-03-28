@@ -69,8 +69,10 @@
           <p class="active-cookie"> Always Active</p>
           <p class="cookie-description"> These cookies are required for the site to work and ensure essential functionality such as logging in securely.</p>
         </div>
+        <form action ="/cookies_policy:accept&deny/<int:userid>" method="POST">
         <div class="cookie-grid">
           <p class="cookie-title">Temp</p>
+          <!-- need to add some sort of flask form to this probably needs some javascript aswell ill talk about it in person -->
           <label class="switch">
             <input type="checkbox">
             <span class="slider round"></span>
@@ -79,6 +81,7 @@
         </div>
         <div class="cookie-grid">
           <p class="cookie-title">Pain</p>
+          <!-- need to add some sort of flask form to this probably needs some javascript aswell ill talk about it in person -->
           <label class="switch">
             <input type="checkbox">
             <span class="slider round"></span>
@@ -87,6 +90,7 @@
         </div>
         <div class="cookie-grid">
           <p class="cookie-title">will please fix the database</p>
+          <!-- need to add some sort of flask form to this probably needs some javascript aswell ill talk about it in person -->
           <label class="switch">
             <input type="checkbox">
             <span class="slider round"></span>
@@ -95,8 +99,10 @@
         </div>
       </div>
       <div class="cookie-save">
-        <a class="cookie-save-button">Save Preferences</a>
+        <a class="cookie-save-button"><input type = 'submit' value = 'Save Preferences'/></a> <!--fuck this looks great x-->
+        <!-- this is where the submit script will go -->
       </div>
+    </form>
     </div>
     <img class="cookie-toggle" src="{{url_for('static',filename='images/main/question.png')}}">
     {% block content %}{% endblock %}
