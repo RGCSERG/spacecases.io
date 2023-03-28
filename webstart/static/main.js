@@ -28,6 +28,7 @@ function cookieMenu() {
     let cookieCustomise = document.querySelector(".cookie-customise")
     let cookieToggle = document.querySelector(".cookie-toggle")
     let cookieCustomWrapper = document.querySelector(".cookie-custom-wrapper")
+    let cookieSave = document.querySelector(".cookie-save-button")
 
     if (cookieMenu != null) {
         cookieReject.addEventListener("click", function () { 
@@ -63,8 +64,32 @@ function cookieMenu() {
             cookieMenu.style.visibility = "visible";
             cookieCustomWrapper.classList.toggle("active")
         })
+        cookieSave.addEventListener("click", function () { 
+                        cookieMenu.style.transitionProperty = "none";
+            cookieCustomWrapper.style.transitionProperty = "none";
+            cookieMenu.style.visibility = "hidden";
+            cookieMenu.classList.remove("active");
+            cookieCustomWrapper.classList.remove("active");
+        })
     }
     
+}
+
+function scrollReveal() { 
+    let reveals = document.querySelectorAll(".reveal")
+    for (var i = 0; i < reveals.length; i++) {
+        let windowHeight = window.innerHeight
+        let revealTop = reveals[i].getBoundingClientRect().top;
+        let revealPoint = 300
+
+        if (revealTop < windowHeight - revealPoint) {
+            reveals[i].classList.add("active")
+        }
+        else { 
+            // reveals[i].classList.remove("active")
+        };
+    }
+
 }
 
 function leaderboardCycle() { 
@@ -97,4 +122,5 @@ window.onload = function(){
     setUpEvents();
     leaderboardCycle();
     cookieMenu();
+    window.addEventListener("scroll", scrollReveal);
 }
