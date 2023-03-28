@@ -492,9 +492,10 @@ animation: gradient 20s infinite alternate;
     display: flex;
     justify-content: start;
     align-items: center;
-    padding-top: 10vh;
+    padding-top: 5vh;
     flex-direction: column;
     gap: 50px;
+    padding-bottom: 5vh;
 }
 .language-section img {
     width: 25vw;
@@ -560,11 +561,10 @@ animation: gradient 20s infinite alternate;
     justify-content: center;
     align-items: center;
     gap: 1vw;
-    background-color: var(--colour3);
 }
 .leaderboard{
     width: 100vw;
-    height: 80vh;
+    height: 220vh;
     background: var(--gradient1);
     display: flex;
     justify-content: center;
@@ -580,10 +580,40 @@ animation: gradient 20s infinite alternate;
     transform: rotate(-90deg);
 }
 .lb {
-    width: 60vw;
-    height: 60vh;
+    width: 90vw;
+    height: 210vh;
     background-color: var(--colour3);
     position: absolute;
+    border-radius: 10px;
+    box-shadow: 10px 10px rgba(0, 0, 0, .2);    
+}
+.lb-partition {
+    padding: 1vh;
+    display: grid;
+    justify-items: start;
+    align-items: center;
+    grid-template-columns: 0.2fr 1fr 1fr 1fr;
+    width: 100%;
+    height: 10vh;
+    /* border-bottom: 1px solid var(--colour4); */
+    /* border-left: 1px solid var(--colour4); */
+    /* border-right: 1px solid var(--colour4); */
+}
+.lb-partition p {
+    color: var(--colour1);
+    font-weight: bold;
+}
+.lb-number {
+    justify-self: center;
+}
+.lb-user {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+}
+.lb-partition:nth-child(1) {
+    background-color: var(--colour2);
+    border-radius: 10px;
 }
 .server {
     visibility: hidden;
