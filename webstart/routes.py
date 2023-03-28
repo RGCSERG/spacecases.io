@@ -7,7 +7,13 @@ from .config import REDIRECT_URI, OAUTH_URL, CLIENT_SECRET, TOKEN, INVITE_URL
 from .calculations import permissions, iscasesin, updateLD
 from flask import render_template, url_for, flash, redirect, request, session, make_response
 from datetime import timedelta, datetime
+#instead of using discord ouath to return bot info about user return by batabse ID to save Client acess rate
+#release notes page
+#Devs page
+#second db or rework on leaderboard + remember cookies attr for users + server leaderboards rework
+#patreon
 #add if statement for invite server
+#can remove cookies ask for now
 #check if current_user in session works -- can confirm you can't add current_user to json file as it is a class
 
 @app.route('/')
@@ -15,7 +21,7 @@ from datetime import timedelta, datetime
 #     return redirect('/get')
 
 
-@app.route('/home')
+@app.route('/spacecases/home')
 def home():
     try:
         if 'token' in session:
@@ -34,13 +40,13 @@ def callback():
     session['token'] = resp.access_token
     session['refresh_token'] = resp.refresh_token
     session.permanent = True
-    # cookie_set = make_response(redirect('/home'))
+    # cookie_set = make_response(redirect('/spacecases/home'))
     # cookie_set.set_cookie('tokens', resp.access_token + ':' + resp.refresh_token + ':' + resp.scope  + ':' + resp.token_type)
 
-    return redirect('/home')
+    return redirect('/spacecases/home')
 
 
-@app.route('/leaderboard')
+@app.route('/spacecases/leaderboard')
 def leaderboard():
     Leaderboard, status = updateLD(Client, get_leaderboard, db)
     try:
@@ -55,7 +61,7 @@ def leaderboard():
 
 
 
-@app.route('/invite_server')
+@app.route('/spacecases/invite_server')
 def invite_server():
     try:
         if 'token' in session:
@@ -69,12 +75,12 @@ def invite_server():
 
 
 
-@app.route('/logout')
+@app.route('/spacecases/logout')
 def logout():
     session.clear()
     return redirect("/")
 
-# @app.route('/get')
+# @app.route('/spacecases/get')
 # def getcookie():
 #     if request.cookies.get('tokens'):
 #         refresh_token = request.cookies.get('tokens').split(':')[1]
@@ -85,14 +91,14 @@ def logout():
 #             resp = Client.oauth.refresh_access_token(refresh_token)
 #             session['token'] = resp.access_token
 #         except KeyError:
-#             return redirect('/home')
+#             return redirect('/spacecases/home')
 #         try:
 #             session['token'] = access_token
 #             bearer_client = APIClient(session.get('token'), bearer=True)#
 #         except BadTokenError:
-#             return redirect('/home')
+#             return redirect('/spacecases/home')
 
-@app.route('/profile')
+@app.route('/spacecases/profile')
 def profile():
     try:
         if 'token' in session:
@@ -103,9 +109,30 @@ def profile():
         return render_template('profile.html', oauth_url=OAUTH_URL)
     return render_template('profile.html', oauth_url=OAUTH_URL)
 
+@app.route('/spacecases/release_notes/<str:version>')
+def releasenotes(version):
+    try:
+        if 'token' in session:
+            bearer_client = APIClient(session.get('token'), bearer=True)
+            current_user = bearer_client.users.get_current_user()
+            return render_template('releasenotes.html', current_user=current_user)
+    except BadTokenError:
+        return render_template('releasenotes.html', oauth_url=OAUTH_URL)
+    return render_template('releasenotes.html', oauth_url=OAUTH_URL)
+# gonna have a history of release nots so version is required, it also makes it easier to just open old release notes
 
+@app.route('/spacecases/aboutthedevs')
+def devsinfo():
+    try:
+        if 'token' in session:
+            bearer_client = APIClient(session.get('token'), bearer=True)
+            current_user = bearer_client.users.get_current_user()
+            return render_template('devinfo.html', current_user=current_user)
+    except BadTokenError:
+        return render_template('devinfo.html', oauth_url=OAUTH_URL)
+    return render_template('devinfo.html', oauth_url=OAUTH_URL)
 
-@app.route('/test')
+@app.route('/spacecases/test')
 def test():
     try:
         if 'token' in session:
