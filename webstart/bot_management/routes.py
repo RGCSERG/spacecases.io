@@ -16,7 +16,7 @@ def leaderboard():
             bearer_client = APIClient(session.get('token'), bearer=True)
             current_user = bearer_client.users.get_current_user()
             guilds = iscasesin(bearer_client.users.get_my_guilds(), Client.users.get_my_guilds())
-            return render_template('leaderboard.html',oauth_url=_blueprint_config_data.OAUTH_URL,Leaderboard=Leaderboard,current_user=current_user,guilds=guilds,str=str,len=len,interate=status) # remove [:10] when updateLD is fixed and not using setlist
+            return render_template('leaderboard.html',oauth_url=_blueprint_config_data.OAUTH_URL,Leaderboard=Leaderboard,current_user=current_user,guilds=guilds,str=str,len=len,iterate=status) # remove [:10] when updateLD is fixed and not using setlist
     except BadTokenError:
         return render_template('leaderboard.html',oauth_url=_blueprint_config_data.OAUTH_URL,Leaderboard=Leaderboard,len=len,iterate=status) # remove [:10] when updateLD is fixed and not using setlist
     return render_template('leaderboard.html',oauth_url=_blueprint_config_data.OAUTH_URL,Leaderboard=Leaderboard,len=len,iterate=status) # remove [:10] when updateLD is fixed and not using setlist
