@@ -5,11 +5,11 @@
       <img src="{{ url_for('static', filename='images/404.jpg') }}" alt="400 image" />
     </span>
     <div class="text-side">
-      <h1>403 Forbidden</h1>
-      <p>Forbidden pre</p>
+      <h1>401 Unauthorised</h1>
+      <p>you do not have authorised access to this url</p>
     </div>
     <span class="front-buttons error-buttons">
-      <a href="{{url_for('home')}}">Back to home</a>
+      <a href="{{url_for('main.home')}}">Back to home</a>
     </span>
   </section>
 </main>
