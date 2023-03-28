@@ -54,6 +54,7 @@
   <div class="leaderboard">
     <div class="lb global">
       {%if Leaderboard%}
+      {% if iterate %}
         <div class="lb-partition">
           <p class="lb-number">#</p>
           <p>Name</p>
@@ -70,7 +71,8 @@
           <p>${{id[1] / 100}}</p>
           <p>Claim-streak {{id[3]}}</p>
         </div>
-        {%endfor%}
+        {%endfor%}#
+      {%endif%}
       {%endif%}
     </div>
     <div class="lb server">
