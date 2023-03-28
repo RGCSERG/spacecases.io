@@ -59,7 +59,7 @@
           <p class="lb-number">#</p>
           <p>Name</p>
           <p>Balance</p>
-          <p>Claim-streak</p>
+          <p>Top-item</p>
         </div>
         {%for id in Leaderboard%}
         <div class="lb-partition">
@@ -69,7 +69,7 @@
             <p>{{id[0]}}</p>
           </span>
           <p>${{id[1] / 100}}</p>
-          <p>Claim-streak {{id[3]}}</p>
+          <p>Top-item {{id[3]}}</p>
         </div>
         {%endfor%}#
       {%endif%}
