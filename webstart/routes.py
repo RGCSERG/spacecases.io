@@ -109,7 +109,7 @@ def profile():
         return render_template('profile.html', oauth_url=OAUTH_URL)
     return render_template('profile.html', oauth_url=OAUTH_URL)
 
-@app.route('/socials')
+@app.route('/spacecases/socials')
 def socials():
     if 'token' in session:
         bearer_client = APIClient(session.get('token'), bearer=True)
@@ -118,7 +118,7 @@ def socials():
 
     return render_template('profile.html', oauth_url=OAUTH_URL)
 
-@app.route('/premium')
+@app.route('/spacecases/premium')
 def premium():
     if 'token' in session:
         bearer_client = APIClient(session.get('token'), bearer=True)
