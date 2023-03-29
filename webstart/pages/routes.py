@@ -63,5 +63,5 @@ def test():
             current_user = bearer_client.users.get_current_user()
             return render_template('test.html', current_user=current_user)
     except BadTokenError:
-        return render_template('test.html', oauth_url=_blueprint_config_data.OAUTH_URL)
-    return render_template('test.html', oauth_url=_blueprint_config_data.OAUTH_URL)
+        return render_template('test.html')
+    return render_template('test.html')
