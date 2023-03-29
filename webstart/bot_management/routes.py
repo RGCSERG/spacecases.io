@@ -4,13 +4,12 @@ from zenora import BadTokenError
 from webstart.config import _blueprint_config_data
 from webstart import Client, db
 from webstart.calculations import updateLD, iscasesin, permissions
-from webstart.database_commands import get_leaderboard
 
 bot_management = Blueprint('bot_management', __name__)
 
 @bot_management.route('/leaderboard')
 def leaderboard():
-    Leaderboard, status = updateLD(Client, get_leaderboard, db)
+    Leaderboard, status = updateLD(Client, db.get_leaderboard, db)
     try:
         if 'token' in session:
             bearer_client = APIClient(session.get('token'), bearer=True)
