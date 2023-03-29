@@ -1,4 +1,11 @@
 {% extends 'index.html' %} {%block content%}
+<script>
+  function lbImgError(image) {  
+    image.onerror = "";
+    image.src = "{{url_for('static',filename='images/svg/emptyPfp.svg')}}";
+    return true;
+}
+</script>
 <section class="main-section noselect">
   <div class="text-header">
     <svg
@@ -60,16 +67,17 @@
           <p>Name</p>
           <p>Balance</p>
           <p>Top-item</p>
+          <p>Language</p>
         </div>
         {%for id in Leaderboard%}
         <div class="lb-partition">
           <p class="lb-number">1</p>
           <span class="lb-user">
-            <img class="profile-pic" id="button" src="{{id[2]}}" alt="" />
+            <img class="profile-pic" id="button" src="{{id[2]}}" alt="" onerror="lbImgError(this);"/>
             <p>{{id[0]}}</p>
           </span>
           <p>${{id[1] / 100}}</p>
-          <p>Top-item {{id[3]}}</p>
+          <p>{{id[3]}}</p>
         </div>
         {%endfor%}#
       {%endif%}
