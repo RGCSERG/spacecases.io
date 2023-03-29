@@ -13,10 +13,10 @@ def socials():
         if 'token' in session:
             bearer_client = APIClient(session.get('token'), bearer=True)
             current_user = bearer_client.users.get_current_user()
-            return render_template('profile.html', current_user=current_user)
+            return render_template('socials.html', current_user=current_user)
     except BadTokenError:
-        return render_template('profile.html', oauth_url=_blueprint_config_data.OAUTH_URL)
-    return render_template('profile.html', oauth_url=_blueprint_config_data.OAUTH_URL)
+        return render_template('socials.html', oauth_url=_blueprint_config_data.OAUTH_URL)
+    return render_template('socials.html', oauth_url=_blueprint_config_data.OAUTH_URL)
 
 
 @pages.route('/premium')
@@ -25,10 +25,10 @@ def premium():
         if 'token' in session:
             bearer_client = APIClient(session.get('token'), bearer=True)
             current_user = bearer_client.users.get_current_user()
-            return render_template('profile.html', current_user=current_user)
+            return render_template('premium.html', current_user=current_user)
     except BadTokenError:
-        return render_template('profile.html', oauth_url=_blueprint_config_data.OAUTH_URL)
-    return render_template('profile.html', oauth_url=_blueprint_config_data.OAUTH_URL)
+        return render_template('premium.html', oauth_url=_blueprint_config_data.OAUTH_URL)
+    return render_template('premium.html', oauth_url=_blueprint_config_data.OAUTH_URL)
 
 
 
