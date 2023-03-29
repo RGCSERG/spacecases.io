@@ -1,4 +1,3 @@
-
 from flask import Flask
 from zenora import APIClient
 from .config import Config_data, _blueprint_config_data
