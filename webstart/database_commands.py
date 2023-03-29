@@ -11,7 +11,7 @@ except ModuleNotFoundError:
 try:
     from leaderboard import Leaderboard
 except ImportError:
-    Leaderboard = ['404 NO LEADERBOARD FOUND']
+    Leaderboard = ['EMPTY LEADERBOARD FILE']
 
 # MongoDB collections
 user_data: Collection
