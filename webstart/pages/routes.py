@@ -32,16 +32,16 @@ def premium():
 
 
 
-@pages.route('/release_notes/<string:version>')
+@pages.route('/release_notes/version=<string:version>')
 def releasenotes(version):
     try:
         if 'token' in session:
             bearer_client = APIClient(session.get('token'), bearer=True)
             current_user = bearer_client.users.get_current_user()
-            return render_template('releasenotes.html', current_user=current_user)
+            return render_template('release_notes.html', current_user=current_user, version=version)
     except BadTokenError:
-        return render_template('releasenotes.html', oauth_url=_blueprint_config_data.OAUTH_URL)
-    return render_template('releasenotes.html', oauth_url=_blueprint_config_data.OAUTH_URL)
+        return render_template('release_notes.html', oauth_url=_blueprint_config_data.OAUTH_URL)
+    return render_template('release_notes.html', oauth_url=_blueprint_config_data.OAUTH_URL)
 # gonna have a history of release nots so version is required, it also makes it easier to just open old release notes
 
 @pages.route('/aboutthedevs')
