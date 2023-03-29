@@ -32,7 +32,7 @@ def premium():
 
 
 
-@pages.route('/release_notes/<version>')
+@pages.route('/release_notes/<string:version>')
 def releasenotes(version):
     try:
         if 'token' in session:
