@@ -5,25 +5,40 @@
 <div class="profile-grid">
     <figure class="social-info">
       <img src="{{current_user.avatar_url}}" alt="User Image" />
-      <p class="user-information account-type">Normal</p>
-      <p class="user-information streak">3🔥</p>
     </figure>
     <div class="profile-stats">
-      <p>balance</p>
-      <p>{{current_user.balance}}</p> 
-      <p>claim streak</p>
-      <p>{{current_user.claimstreak}}</p>
-      <p>net worth</p>
-      <p>{{current_user.netWorth}}</p>
+      <span class="stats-wrapper">
+        <p>roi</p>
+        <p>50%</p> 
+      </span>
+      <span class="stats-wrapper">
+        <p>claim streak</p>
+        <p>5500</p> 
+      </span>
+      <span class="stats-wrapper">
+        <p>balance</p>
+        <p>$5500</p> 
+      </span>
+      <span class="stats-wrapper">
+        <p>balance</p>
+        <p>$5500</p> 
+      </span>
+      <span class="stats-wrapper">
+        <p>sample</p>
+        <p>1000</p> 
+      </span>
+      <span class="stats-wrapper">
+        <p>sample</p>
+        <p>1000</p> 
+      </span>
     </div>
     <div class="profile-lb">
-      <img src="{{current_user.avatar_url}}">
-      <img src="{{current_user.avatar_url}}">
-      <img src="{{current_user.avatar_url}}">
-      <img src="{{current_user.avatar_url}}">
-      <img src="{{current_user.avatar_url}}">
-      <img src="{{current_user.avatar_url}}">
-      <img src="{{current_user.avatar_url}}">
+      {%for i in range (0,16)%}
+      <span>
+        <img src="{{current_user.avatar_url}}">
+      </span>
+      {%endfor%}
     </div>
-</div>
-{% include "footer.html" %} {% endblock %}
+  </div>
+  {% include "footer.html" %} {% endblock %}
+  
