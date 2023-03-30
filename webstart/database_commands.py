@@ -8,12 +8,17 @@ try:
     from leaderboard import Leaderboard
 except ModuleNotFoundError:
     Leaderboard = ['404 NO LEADERBOARD FOUND']
+try:
+    from leaderboard import Leaderboard
+except ImportError:
+    Leaderboard = ['EMPTY LEADERBOARD FILE']
 
 # MongoDB collections
 user_data: Collection
 trade_requests: Collection
 guild_data: Collection
-skin_data_collection: Collection
+skin_data: Collection
+patch_notes: Collection
 
 mongo_client: pymongo.MongoClient
 
@@ -23,7 +28,7 @@ skin_data = {}
 # update the leaderboard
 def get_leaderboard():
     global leaderboard
-    if (datetime.now()- datetime.fromtimestamp(os.path.getmtime('leaderboard.py'))).seconds < 86400:
+    if (datetime.now()- datetime.fromtimestamp(os.path.getmtime('leaderboard.py'))).seconds < 1000000: #86400
         leaderboard = Leaderboard
         print('Leaderboard retrived')
         return
@@ -31,7 +36,7 @@ def get_leaderboard():
     start = timer()
     all_users_data = user_data.find({}).batch_size(4)
 
-    leaderboard = sorted([(user_data["_id"], sum([skin_data["skins"][item["name"]]["price"] for item in user_data["inventory"]])) for user_data in all_users_data], key=lambda x: x[1], reverse=True)
+    leaderboard = sorted([(user_data["_id"], sum([skin_data["skins"][item["name"]]["price"] for item in user_data["inventory"]]), user_data['language']) for user_data in all_users_data], key=lambda x: x[1], reverse=True)
     end = timer()
     #add update file section
     print(f"Generated leaderboard in {timedelta(seconds=end-start)}")
@@ -39,7 +44,7 @@ def get_leaderboard():
 
 def init():
 
-    global user_data, trade_requests, mongo_client, skin_data, guild_data
+    global user_data, trade_requests, mongo_client, skin_data, guild_data, patch_notes
 
     # try read mongodb database password from database_pass.txt, if fails read from environment variable
     try:
@@ -63,9 +68,10 @@ def init():
     user_data = db["user-data"]
     trade_requests = db["trade-requests"]
     guild_data = db["guild-data"]
-    skin_data_collection = db["skin-data"]
+    patch_notes = db["patch-notes"]
+    skin_data = db["skin-data"]
     
     # load our skin data
-    skin_data = skin_data_collection.find_one({"_id": "skin-data"})
+    skin_data = skin_data.find_one({"_id": "skin-data"})
 
     print("Loaded user data + skin data")

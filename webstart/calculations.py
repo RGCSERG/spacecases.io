@@ -10,7 +10,10 @@ def updateLD(Client, get_leaderboard, db):
     if type(db.leaderboard[0]) == str:
         return db.leaderboard, False
     if type(db.leaderboard[0][0]) != str:
-        return ['setup leaderboard funciton'], False
+        leaderboard = [(Client.users.get_user(id[0]).username, id[1], id[2], Client.users.get_user(id[0]).avatar_url) for id in db.leaderboard[:10]]
+        with open('leaderboard.py', 'w') as f:
+            f.write(f'Leaderboard = {leaderboard}')
+            f.close()
+        return leaderboard, True #returns updated leaderboard # not needed right now
     
-    #[(Client.users.get_user(id[0]).username, id[1], Client.users.get_user(id[0]).avatar_url) for id in db.leaderboard[:10]] #returns updated leaderboard # not needed right now
     return db.leaderboard[:10], True

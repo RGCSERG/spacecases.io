@@ -71,15 +71,16 @@
         </div>
         {%for id in Leaderboard%}
         <div class="lb-partition">
-          <p class="lb-number">1</p>
+          <p class="lb-number">{{Leaderboard.index(id)+1}}</p>
           <span class="lb-user">
-            <img class="profile-pic" id="button" src="{{id[2]}}" alt="" onerror="lbImgError(this);"/>
+            <img class="profile-pic" id="button" src="{{id[3]}}" alt="" onerror="lbImgError(this);"/>
             <p>{{id[0]}}</p>
           </span>
           <p>${{id[1] / 100}}</p>
-          <p>{{id[3]}}</p>
+          <p></p>
+          <p>{{id[2]}}</p>
         </div>
-        {%endfor%}#
+        {%endfor%}
       {%endif%}
       {%endif%}
     </div>
@@ -105,7 +106,7 @@
                 {%endif%}
               </a>
               <p>
-                {{guild.name}} {%if guild.description%} {{guild.description}} {%endif%}
+                {%if guild.name %} {{guild.name}} {%endif%}
               </p>
             </div>
             {% endfor %}
