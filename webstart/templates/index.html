@@ -34,11 +34,15 @@
             {% else %}
           <a href="{{oauth_url}}" id="login">Login</a>
           {% endif %}
-        <nav class="dropdown">          
+        <nav class="dropdown"> 
+          {% if authenticated_user %}
           <p>User</p>
           <a href="{{url_for('users.profile')}}">Profile</a>
           <a>Inventory</a>
           <a>Trades</a>
+          {% else %}
+          <p>Create Spacecases Account</p>
+          {%endif%}
           <p>Other</p>
           <a>About</a>
           <a>Help</a>
