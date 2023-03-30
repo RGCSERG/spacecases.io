@@ -1,0 +1,11 @@
+{% extends 'index.html' %} {%block content%}
+<p>release_notes</p>
+{%for note in patch_notes%}
+<p>{{note['title']}}</p>
+<p>{{note['Patch_Notes']}}</p>
+<p>{{note['Version']}}</p>
+<p>{%for notes in note['Compatible_Release_Notes']%}</p>
+<p>{{notes}}</p>
+{%endfor%}
+{%endfor%}
+{% include "footer.html" %} {% endblock %}

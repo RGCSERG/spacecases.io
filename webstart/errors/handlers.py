@@ -13,7 +13,7 @@ def page_not_found(e):
         if 'token' in session:
             bearer_client = APIClient(session.get('token'), bearer=True)
             current_user = bearer_client.users.get_current_user()
-            if current_user.id in db.user_data:
+            if db.user_data.find_one({"_id": current_user.id}) is not None:  
                 return render_template('errors/400.html', current_user=current_user, authenticated_user=True)
             return render_template('errors/400.html', current_user=current_user)
     except BadTokenError:
@@ -27,7 +27,7 @@ def page_not_found(e):
         if 'token' in session:
             bearer_client = APIClient(session.get('token'), bearer=True)
             current_user = bearer_client.users.get_current_user()
-            if current_user.id in db.user_data:
+            if db.user_data.find_one({"_id": current_user.id}) is not None:  
                 return render_template('errors/401.html', current_user=current_user, authenticated_user=True)
             return render_template('errors/401.html', current_user=current_user)
     except BadTokenError:
@@ -41,7 +41,7 @@ def page_not_found(e):
         if 'token' in session:
             bearer_client = APIClient(session.get('token'), bearer=True)
             current_user = bearer_client.users.get_current_user()
-            if current_user.id in db.user_data:
+            if db.user_data.find_one({"_id": current_user.id}) is not None:  
                 return render_template('errors/403.html', current_user=current_user, authenticated_user=True)
             return render_template('errors/403.html', current_user=current_user)
     except BadTokenError:
@@ -55,7 +55,7 @@ def page_not_found(e):
         if 'token' in session:
             bearer_client = APIClient(session.get('token'), bearer=True)
             current_user = bearer_client.users.get_current_user()
-            if current_user.id in db.user_data:
+            if db.user_data.find_one({"_id": current_user.id}) is not None:  
                 return render_template('errors/404.html', current_user=current_user, authenticated_user=True)
             return render_template('errors/404.html', current_user=current_user)
     except BadTokenError:
@@ -69,7 +69,7 @@ def page_not_found(e):
         if 'token' in session:
             bearer_client = APIClient(session.get('token'), bearer=True)
             current_user = bearer_client.users.get_current_user()
-            if current_user.id in db.user_data:
+            if db.user_data.find_one({"_id": current_user.id}) is not None:  
                 return render_template('errors/500.html', current_user=current_user, authenticated_user=True)
             return render_template('errors/500.html', current_user=current_user)
     except BadTokenError:

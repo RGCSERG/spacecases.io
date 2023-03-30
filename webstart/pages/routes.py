@@ -14,7 +14,7 @@ def socials():
         if 'token' in session:
             bearer_client = APIClient(session.get('token'), bearer=True)
             current_user = bearer_client.users.get_current_user()
-            if current_user.id in db.user_data:
+            if db.user_data.find_one({"_id": current_user.id}) is not None:  
                 return render_template('socials.html', current_user=current_user, authenticated_user=True)
             return render_template('socials.html', current_user=current_user)
     except BadTokenError:
@@ -28,7 +28,7 @@ def premium():
         if 'token' in session:
             bearer_client = APIClient(session.get('token'), bearer=True)
             current_user = bearer_client.users.get_current_user()
-            if current_user.id in db.user_data:
+            if db.user_data.find_one({"_id": current_user.id}) is not None:  
                 return render_template('premium.html', current_user=current_user, authenticated_user=True)
             return render_template('premium.html', current_user=current_user)
     except BadTokenError:
@@ -37,18 +37,25 @@ def premium():
 
 
 
-@pages.route('/release_notes/version=<string:version>')
-def releasenotes(version):
+@pages.route('/patch_notes/version=<string:version>')
+def patch_notes(version):
+    if version == 'latest-release':
+        # patch_notes = db.patch_notes.find_one({'$query':{},'$orderby':{'_id':-1}})
+        patch_notes = [patch_note for patch_note in db.patch_notes.find().sort('Version',-1).limit(5)]
+    elif isinstance(version, int):
+        patch_notes = [db.patch_notes.find_one({'Version': version})]
+    else:
+        raise(404)
     try:
         if 'token' in session:
             bearer_client = APIClient(session.get('token'), bearer=True)
             current_user = bearer_client.users.get_current_user()
-            if current_user.id in db.user_data:
-                return render_template('release_notes.html', current_user=current_user, authenticated_user=True)
-            return render_template('release_notes.html', current_user=current_user, version=version)
+            if db.user_data.find_one({"_id": current_user.id}) is not None:  
+                return render_template('patch_notes.html', current_user=current_user, patch_notes=patch_notes, authenticated_user=True)
+            return render_template('patch_notes.html', current_user=current_user, patch_notes=patch_notes)
     except BadTokenError:
-        return render_template('release_notes.html', oauth_url=_blueprint_config_data.OAUTH_URL)
-    return render_template('release_notes.html', oauth_url=_blueprint_config_data.OAUTH_URL)
+        return render_template('patch_notes.html', oauth_url=_blueprint_config_data.OAUTH_URL, patch_notes=patch_notes)
+    return render_template('patch_notes.html', oauth_url=_blueprint_config_data.OAUTH_URL, patch_notes=patch_notes)
 # gonna have a history of release nots so version is required, it also makes it easier to just open old release notes
 
 @pages.route('/aboutthedevs')
@@ -57,7 +64,7 @@ def devsinfo():
         if 'token' in session:
             bearer_client = APIClient(session.get('token'), bearer=True)
             current_user = bearer_client.users.get_current_user()
-            if current_user.id in db.user_data:
+            if db.user_data.find_one({"_id": current_user.id}) is not None:  
                 return render_template('devinfo.html', current_user=current_user, authenticated_user=True)
             return render_template('devinfo.html', current_user=current_user)
     except BadTokenError:
@@ -70,7 +77,7 @@ def test():
         if 'token' in session:
             bearer_client = APIClient(session.get('token'), bearer=True)
             current_user = bearer_client.users.get_current_user()
-            if current_user.id in db.user_data:
+            if db.user_data.find_one({"_id": current_user.id}) is not None:  
                 return render_template('test.html', current_user=current_user, authenticated_user=True)
             return render_template('test.html', current_user=current_user)
     except BadTokenError:
