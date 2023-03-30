@@ -745,7 +745,7 @@ animation: gradient 20s infinite alternate;
     grid-gap: 2vw;
 }
 .stats-wrapper {
-    width: 80%;
+    width: 90%;
     height: 12vh;
     display: flex;
     flex-direction: column;
@@ -757,7 +757,7 @@ animation: gradient 20s infinite alternate;
     border-left: var(--colour2) 10px solid;
 }
 .stats-wrapper p:nth-of-type(even) {
-    font-size: 3vw;
+    font-size: 2.5vw;
     color: var(--colour1);
 }
 .premium-wrapper {
