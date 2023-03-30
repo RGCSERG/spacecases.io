@@ -641,7 +641,7 @@ animation: gradient 20s infinite alternate;
     justify-content: center;
     align-items: center;
     width: auto;
-    height: 90vh;
+    height: 80vh;
 }
 .server-wrapper {
     background: var(--colour3);
@@ -666,13 +666,6 @@ animation: gradient 20s infinite alternate;
 }
 .server-wrapper p {
     text-align: center;
-}
-.profile-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 10vh;
 }
 .profile-grid {
     width: 100vw;
