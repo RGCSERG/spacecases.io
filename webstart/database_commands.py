@@ -17,7 +17,8 @@ except ImportError:
 user_data: Collection
 trade_requests: Collection
 guild_data: Collection
-skin_data_collection: Collection
+skin_data: Collection
+patch_notes: Collection
 
 mongo_client: pymongo.MongoClient
 
@@ -27,7 +28,7 @@ skin_data = {}
 # update the leaderboard
 def get_leaderboard():
     global leaderboard
-    if (datetime.now()- datetime.fromtimestamp(os.path.getmtime('leaderboard.py'))).seconds < 86400:
+    if (datetime.now()- datetime.fromtimestamp(os.path.getmtime('leaderboard.py'))).seconds < 1000000: #86400
         leaderboard = Leaderboard
         print('Leaderboard retrived')
         return
@@ -43,7 +44,7 @@ def get_leaderboard():
 
 def init():
 
-    global user_data, trade_requests, mongo_client, skin_data, guild_data
+    global user_data, trade_requests, mongo_client, skin_data, guild_data, patch_notes
 
     # try read mongodb database password from database_pass.txt, if fails read from environment variable
     try:
@@ -67,9 +68,10 @@ def init():
     user_data = db["user-data"]
     trade_requests = db["trade-requests"]
     guild_data = db["guild-data"]
-    skin_data_collection = db["skin-data"]
+    patch_notes = db["patch-notes"]
+    skin_data = db["skin-data"]
     
     # load our skin data
-    skin_data = skin_data_collection.find_one({"_id": "skin-data"})
+    skin_data = skin_data.find_one({"_id": "skin-data"})
 
     print("Loaded user data + skin data")
