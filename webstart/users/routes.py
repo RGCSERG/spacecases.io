@@ -12,7 +12,7 @@ def profile():
         if 'token' in session:
             bearer_client = APIClient(session.get('token'), bearer=True)
             current_user = bearer_client.users.get_current_user()
-            if current_user.id in db.user_data:
+            if db.user_data.find_one({"_id": current_user.id}) is not None:  
                 return render_template('profile.html', current_user=current_user, authenticated_user=True)
             return render_template('profile.html', current_user=current_user)
     except BadTokenError:
