@@ -131,6 +131,16 @@ function leaderboardCycle() {
     }
     
 }
+function emailRequest() {
+    function addEmail() { 
+        let firstName = document.querySelector(".first-name").value
+        let surname = document.querySelector(".surname").value
+        let email = document.querySelector(".email").value
+        return
+    }
+    let submitButton = document.querySelector(".website-button")
+    submitButton.addEventListener("click",addEmail)
+}
 window.onload = function () { 
     buttonHover()
     setUpEvents();
