@@ -1,10 +1,10 @@
 {% extends 'index.html' %} {%block content%}
 <script>
-  function lbImgError(image) {  
+  function lbImgError(image) {
     image.onerror = "";
     image.src = "{{url_for('static',filename='images/svg/emptyPfp.svg')}}";
     return true;
-}
+  }
 </script>
 <section class="main-section noselect">
   <div class="text-header">
@@ -60,58 +60,62 @@
   </div>
   <div class="leaderboard">
     <div class="lb global">
-      {%if Leaderboard%}
-      {% if iterate %}
-        <div class="lb-partition">
-          <p class="lb-number">#</p>
-          <p>Name</p>
-          <p>Balance</p>
-          <p>Top-item</p>
-          <p>Language</p>
-        </div>
-        {%for id in Leaderboard%}
-        <div class="lb-partition">
-          <p class="lb-number">{{Leaderboard.index(id)+1}}</p>
-          <span class="lb-user">
-            <img class="profile-pic" id="button" src="{{id[3]}}" alt="" onerror="lbImgError(this);"/>
-            <p>{{id[0]}}</p>
-          </span>
-          <p>${{id[1] / 100}}</p>
-          <p></p>
-          <p>{{id[2]}}</p>
-        </div>
-        {%endfor%}
-      {%endif%}
-      {%endif%}
+      {%if Leaderboard%} {% if iterate %}
+      <div class="lb-partition">
+        <p class="lb-number">#</p>
+        <p>Name</p>
+        <p>Balance</p>
+        <p>Top-item</p>
+        <p>Language</p>
+      </div>
+      {%for id in Leaderboard%}
+      <div class="lb-partition">
+        <p class="lb-number">{{Leaderboard.index(id)+1}}</p>
+        <span class="lb-user">
+          <img
+            class="profile-pic"
+            id="button"
+            src="{{id[3]}}"
+            alt=""
+            onerror="lbImgError(this);"
+          />
+          <p>{{id[0]}}</p>
+        </span>
+        <p>${{id[1] / 100}}</p>
+        <p></p>
+        <p>{{id[2]}}</p>
+      </div>
+      {%endfor%} {%endif%} {%endif%}
     </div>
     <div class="lb server">
       {% if current_user and guilds %}
 
-        <p>Add thingy button that says click for server leaderboard idk and i know how bad this looks right now</p>
-        <section class="server-page-wrapper">
-          <div class="server-grid">
-            {% for guild in guilds %}
-            <div class="server-wrapper">
-              <a
-                href="https://discord.com/api/oauth2/authorize?client_id=1025496377939197972&permissions=395136993280&guild_id={{str(guild.id)}}&scope=bot"
-                target="_blank"
-              >
-                {% if guild.icon_url%}
-                <img src="{{guild.icon_url}}" alt="guild image" />
-                {% else %}
-                <img
-                  src="{{ url_for('static',filename='images/svg/discord-mark-white.svg') }}"
-                  alt="guild image"
-                />
-                {%endif%}
-              </a>
-              <p>
-                {%if guild.name %} {{guild.name}} {%endif%}
-              </p>
-            </div>
-            {% endfor %}
+      <p>
+        Add thingy button that says click for server leaderboard idk and i know
+        how bad this looks right now
+      </p>
+      <section class="server-page-wrapper">
+        <div class="server-grid">
+          {% for guild in guilds %}
+          <div class="server-wrapper">
+            <a
+              href="https://discord.com/api/oauth2/authorize?client_id=1025496377939197972&permissions=395136993280&guild_id={{str(guild.id)}}&scope=bot"
+              target="_blank"
+            >
+              {% if guild.icon_url%}
+              <img src="{{guild.icon_url}}" alt="guild image" />
+              {% else %}
+              <img
+                src="{{ url_for('static',filename='images/svg/discord-mark-white.svg') }}"
+                alt="guild image"
+              />
+              {%endif%}
+            </a>
+            <p>{%if guild.name %} {{guild.name}} {%endif%}</p>
           </div>
-        </section>
+          {% endfor %}
+        </div>
+      </section>
       {%endif%}
     </div>
   </div>
