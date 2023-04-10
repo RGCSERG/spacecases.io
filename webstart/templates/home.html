@@ -2,30 +2,37 @@
 <main class="main-section">
   <section class="title-screen">
     <div class="title-divs">
-      <summary class="left-side-title">
-        <h1 class="main-text">Space Cases</h1>
-        <p class="sub-text">
-          The Premier CSGO case unboxing simulator - built from the ground up
-          for the discord platform.
-        </p>
-        <div class="front-buttons title-front-buttons">
-          <a href="{{url_for('bot_management.invite_server')}}">
-            <img
-              src="{{url_for('static',filename='images/svg/discord-mark-white.svg')}}"
-              alt=""
-            />
-            Add to Discord</a
-          >
-          <a href="#first-section"> See Features</a>
-        </div>
-      </summary>
+      <h1 class="main-text">Space Cases</h1>
+      <p class="sub-text">
+        The Premier CSGO case unboxing simulator - built from the ground up for
+        the discord platform.
+      </p>
+      <div class="front-buttons title-front-buttons">
+        <a href="{{url_for('bot_management.invite_server')}}">
+          <img
+            src="{{url_for('static',filename='images/svg/discord-mark-white.svg')}}"
+            alt=""
+          />
+          Add to Discord</a
+        >
+        <a href="#first-section"> See Features</a>
+      </div>
     </div>
-    <div class="title-divs"></div>
+    <!-- <img
+      class="title-logo"
+      src="{{ url_for('static', filename='images/main/spaceCasesLogo.png') }}"
+      alt="logo"
+    />
+    <img
+      class="title-logo"
+      src="{{ url_for('static', filename='images/main/spaceCasesLogo.png') }}"
+      alt="logo"
+    /> -->
   </section>
   <div class="page-divider">
     <p class="divider-text">
       Enjoying the project? Help us keep it running by supporting our
-      <a class="socials-link">socials and patreon.</a>
+      <a class="socials-link" href="#footer">socials and patreon.</a>
     </p>
   </div>
   <section class="section" id="first-section">
@@ -162,23 +169,36 @@
       src="{{ url_for('static', filename='images/main/langEn.png') }}"
       alt="Discord About Image"
     />
-    <p class="text-header-summary slowerReveal reveal">
-      Choose from over 25+ commands
-    </p>
-    <p class="reveal">
-      Navigate your unboxing and trading experience with a growing list of
-      commands all with added descriptions and features
-    </p>
-    <img
-      class="reveal"
-      src="{{ url_for('static', filename='images/main/commands.png') }}"
-      alt="Discord About Image"
-    />
-    <a
-      href="{{url_for('bot_management.invite_server')}}"
-      class="language-section-discord-invite reveal section-invite"
-      >Invite to discord</a
-    >
+    <div class="language-grid-wrapper">
+      <div class="language-text-wrapper">
+        <p class="text-header-summary slowerReveal reveal">
+          Choose from over 25+ commands
+        </p>
+        <p class="reveal">
+          Navigate your unboxing and trading experience with a growing list of
+          commands all with added descriptions and features
+        </p>
+      </div>
+      <div class="language-text-wrapper">
+        <p class="text-header-summary slowerReveal reveal">
+          Unbox over 150+ cases & packages
+        </p>
+        <p class="reveal">
+          Choose from a growing selection of cases and souvenir packages,
+          including stickers and more.
+        </p>
+      </div>
+      <img
+        class="reveal"
+        src="{{ url_for('static', filename='images/main/commands.png') }}"
+        alt="Discord About Image"
+      />
+      <img
+        class="reveal"
+        src="{{ url_for('static', filename='images/main/commands.png') }}"
+        alt="Discord About Image"
+      />
+    </div>
   </section>
 </main>
 {% include "footer.html" %} {% endblock %}
