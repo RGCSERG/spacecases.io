@@ -994,6 +994,30 @@ h1,.text-header-summary, .social-info p, .user-information  {
     gap: 3vh;
     z-index: 2;
 }
+.patch-notes-wrapper {
+    padding: 2vw 5vw 2vw 5vw;
+}
+.patch-notes-wrapper p,.patch-bullet-points {
+    color: var(--colour1);
+}
+.patch-notes-header {
+    text-align: center;
+    padding-bottom: 2vw;
+}
+.patch-notes-title,.patch-notes-date {
+    font-size: 2vw;
+    padding-bottom: 1vw;
+    font-weight: bold;
+}
+.patch-bullet-points {
+    padding-bottom: 0.5vw;
+}
+.patch-notes {
+    padding-bottom: 1vw;
+}
+.patch-notes-date {
+    padding-top: 1vw;
+}
 @media (max-width:500px) {
     .nav-links a {
         visibility: hidden;
