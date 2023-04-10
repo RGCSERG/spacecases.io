@@ -5,8 +5,8 @@
       <summary class="left-side-title">
         <h1 class="main-text">Space Cases</h1>
         <p class="sub-text">
-          The Premier CSGO case unboxing simulator - built from the ground up for
-          the discord platform.
+          The Premier CSGO case unboxing simulator - built from the ground up
+          for the discord platform.
         </p>
         <div class="front-buttons title-front-buttons">
           <a href="{{url_for('bot_management.invite_server')}}">
@@ -23,9 +23,13 @@
     <div class="title-divs"></div>
   </section>
   <div class="page-divider">
-    <p>Sample Text Goes here</p>
+    <p class="divider-text">
+      Enjoying the project? Help us keep it running by supporting our
+      <a class="socials-link">socials and patreon.</a>
+    </p>
   </div>
   <section class="section" id="first-section">
+    <div class="first-section-bg-pattern"></div>
     <div class="text-side slowerReveal reveal">
       <p class="text-header-summary">Unbox and trade your dream skins</p>
       <p>
@@ -132,26 +136,49 @@
           />
           Add to Discord</a
         >
-        <a href="{{url_for('bot_management.leaderboard')}}"> View Leaderboard</a>
+        <a href="{{url_for('bot_management.leaderboard')}}">
+          View Leaderboard</a
+        >
       </div>
     </div>
   </section>
   <div class="page-divider">
-    <p>Sample Text Goes here</p>
+    <p class="divider-text">
+      Want to support us and have some extra perks? Check out our premium plans:
+    </p>
+    <a class="premium" href="{{url_for('pages.premium')}}">Premium</a>
   </div>
   <section class="language-section">
-    <p class="text-header-summary slowerReveal reveal">Support for multiple languages</p>
-    <p class="reveal">Switch between the supported list of languages in the discord client such as French, Spanish, German and Japanese</p>
-    <img class="reveal"
+    <div class="first-section-bg-pattern language-bg"></div>
+    <p class="text-header-summary slowerReveal reveal">
+      Support for multiple languages
+    </p>
+    <p class="reveal">
+      Switch between the supported list of languages in the discord client such
+      as French, Spanish, German and Japanese
+    </p>
+    <img
+      class="reveal"
       src="{{ url_for('static', filename='images/main/langEn.png') }}"
       alt="Discord About Image"
     />
-    <p class="text-header-summary slowerReveal reveal">Choose from over 25+ commands </p>
-    <p class="reveal">Navigate your unboxing and trading experience with a growing list of commands all with added descriptions and features</p>
-    <img class="reveal"
+    <p class="text-header-summary slowerReveal reveal">
+      Choose from over 25+ commands
+    </p>
+    <p class="reveal">
+      Navigate your unboxing and trading experience with a growing list of
+      commands all with added descriptions and features
+    </p>
+    <img
+      class="reveal"
       src="{{ url_for('static', filename='images/main/commands.png') }}"
       alt="Discord About Image"
     />
+    <a
+      href="{{url_for('bot_management.invite_server')}}"
+      class="language-section-discord-invite reveal section-invite"
+      >Invite to discord</a
+    >
   </section>
 </main>
 {% include "footer.html" %} {% endblock %}

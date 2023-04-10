@@ -5,8 +5,8 @@ function goBack() {
 function setUpEvents() {
     let content = document.querySelector(".dropdown");
     let button = document.querySelector(".button-wrapper");
-    let svg = document.querySelector(".svg")
-    let titleScreen = document.querySelector(".title-screen")
+    let svg = document.querySelector(".svg");
+    let titleScreen = document.querySelector(".title-screen");
 
     if (titleScreen !== null) {
         titleScreen.addEventListener("click", function () {
@@ -36,14 +36,14 @@ function cookieMenu() {
             cookieCustomWrapper.style.transitionProperty = "none";
             cookieMenu.style.visibility = "hidden";
             cookieMenu.classList.remove("active");
-            cookieCustomWrapper.classList.remove("active")
+            cookieCustomWrapper.classList.remove("active");
         })
-        cookieAccept.addEventListener("click", function () { 
+        cookieAccept.addEventListener("click", function () {
             cookieMenu.style.transitionProperty = "none";
             cookieCustomWrapper.style.transitionProperty = "none";
             cookieMenu.style.visibility = "hidden";
             cookieMenu.classList.remove("active");
-            cookieCustomWrapper.classList.remove("active")
+            cookieCustomWrapper.classList.remove("active");
         })
         cookieCustomise.addEventListener("click", function () { 
             if (cookieMenu.classList.contains("active")) {
@@ -62,7 +62,7 @@ function cookieMenu() {
             cookieMenu.style.transition = "0.3s ease-out";
             cookieCustomWrapper.style.transition = "0.3s ease-out";
             cookieMenu.style.visibility = "visible";
-            cookieCustomWrapper.classList.toggle("active")
+            cookieCustomWrapper.classList.toggle("active");
         })
         cookieSave.addEventListener("click", function () { 
                         cookieMenu.style.transitionProperty = "none";
@@ -84,13 +84,25 @@ function scrollReveal() {
 
         if (revealTop < windowHeight - revealPoint) {
             reveals[i].classList.add("active")
-        }
-        else { 
-            // reveals[i].classList.remove("active")
         };
     }
-
 }
+
+function buttonHover() {
+    function moveBackground() {
+        bgs.forEach(background => background.classList.add("active"))
+    }
+    function resetBackground() {
+        bgs.forEach(background => background.classList.remove("active"))
+    }
+    let buttons = document.querySelectorAll('.section-invite');
+    let bgs = document.querySelectorAll(".first-section-bg-pattern");
+    buttons.forEach(button => {
+        button.addEventListener("mouseover", moveBackground)
+        button.addEventListener("mouseleave", resetBackground)
+    });
+}
+
 
 function leaderboardCycle() { 
     let arrows = document.querySelectorAll(".lb_svg")
@@ -118,7 +130,18 @@ function leaderboardCycle() {
     }
     
 }
-window.onload = function(){ 
+function emailRequest() {
+    function addEmail() { 
+        let firstName = document.querySelector(".first-name").value
+        let surname = document.querySelector(".surname").value
+        let email = document.querySelector(".email").value
+        return
+    }
+    let submitButton = document.querySelector(".website-button")
+    submitButton.addEventListener("click",addEmail)
+}
+window.onload = function () { 
+    buttonHover()
     setUpEvents();
     leaderboardCycle();
     cookieMenu();
