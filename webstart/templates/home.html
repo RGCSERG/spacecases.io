@@ -24,9 +24,9 @@
   </section>
   <div class="page-divider">
     <p class="divider-text">
-      Enjoying the project? Help keep it running by supporting us here:
+      Enjoying the project? Help us keep it running by supporting our
+      <a class="socials-link">socials and patreon.</a>
     </p>
-    <a class="donate-button">Donate</a>
   </div>
   <section class="section" id="first-section">
     <div class="first-section-bg-pattern"></div>
@@ -149,7 +149,7 @@
     <a class="premium" href="{{url_for('pages.premium')}}">Premium</a>
   </div>
   <section class="language-section">
-    <div class="first-section-bg-pattern language"></div>
+    <div class="first-section-bg-pattern language-bg"></div>
     <p class="text-header-summary slowerReveal reveal">
       Support for multiple languages
     </p>
@@ -174,6 +174,11 @@
       src="{{ url_for('static', filename='images/main/commands.png') }}"
       alt="Discord About Image"
     />
+    <a
+      href="{{url_for('bot_management.invite_server')}}"
+      class="language-section-discord-invite reveal section-invite"
+      >Invite to discord</a
+    >
   </section>
 </main>
 {% include "footer.html" %} {% endblock %}
