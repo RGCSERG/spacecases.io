@@ -284,14 +284,25 @@ h1,.text-header-summary, .social-info p, .user-information  {
 .header a {
     font-weight: normal;
     text-transform: capitalize;
-    color: var(--colour5);
     font-size: 1.3vw;
     text-align: center;
     animation: fade-in 0.5s ease-in-out;
 }
 .logo {
     width: auto;
-    height: 5vh;
+    height: 7vh;
+}
+.logo-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:1vw;
+    z-index: 10;
+}
+.logo-text {
+    color: var(--colour1);
+    font-weight: bold;
+    text-transform: uppercase;
 }
 #login,.website-button {
     background: var(--gradient2);
@@ -515,7 +526,7 @@ h1,.text-header-summary, .social-info p, .user-information  {
     transition: 0.8s ease;
     animation: 60s gradient infinite;
 }
-.first-section-bg-pattern.language {
+.first-section-bg-pattern.language-bg {
     height: 160vh;
 }
 .first-section-bg-pattern.profile {
@@ -929,6 +940,28 @@ h1,.text-header-summary, .social-info p, .user-information  {
 .news-text {
     color: var(--colour1);
     text-transform: capitalize;
+}
+.language-section-discord-invite {
+    aspect-ratio: 9/3;
+    background: var(--gradient3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1vw;
+    color: var(--colour1);
+    font-size: 2vw;
+    font-weight:normal;
+    padding: 1vw;
+    border-radius: 5px;
+    text-transform: capitalize;
+    box-shadow: 10px 10px rgba(0, 0, 0, .2);
+}
+.language-section-discord-invite:hover {
+    background: linear-gradient(-90deg, #842135, #1c2b76);
+}
+.socials-link {
+    text-decoration: underline;
+    color: var(--colour6);
 }
 @media (max-width:500px) {
     .nav-links a {
