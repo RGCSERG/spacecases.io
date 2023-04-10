@@ -28,7 +28,7 @@ skin_data = {}
 # update the leaderboard
 def get_leaderboard():
     global leaderboard
-    if (datetime.now()- datetime.fromtimestamp(os.path.getmtime('leaderboard.py'))).seconds < 1000000: #86400
+    if (datetime.now()- datetime.fromtimestamp(os.path.getmtime('leaderboard.py'))).seconds < 86400: #86400
         leaderboard = Leaderboard
         print('Leaderboard retrived')
         return
@@ -36,7 +36,7 @@ def get_leaderboard():
     start = timer()
     all_users_data = user_data.find({}).batch_size(4)
 
-    leaderboard = sorted([(user_data["_id"], sum([skin_data["skins"][item["name"]]["price"] for item in user_data["inventory"]]), user_data['language']) for user_data in all_users_data], key=lambda x: x[1], reverse=True)
+    leaderboard = sorted([(user_data["_id"], sum([skin_data["skins"][item["name"]]["price"] for item in user_data["inventory"]]), user_data['lang']) for user_data in all_users_data], key=lambda x: x[1], reverse=True)
     end = timer()
     #add update file section
     print(f"Generated leaderboard in {timedelta(seconds=end-start)}")
