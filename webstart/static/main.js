@@ -90,14 +90,13 @@ function scrollReveal() {
 
 function buttonHover() {
     function moveBackground() {
-        bg.classList.add("active")
+        bgs.forEach(background => background.classList.add("active"))
     }
     function resetBackground() {
-        console.log("left")
-        bg.classList.remove("active")
+        bgs.forEach(background => background.classList.remove("active"))
     }
     let buttons = document.querySelectorAll('.section-invite');
-    let bg = document.querySelector(".first-section-bg-pattern");
+    let bgs = document.querySelectorAll(".first-section-bg-pattern");
     buttons.forEach(button => {
         button.addEventListener("mouseover", moveBackground)
         button.addEventListener("mouseleave", resetBackground)
