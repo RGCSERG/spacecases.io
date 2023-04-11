@@ -6,12 +6,8 @@ from timeit import default_timer as timer
 from datetime import timedelta, datetime
 try:
     from leaderboard import Leaderboard
-except ModuleNotFoundError:
+except:
     Leaderboard = ['404 NO LEADERBOARD FOUND']
-try:
-    from leaderboard import Leaderboard
-except ImportError:
-    Leaderboard = ['EMPTY LEADERBOARD FILE']
 
 # MongoDB collections
 user_data: Collection
@@ -38,7 +34,9 @@ def get_leaderboard():
 
     leaderboard = sorted([(user_data["_id"], sum([skin_data["skins"][item["name"]]["price"] for item in user_data["inventory"]]), user_data['lang']) for user_data in all_users_data], key=lambda x: x[1], reverse=True)
     end = timer()
-    #add update file section
+    with open('leaderboard.py', 'w') as f:
+        f.write(f'Leaderboard = {leaderboard}')
+        f.close()
     print(f"Generated leaderboard in {timedelta(seconds=end-start)}")
 
 
