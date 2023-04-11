@@ -1,11 +1,13 @@
 {% extends 'index.html' %} {%block content%}
-<p>release_notes</p>
-{%for note in patch_notes%}
-<p>{{note['title']}}</p>
-<p>{{note['Patch_Notes']}}</p>
-<p>{{note['Version']}}</p>
-<p>{%for notes in note['Compatible_Release_Notes']%}</p>
-<p>{{notes}}</p>
-{%endfor%}
-{%endfor%}
+<main class="patch-notes-wrapper">
+  <h1 class="patch-notes-header">Release Notes</h1>
+  {%for note in patch_notes%}
+  <p class="patch-notes-title">{{note['Version']}} {{note['title']}}</p>
+  <p class="patch-notes">{{note['Patch_Notes']}}</p>
+  <p>{%for notes in note['Compatible_Release_Notes']%}</p>
+  <li class="patch-bullet-points">{{notes}}</p>
+  {%endfor%} 
+  <p class="patch-notes-date">{{note['Date']}}</p>
+  {%endfor%}
+</main>
 {% include "footer.html" %} {% endblock %}
