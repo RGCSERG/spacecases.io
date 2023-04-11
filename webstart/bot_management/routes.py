@@ -1,4 +1,4 @@
-from flask import render_template, request, Blueprint, session
+from flask import render_template, request, Blueprint, session, redirect
 from zenora import APIClient
 from zenora import BadTokenError
 from webstart.config import _blueprint_config_data
@@ -35,4 +35,4 @@ def invite_server():
             return render_template('invite_Server.html', current_user=current_user, guilds=guilds, invite_url=_blueprint_config_data.INVITE_URL, str=str)
     except BadTokenError:
         return render_template('invite_server.html', oauth_url=_blueprint_config_data.OAUTH_URL, invite_url=_blueprint_config_data.INVITE_URL)
-    return render_template('invite_server.html', oauth_url=_blueprint_config_data.OAUTH_URL, invite_url=_blueprint_config_data.INVITE_URL)
+    return redirect(_blueprint_config_data.OAUTH_URL)
