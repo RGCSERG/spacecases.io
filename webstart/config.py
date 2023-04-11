@@ -9,6 +9,7 @@ class Config_data:
             SECRET_KEY = file.read()
     except FileNotFoundError:
         SECRET_KEY = os.environ["SECRET_KEY"]
+        SESSION_PERMANENT = True
 
 class _blueprint_config_data:
     try:
