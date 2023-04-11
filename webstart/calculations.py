@@ -17,3 +17,6 @@ def updateLD(Client, get_leaderboard, db):
         return leaderboard, True #returns updated leaderboard # not needed right now
     
     return db.leaderboard[:10], True
+
+def get_user_inv(db, id):
+    return db.user_data.find_one({"_id": id})
