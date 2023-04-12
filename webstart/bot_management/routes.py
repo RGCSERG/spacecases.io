@@ -15,7 +15,7 @@ def leaderboard():
         if 'token' in session:
             bearer_client = APIClient(session.get('token'), bearer=True)
             current_user = bearer_client.users.get_current_user()
-            guilds = iscasesin(bearer_client.users.get_my_guilds(), Client.users.get_my_guilds())
+            guilds = iscasesin(bearer_client.users.get_my_guilds(), Client.users.get_my_guilds()) # check for rate limiting issues
             if db.user_data.find_one({"_id": current_user.id}) is not None:  
                 return render_template('leaderboard.html',oauth_url=_blueprint_config_data.OAUTH_URL,Leaderboard=Leaderboard,current_user=current_user,guilds=guilds,str=str,len=len,iterate=status, authenticated_user=True)
             return render_template('leaderboard.html',oauth_url=_blueprint_config_data.OAUTH_URL,Leaderboard=Leaderboard,current_user=current_user,guilds=guilds,str=str,len=len,iterate=status) # remove [:10] when updateLD is fixed and not using setlist
