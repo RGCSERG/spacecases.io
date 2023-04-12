@@ -1088,6 +1088,8 @@ h1,.text-header-summary, .social-info p, .user-information  {
     padding-top: 1svw;
 }
 .final-invite-link {
+    background: var(--gradient1);
+    animation: gradient 20s infinite alternate;
     height: 30svh;
     width: 100svw;
     display: flex;
