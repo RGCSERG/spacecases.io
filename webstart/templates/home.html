@@ -4,8 +4,8 @@
     <div class="title-divs">
       <h1 class="main-text">Space Cases</h1>
       <p class="sub-text">
-        The Premier CSGO case unboxing simulator - built from the ground up for
-        the discord platform.
+        CS2's premier case unboxing simulator - built from the ground up for the
+        discord platform.
       </p>
       <div class="front-buttons title-front-buttons">
         <a href="{{url_for('bot_management.invite_server')}}">
@@ -40,7 +40,7 @@
     <div class="text-side slowerReveal reveal">
       <p class="text-header-summary">Unbox and trade your dream skins</p>
       <p>
-        Unbox skins from every CSGO case, and fledge out your inventory with
+        Unbox skins from every CS2 case, and fledge out your inventory with
         trade offers. Evaluate your items using hourly market price updates.
       </p>
       <div class="front-buttons section-invite">
@@ -202,9 +202,11 @@
       />
     </div>
   </section>
-  <div class="final-invite-link reveal">
-    <p>The Premier Case unboxer</p>
-    <a href="{{url_for('bot_management.invite_server')}}">Add to discord</a>
+  <div class="final-invite-link">
+    <p class="reveal">CS2's premier case unboxing simulator</p>
+    <a class="reveal" href="{{url_for('bot_management.invite_server')}}"
+      >Add to discord</a
+    >
   </div>
 </main>
 {% include "footer.html" %} {% endblock %}
