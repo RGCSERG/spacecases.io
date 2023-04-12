@@ -82,10 +82,39 @@
           <p>{{id[0]}}</p>
         </span>
         <p>${{id[1] / 100}}</p>
-        <p></p>
+        {%if id[4]%}
+        <p>{{id[4]}}</p>
+        {%else%}
+        <p>Null</p>
+        {%endif%}
         <p>{{id[2]}}</p>
       </div>
       {%endfor%} {%endif%} {%endif%}
+      {%if Leaderboard %} {% if iterate == False %}
+      <div class="lb-partition">
+        <p class="lb-number">#</p>
+        <p>Name</p>
+        <p>Balance</p>
+        <p>Top-item</p>
+        <p>Language</p>
+      </div>
+      <div class="lb-partition">
+        <p class="lb-number">{{1}}</p>
+        <span class="lb-user">
+          <img
+            class="profile-pic"
+            id="button"
+            src="onerror"
+            alt=""
+            onerror="lbImgError(this);"
+          />
+          <p>{{Leaderboard}}</p>
+        </span>
+        <p>Null</p>
+        <p>Null</p>
+        <p>Null</p>
+      </div>
+      {%endif%}{%endif%}
     </div>
     <div class="lb server">
       {% if current_user and guilds %}

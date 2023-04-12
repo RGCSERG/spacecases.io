@@ -4,6 +4,7 @@ from webstart.config import _blueprint_config_data
 from zenora.exceptions import BadTokenError
 from webstart import db
 from webstart.calculations import get_user_inv
+from datetime import datetime
 
 users = Blueprint('users', __name__)
 
@@ -13,9 +14,9 @@ def profile():
         if 'token' in session:
             bearer_client = APIClient(session.get('token'), bearer=True)
             current_user = bearer_client.users.get_current_user()
-            resp = make_response(render_template('profile.html', current_user=current_user))
+            resp = make_response(redirect('/home'))
             if db.user_data.find_one({"_id": current_user.id}) is not None:
-                user_data = get_user_inv(db, current_user.id)
+                user_data = get_user_inv(db,datetime, current_user.id)
                 resp = make_response(render_template('profile.html', current_user=current_user, user_data=user_data, authenticated_user=True))
                 resp.delete_cookie('redirect_before_oauth2') 
                 return resp
