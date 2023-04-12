@@ -35,5 +35,4 @@ def get_user_inv(db, datetime, id):
             user['rank'] = i + 1
             user['networth'] = item[1]/100
             break
-    print(db.unfiltered_leaderboard)
     return user # returns user inventory with image_url as well as name and float
