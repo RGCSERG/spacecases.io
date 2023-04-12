@@ -11,7 +11,7 @@ def updateLD(Client, get_leaderboard, db):
         return db.leaderboard, False # returns false iteration if index[0] is an error message
     if type(db.leaderboard[0][0]) != str:
         leaderboard = [(Client.users.get_user(id[0]).username, id[1], id[2], Client.users.get_user(id[0]).avatar_url) for id in db.leaderboard[:10]]
-        with open('leaderboard.py', 'w') as f:
+        with open('leaderboard.py', 'w') as f: # if leaderboard is updated it rewrites the saved leaderboard in the file - probaly should change this to a local db
             f.write(f'Leaderboard = {leaderboard}')
             f.close()
         return leaderboard, True # returns updated leaderboard # not needed right now
