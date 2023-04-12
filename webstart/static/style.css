@@ -629,7 +629,7 @@ h1,.text-header-summary, .social-info p, .user-information  {
     align-items: center;
     justify-content: center;
 }
-.text-header {
+.text-header,.server-invite-header {
     height: 10svh;
     width: 100svw;
     display: flex;
@@ -699,9 +699,11 @@ h1,.text-header-summary, .social-info p, .user-information  {
 }
 .server-grid {
     display: grid;
-    grid-template-columns: repeat(3,30svw);
+    grid-template-columns: repeat(3,1fr);
     justify-items: center;
-    gap: 2svw;
+    align-items: center;
+    gap: 3svw;
+    padding-top: 3svh;
 }
 .server-page-wrapper {
     display: flex;
@@ -709,34 +711,76 @@ h1,.text-header-summary, .social-info p, .user-information  {
     align-items: center;
     width: auto;
     height: max-content;
-    padding: 10vh 0 10vh 0;
+    flex-direction: column;
+    padding-bottom: 20svh;
+}
+.server-page-wrapper h1 {
+    padding-top: 3svh;
 }
 .server-wrapper {
     background: var(--colour3);
     border-radius: 10px;
-    display: flex;
-    justify-content: center;
+    display: grid;
+    width: 20svw;
+    aspect-ratio: 16/10;
+    justify-items: center;
     align-items: center;
-    flex-direction: column;
-    width: 25svw;
-    height: 30svh;
-    gap: 2svh;
-    padding: 3svw;
-    outline: 5px solid var(--colour5);
-    color: var(--colour1);
-    font-weight: bold;
+    position: relative;
+    overflow: hidden;
 }
-.server-wrapper a {
-    display: block;
+.server-wrapper > * {
+    grid-area: 1/1;
 }
-.server-wrapper img {
+.bg-server-img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height:100%;
+    object-fit: cover;
+    scale: 1.2;
+    z-index: 0;
     border-radius: 10px;
-    height: 100%;
-    width: auto;
-    outline: 5px solid var(--colour5);
+    filter: blur(10px);
+    opacity: 0.3;
 }
-.server-wrapper p {
-    text-align: center;
+.main-server-img {
+    background: var(--colour3);
+    z-index: 1;
+    height: 50%;
+    border-radius: 100%;
+    border: 3px solid var(--colour1);
+}
+.text-invite-wrapper {
+    display: flex;
+    padding-top: 1svh;
+    gap: 1svw;
+}
+.text-invite-wrapper > * {
+    color: var(--colour1);
+    display: flex;
+    align-items: center;
+    height: 6svh;
+    font-size: 1.2svw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.text-invite-wrapper > div {
+    width: 14svw;
+    max-width: 14svw;
+    text-align: left;
+}
+.text-invite-wrapper > a {
+    width: 5svws;
+    justify-content: center;
+    background: var(--colour3);
+    border-radius: 5px;
+    width: 30%;
+    box-shadow: 5px 5px rgba(0, 0, 0, .1);
+
 }
 .profile-wrapper {
     width: 100svw;
