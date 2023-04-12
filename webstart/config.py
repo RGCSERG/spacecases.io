@@ -10,6 +10,7 @@ class Config_data:
     except FileNotFoundError:
         SECRET_KEY = os.environ["SECRET_KEY"]
         SESSION_PERMANENT = True
+        SESSION_COOKIE_DOMAIN = 'http://localhost:5000/oauth/callback'
 
 class _blueprint_config_data:
     try:
