@@ -32,4 +32,6 @@ def profile():
 @users.route('/logout')
 def logout():
     session.clear()
-    return redirect("/")
+    resp = make_response(redirect("/"))
+    resp.delete_cookie('tokens')
+    return resp

@@ -1,5 +1,6 @@
 from flask import render_template, request, Blueprint, session, make_response, redirect
 from zenora import APIClient
+from zenora.exceptions import BadTokenError
 from webstart.config import _blueprint_config_data
 from webstart import Client
 
@@ -13,7 +14,23 @@ cookies = Blueprint('cookies', __name__)
 #     return
 #fix db issues so can add a data check then make it into an list of objects etc yk what im getting at
 
-# @app.route('cookies/user:tokens/get')
+
+# @cookies.route('/cookies/user:tokens/set')
+# def setcookie():
+#     if 'token' in session:
+#         resp = make_response(redirect('/home'))
+#         resp.set_cookie('tokens', session.get('token'))
+#         if request.cookies.get('redirect_before_oauth2') is not None:
+#             resp = make_response(redirect(f"{request.cookies.get('redirect_before_oauth2')}"))
+#             return resp
+#         return resp
+#     if request.cookies.get('redirect_before_oauth2') is not None:
+#         resp = make_response(redirect(f"{request.cookies.get('redirect_before_oauth2')}"))
+#         return resp
+#     resp = make_response(redirect('/home'))
+#     return resp
+
+# @cookies.route('/cookies/user:tokens/get')
 # def getcookie():
 #     if request.cookies.get('tokens'):
 #         refresh_token = request.cookies.get('tokens').split(':')[1]
@@ -30,3 +47,11 @@ cookies = Blueprint('cookies', __name__)
 #             bearer_client = APIClient(session.get('token'), bearer=True)#
 #         except BadTokenError:
 #             return redirect('/home')
+
+#         # create a response object
+#         resp = make_response(redirect('/home'))
+#         return resp
+
+#     # create a response object
+#     resp = make_response(redirect('/home'))
+#     return resp
