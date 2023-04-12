@@ -12,6 +12,8 @@ from webstart import db
 #can remove cookies ask for now
 #check if current_user in session works -- can confirm you can't add current_user to json file as it is a class
 #add json return file for error handling pages and probably for the BadTokenErrors aswell to regulate traffic and spot regular patterns
+#commands page 
+#cases page
 
 main = Blueprint('main', __name__)
 
