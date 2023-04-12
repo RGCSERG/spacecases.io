@@ -8,6 +8,10 @@ try:
     from leaderboard import Leaderboard
 except:
     Leaderboard = ['404 NO LEADERBOARD FOUND']
+try:
+    from leaderboard import unfiltered_Leaderboard
+except:
+    unfiltered_Leaderboard = ['404 NO LEADERBOARD FOUND']
 
 # MongoDB collections
 user_data: Collection
@@ -19,13 +23,19 @@ patch_notes: Collection
 mongo_client: pymongo.MongoClient
 
 leaderboard = []
+unfiltered_leaderboard = []
 skin_data = {}
 
 # update the leaderboard
 def get_leaderboard():
-    global leaderboard
+    global leaderboard, unfiltered_leaderboard
     if (datetime.now()- datetime.fromtimestamp(os.path.getmtime('leaderboard.py'))).seconds < 86400: #86400 is one day in seconds so updates leaderboard accordingly
+        if Leaderboard == []:
+            leaderboard = ['404 NO LEADERBOARD FOUND']
         leaderboard = Leaderboard
+        if unfiltered_Leaderboard == []:
+            unfiltered_leaderboard = ['404 NO LEADERBOARD FOUND']
+        unfiltered_leaderboard = unfiltered_Leaderboard
         print('Leaderboard retrived')
         return
 
@@ -34,7 +44,7 @@ def get_leaderboard():
 
     leaderboard = sorted([(user_data["_id"], sum([skin_data["skins"][item["name"]]["price"] for item in user_data["inventory"]]), user_data['lang']) for user_data in all_users_data], key=lambda x: x[1], reverse=True)
     end = timer()
-    
+
     print(f"Generated leaderboard in {timedelta(seconds=end-start)}")
 
 
