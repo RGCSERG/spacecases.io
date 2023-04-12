@@ -49,10 +49,9 @@
     }
 
 html {
-    background-color: var(--main-colour);
     font-family: 'LexendDeca', Helvetica, sans-serif;
-    background-color: var(--colour2);
     scroll-behavior: smooth;
+    background-color: var(--colour2);
 }
 html,body {
     overflow-x: hidden;
@@ -713,6 +712,7 @@ h1,.text-header-summary, .social-info p, .user-information  {
     height: max-content;
     flex-direction: column;
     padding-bottom: 20svh;
+    animation: fade-in 0.5s ease-in-out;
 }
 .server-page-wrapper h1 {
     padding-top: 3svh;
@@ -1086,6 +1086,34 @@ h1,.text-header-summary, .social-info p, .user-information  {
 }
 .patch-notes-date {
     padding-top: 1svw;
+}
+.final-invite-link {
+    height: 30svh;
+    width: 100svw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 3svh;
+}
+.final-invite-link > p {
+    font-weight: bold;
+    font-size: 3vw;
+    color: var(--colour1);
+}
+.final-invite-link > a {
+    font-size: 1.5svw;
+    background-color: var(--colour1);
+    padding: 1.5svw;
+    border-radius: 5px;
+    color: var(--colour3);
+    text-transform: capitalize;
+    transition: 0.5s ease;
+}
+.final-invite-link > a:hover {
+    scale: 0.9;
+    opacity: 0.8;
+    filter: blur(1px);
 }
 @media (max-width:500px) {
     .nav-links a {
