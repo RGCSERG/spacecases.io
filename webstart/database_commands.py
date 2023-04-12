@@ -34,9 +34,7 @@ def get_leaderboard():
 
     leaderboard = sorted([(user_data["_id"], sum([skin_data["skins"][item["name"]]["price"] for item in user_data["inventory"]]), user_data['lang']) for user_data in all_users_data], key=lambda x: x[1], reverse=True)
     end = timer()
-    with open('leaderboard.py', 'w') as f: # if leaderboard is updated it rewrites the saved leaderboard in the file - probaly should change this to a local db
-        f.write(f'Leaderboard = {leaderboard}')
-        f.close()
+    
     print(f"Generated leaderboard in {timedelta(seconds=end-start)}")
 
 
