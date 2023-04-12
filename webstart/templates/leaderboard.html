@@ -82,11 +82,15 @@
           <p>{{id[0]}}</p>
         </span>
         <p>${{id[1] / 100}}</p>
-        <p></p>
+        {%if id[4]%}
+        <p>{{id[4]}}</p>
+        {%else%}
+        <p>Null</p>
+        {%endif%}
         <p>{{id[2]}}</p>
       </div>
       {%endfor%} {%endif%} {%endif%}
-      {%if Leaderboard %}
+      {%if Leaderboard %} {% if iterate == False %}
       <div class="lb-partition">
         <p class="lb-number">#</p>
         <p>Name</p>
@@ -110,7 +114,7 @@
         <p>Null</p>
         <p>Null</p>
       </div>
-      {%endif%}
+      {%endif%}{%endif%}
     </div>
     <div class="lb server">
       {% if current_user and guilds %}
