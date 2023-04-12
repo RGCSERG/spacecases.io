@@ -1,23 +1,42 @@
 {% extends 'index.html' %} {% block content %} {% if guilds %}
 <section class="server-page-wrapper">
+  <h1>Select Server</h1>
   <div class="server-grid">
     {% for guild in guilds %}
-    <a
-      class="server-wrapper"
-      href="https://discord.com/api/oauth2/authorize?client_id=1025496377939197972&permissions=395136993280&guild_id={{str(guild.id)}}&scope=bot"
-      target="_blank"
-    >
-      {% if guild.icon_url%}
-      <img src="{{guild.icon_url}}" alt="guild image" />
-      {% else %}
-      <img
-        src="{{ url_for('static',filename='images/svg/discord-mark-white.svg') }}"
-        alt="guild image"
-      />
-      {%endif%}
-    </a>
-    {{guild.name}} {%if guild.description%} {{guild.description}} {%endif%} {%
-    endfor %}
+    <div class="server-invite-element">
+      <div
+        class="server-wrapper"
+        href="https://discord.com/api/oauth2/authorize?client_id=1025496377939197972&permissions=395136993280&guild_id={{str(guild.id)}}&scope=bot"
+        target="_blank"
+      >
+        {% if guild.icon_url%}
+        <img class="bg-server-img" src="{{guild.icon_url}}" alt="guild image" />
+        <img
+          class="main-server-img"
+          src="{{guild.icon_url}}"
+          alt="guild image"
+        />
+        {% else %}
+        <img
+          src="{{ url_for('static',filename='images/svg/discord-mark-white.svg') }}"
+          alt="guild image"
+        />
+        <img
+          src="{{ url_for('static',filename='images/svg/discord-mark-white.svg') }}"
+          alt="guild image"
+        />
+        {%endif%}
+      </div>
+      <div class="text-invite-wrapper">
+        <div>{{guild.name}}</div>
+        <a
+          href="https://discord.com/api/oauth2/authorize?client_id=1025496377939197972&permissions=395136993280&guild_id={{str(guild.id)}}&scope=bot"
+          target="_blank"
+          >Invite</a
+        >
+      </div>
+    </div>
+    {%endfor %}
   </div>
 </section>
 {% endif %} {% include "footer.html" %} {% endblock %}
