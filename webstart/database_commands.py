@@ -6,12 +6,8 @@ from timeit import default_timer as timer
 from datetime import timedelta, datetime
 try:
     from leaderboard import Leaderboard
-except ModuleNotFoundError:
+except:
     Leaderboard = ['404 NO LEADERBOARD FOUND']
-try:
-    from leaderboard import Leaderboard
-except ImportError:
-    Leaderboard = ['EMPTY LEADERBOARD FILE']
 
 # MongoDB collections
 user_data: Collection
@@ -28,7 +24,7 @@ skin_data = {}
 # update the leaderboard
 def get_leaderboard():
     global leaderboard
-    if (datetime.now()- datetime.fromtimestamp(os.path.getmtime('leaderboard.py'))).seconds < 1000000: #86400
+    if (datetime.now()- datetime.fromtimestamp(os.path.getmtime('leaderboard.py'))).seconds < 86400: #86400 is one day in seconds so updates leaderboard accordingly
         leaderboard = Leaderboard
         print('Leaderboard retrived')
         return
@@ -36,9 +32,11 @@ def get_leaderboard():
     start = timer()
     all_users_data = user_data.find({}).batch_size(4)
 
-    leaderboard = sorted([(user_data["_id"], sum([skin_data["skins"][item["name"]]["price"] for item in user_data["inventory"]]), user_data['language']) for user_data in all_users_data], key=lambda x: x[1], reverse=True)
+    leaderboard = sorted([(user_data["_id"], sum([skin_data["skins"][item["name"]]["price"] for item in user_data["inventory"]]), user_data['lang']) for user_data in all_users_data], key=lambda x: x[1], reverse=True)
     end = timer()
-    #add update file section
+    with open('leaderboard.py', 'w') as f: # if leaderboard is updated it rewrites the saved leaderboard in the file - probaly should change this to a local db
+        f.write(f'Leaderboard = {leaderboard}')
+        f.close()
     print(f"Generated leaderboard in {timedelta(seconds=end-start)}")
 
 
