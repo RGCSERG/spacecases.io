@@ -822,9 +822,8 @@ h1,.text-header-summary, .social-info p, .user-information  {
     z-index: 3;
 }
 .username {
-    font-weight: bold;
-    text-shadow: 5px 5px rgba(0, 0, 0, .1);
-    font-size: 2.5vw;
+    grid-row: 1/2;
+    border-left: gold 10px solid;
 }
 .account-type {
     grid-row: 2/3;
