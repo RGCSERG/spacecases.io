@@ -23,7 +23,8 @@ main = Blueprint("main", __name__)
 # def check_for_user():
 #     return redirect('/cookies/user:tokens/get')
 
-@main.route('/home')
+
+@main.route("/home")
 def home():
     try:
         if "token" in session:

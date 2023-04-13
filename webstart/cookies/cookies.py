@@ -12,7 +12,7 @@ cookies = Blueprint("cookies", __name__)
 #         acceptdeny = request.form['cookies_policy']
 #         return
 #     return
-#fix db issues so can add a data check then make it into an list of objects etc yk what im getting at
+# fix db issues so can add a data check then make it into an list of objects etc yk what im getting at
 
 
 # @cookies.route('/cookies/user:tokens/set')
