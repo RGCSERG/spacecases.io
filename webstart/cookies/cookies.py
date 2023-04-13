@@ -3,15 +3,18 @@ from zenora import APIClient
 from webstart.config import _blueprint_config_data
 from webstart import Client
 
-cookies = Blueprint('cookies', __name__)
+cookies = Blueprint("cookies", __name__)
 
-@cookies.route('/cookies_policy:accept&deny/<int:userid>', methods= ['POST', 'GET'])
+
+@cookies.route("/cookies_policy:accept&deny/<int:userid>", methods=["POST", "GET"])
 def cookies_policy(userid):
-    if request.method == 'POST':
-        acceptdeny = request.form['cookies_policy']
+    if request.method == "POST":
+        acceptdeny = request.form["cookies_policy"]
         return
     return
-#fix db issues so can add a data check then make it into an list of objects etc yk what im getting at
+
+
+# fix db issues so can add a data check then make it into an list of objects etc yk what im getting at
 
 # @app.route('cookies/user:tokens/get')
 # def getcookie():

@@ -5,8 +5,9 @@ import webstart.database_commands as db
 import os
 
 
-Client = APIClient(_blueprint_config_data.TOKEN, client_secret=_blueprint_config_data.CLIENT_SECRET)
-
+Client = APIClient(
+    _blueprint_config_data.TOKEN, client_secret=_blueprint_config_data.CLIENT_SECRET
+)
 
 
 def create_app(config_class=Config_data):
