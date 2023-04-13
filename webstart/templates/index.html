@@ -21,7 +21,7 @@
         <a href="https://discord.gg/JAkGbVsdEe" target="_blank">Support Server</a>
         <a href="{{url_for('pages.patch_notes', version = 'latest-release')}}">Patch Notes</a>
         <a href="{{url_for('bot_management.leaderboard')}}">Leaderboards</a>
-        <a id="premium"class="premium" href="{{url_for('pages.premium')}}">Premium</a>
+        <a id="premium"class="premium" href="https://www.patreon.com/SpaceCases" target="_blank">Premium</a>
       <div class="login-button">
           {% if current_user %}
           <div class="button-wrapper">
@@ -38,15 +38,10 @@
           {% if authenticated_user %}
           <p>User</p>
           <a href="{{url_for('users.profile')}}">Profile</a>
-          <a>Inventory</a>
-          <a>Trades</a>
+          <a href="{{ url_for('users.logout') }}">Logout</a>
           {% else %}
           <p>Create Spacecases Account</p>
           {%endif%}
-          <p>Other</p>
-          <a>About</a>
-          <a>Help</a>
-          <a href="{{ url_for('users.logout') }}">Logout</a>
         </nav>
       </div>
     </nav>

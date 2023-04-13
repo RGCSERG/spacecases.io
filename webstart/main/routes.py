@@ -1,4 +1,4 @@
-from flask import render_template, request, Blueprint, session
+from flask import render_template, Blueprint, session, redirect, url_for
 from zenora import APIClient
 from webstart.config import _blueprint_config_data
 from zenora.exceptions import BadTokenError
@@ -21,8 +21,9 @@ main = Blueprint("main", __name__)
 
 @main.route("/")
 # def check_for_user():
-#     return redirect('/get')
-@main.route("/home")
+#     return redirect('/cookies/user:tokens/get')
+
+@main.route('/home')
 def home():
     try:
         if "token" in session:

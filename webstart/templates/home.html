@@ -2,30 +2,37 @@
 <main class="main-section">
   <section class="title-screen">
     <div class="title-divs">
-      <summary class="left-side-title">
-        <h1 class="main-text">Space Cases</h1>
-        <p class="sub-text">
-          The Premier CSGO case unboxing simulator - built from the ground up
-          for the discord platform.
-        </p>
-        <div class="front-buttons title-front-buttons">
-          <a href="{{url_for('bot_management.invite_server')}}">
-            <img
-              src="{{url_for('static',filename='images/svg/discord-mark-white.svg')}}"
-              alt=""
-            />
-            Add to Discord</a
-          >
-          <a href="#first-section"> See Features</a>
-        </div>
-      </summary>
+      <h1 class="main-text">Space Cases</h1>
+      <p class="sub-text">
+        CS2's premier case unboxing simulator - built from the ground up for the
+        discord platform.
+      </p>
+      <div class="front-buttons title-front-buttons">
+        <a href="{{url_for('bot_management.invite_server')}}">
+          <img
+            src="{{url_for('static',filename='images/svg/discord-mark-white.svg')}}"
+            alt=""
+          />
+          Add to Discord</a
+        >
+        <a href="#first-section"> See Features</a>
+      </div>
     </div>
-    <div class="title-divs"></div>
+    <!-- <img
+      class="title-logo"
+      src="{{ url_for('static', filename='images/main/spaceCasesLogo.png') }}"
+      alt="logo"
+    />
+    <img
+      class="title-logo"
+      src="{{ url_for('static', filename='images/main/spaceCasesLogo.png') }}"
+      alt="logo"
+    /> -->
   </section>
   <div class="page-divider">
     <p class="divider-text">
       Enjoying the project? Help us keep it running by supporting our
-      <a class="socials-link">socials and patreon.</a>
+      <a class="socials-link" href="#footer">socials and patreon.</a>
     </p>
   </div>
   <section class="section" id="first-section">
@@ -33,7 +40,7 @@
     <div class="text-side slowerReveal reveal">
       <p class="text-header-summary">Unbox and trade your dream skins</p>
       <p>
-        Unbox skins from every CSGO case, and fledge out your inventory with
+        Unbox skins from every CS2 case, and fledge out your inventory with
         trade offers. Evaluate your items using hourly market price updates.
       </p>
       <div class="front-buttons section-invite">
@@ -144,9 +151,11 @@
   </section>
   <div class="page-divider">
     <p class="divider-text">
-      Want to support us and have some extra perks? Check out our premium plans:
+      Want to support us and have some extra perks?
+      <a class="socials-link" href="https://www.patreon.com/SpaceCases"
+        >Check out our premium plans.</a
+      >
     </p>
-    <a class="premium" href="{{url_for('pages.premium')}}">Premium</a>
   </div>
   <section class="language-section">
     <div class="first-section-bg-pattern language-bg"></div>
@@ -162,18 +171,42 @@
       src="{{ url_for('static', filename='images/main/langEn.png') }}"
       alt="Discord About Image"
     />
-    <p class="text-header-summary slowerReveal reveal">
-      Choose from over 25+ commands
-    </p>
-    <p class="reveal">
-      Navigate your unboxing and trading experience with a growing list of
-      commands all with added descriptions and features
-    </p>
-    <img
-      class="reveal"
-      src="{{ url_for('static', filename='images/main/commands.png') }}"
-      alt="Discord About Image"
-    />
+    <div class="language-grid-wrapper">
+      <div class="language-text-wrapper">
+        <p class="text-header-summary slowerReveal reveal">
+          Choose from over 25+ commands
+        </p>
+        <p class="reveal">
+          Navigate your unboxing and trading experience with a growing list of
+          commands all with added descriptions and features
+        </p>
+      </div>
+      <div class="language-text-wrapper">
+        <p class="text-header-summary slowerReveal reveal">
+          Unbox over 150+ cases & packages
+        </p>
+        <p class="reveal">
+          Choose from a growing selection of cases and souvenir packages,
+          including stickers and more.
+        </p>
+      </div>
+      <img
+        class="reveal"
+        src="{{ url_for('static', filename='images/main/commands.png') }}"
+        alt="Discord About Image"
+      />
+      <img
+        class="reveal"
+        src="{{ url_for('static', filename='images/main/commands.png') }}"
+        alt="Discord About Image"
+      />
+    </div>
   </section>
+  <div class="final-invite-link">
+    <p class="reveal">CS2's premier case unboxing simulator</p>
+    <a class="reveal" href="{{url_for('bot_management.invite_server')}}"
+      >Add to discord</a
+    >
+  </div>
 </main>
 {% include "footer.html" %} {% endblock %}

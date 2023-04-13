@@ -21,6 +21,7 @@ def create_app(config_class=Config_data):
     from .oauth2.routes import oauth2
     from .users.routes import users
     from .pages.routes import pages
+    from .cookies.cookies import cookies
 
     app.register_blueprint(bot_management)
     app.register_blueprint(errors)
@@ -28,5 +29,6 @@ def create_app(config_class=Config_data):
     app.register_blueprint(oauth2)
     app.register_blueprint(users)
     app.register_blueprint(pages)
+    app.register_blueprint(cookies)
 
     return app
