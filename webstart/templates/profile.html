@@ -9,7 +9,9 @@
     />
     <span class="stats-wrapper username">
       <p>Username</p>
-      <p>{{current_user.username}}#{{current_user.discriminator}}</p>
+      <p class="usernameText">
+        {{current_user.username}}#{{current_user.discriminator}}
+      </p>
     </span>
     {%if user_data%}
     <span class="stats-wrapper account-type">
@@ -42,9 +44,7 @@
     </span>
     <div class="profile-inv">
       {%for item in user_data['inventory']%}
-      <span>
-        <img src="{{item['image_url']}}" />
-      </span>
+      <img class="inventoryItem" src="{{item['image_url']}}" />
       {%endfor%}
     </div>
     {%endif%}
