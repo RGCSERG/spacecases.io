@@ -2,7 +2,6 @@ from flask import Flask
 from zenora import APIClient
 from .config import Config_data, _blueprint_config_data
 import webstart.database_commands as db
-import os
 
 
 Client = APIClient(
