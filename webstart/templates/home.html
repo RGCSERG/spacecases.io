@@ -159,19 +159,21 @@
   </div>
   <section class="language-section">
     <div class="first-section-bg-pattern language-bg"></div>
-    <p class="text-header-summary slowerReveal reveal">
-      Support for multiple languages
-    </p>
-    <p class="reveal">
-      Switch between the supported list of languages in the discord client such
-      as French, Spanish, German and Japanese
-    </p>
-    <img
-      class="reveal"
-      src="{{ url_for('static', filename='images/main/langEn.png') }}"
-      alt="Discord About Image"
-    />
-    <div class="language-grid-wrapper">
+    <div class="top-language-wrapper">
+      <p class="text-header-summary slowerReveal reveal">
+        Support for multiple languages
+      </p>
+      <p class="reveal">
+        Switch between the supported list of languages in the discord client
+        such as French, Spanish, German and Japanese
+      </p>
+      <img
+        class="reveal"
+        src="{{ url_for('static', filename='images/main/langEn.png') }}"
+        alt="Discord About Image"
+      />
+    </div>
+    <div class="language-wrapper">
       <div class="language-text-wrapper">
         <p class="text-header-summary slowerReveal reveal">
           Choose from over 25+ commands
@@ -181,6 +183,13 @@
           commands all with added descriptions and features
         </p>
       </div>
+      <img
+        class="reveal"
+        src="{{ url_for('static', filename='images/main/commands.png') }}"
+        alt="Discord About Image"
+      />
+    </div>
+    <div class="language-wrapper">
       <div class="language-text-wrapper">
         <p class="text-header-summary slowerReveal reveal">
           Unbox over 150+ cases & packages
@@ -190,11 +199,6 @@
           including stickers and more.
         </p>
       </div>
-      <img
-        class="reveal"
-        src="{{ url_for('static', filename='images/main/commands.png') }}"
-        alt="Discord About Image"
-      />
       <img
         class="reveal"
         src="{{ url_for('static', filename='images/main/commands.png') }}"
