@@ -2,8 +2,9 @@ from flask import render_template, request, Blueprint, session, redirect, make_r
 from zenora import APIClient
 from zenora import BadTokenError
 from webstart.config import _blueprint_config_data
-from webstart import Client, db
+from webstart import Client, db, LD_db
 from webstart.calculations import updateLD, iscasesin, permissions
+import time
 
 
 bot_management = Blueprint("bot_management", __name__)
@@ -11,7 +12,7 @@ bot_management = Blueprint("bot_management", __name__)
 
 @bot_management.route("/leaderboard")
 def leaderboard():
-    Leaderboard, status = updateLD(Client, db.get_leaderboard, db)
+    Leaderboard, status = updateLD(Client=Client, LD_db=LD_db, db=db, time=time)
     try:
         if "token" in session:
             bearer_client = APIClient(session.get("token"), bearer=True)
