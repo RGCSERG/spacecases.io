@@ -455,7 +455,10 @@ h1,.text-header-summary, .social-info p {
     height: auto;
     stroke: var(--colour4);
     transform: rotate(180deg);
-    transition: ease-out 100ms;
+    transition: ease-out 200ms;
+}
+.svg:hover{
+    scale: 2.5;
 }
 .svg.active {
     transform: rotate(-360deg);
@@ -656,12 +659,16 @@ h1,.text-header-summary, .social-info p {
     background-size: 200%;
     animation: gradient 20s infinite alternate;
 }
-.lb_svg {
+.lb_svg,.invButton2{
     transform: rotate(90deg);
     cursor: pointer;
 }
-.lb_svg:nth-child(1) {
+.lb_svg:nth-child(1),.invButton1 {
     transform: rotate(-90deg);
+}
+.invButton1, .invButton2 {
+    cursor: pointer;
+    z-index: 3;
 }
 .lb {
     width: 90svw;
@@ -835,6 +842,7 @@ h1,.text-header-summary, .social-info p {
 .profile-inv {
     aspect-ratio: 1/1;
     height: 90%;
+    width: 90%;
     background: var(--colour3);
     outline: 5px solid var(--colour2);
     box-shadow: 10px 10px rgba(0, 0, 0, .2);
