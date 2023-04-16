@@ -4,6 +4,7 @@ import certifi
 from pymongo.collection import Collection
 from timeit import default_timer as timer
 from datetime import timedelta, datetime
+
 #
 
 # MongoDB collections
