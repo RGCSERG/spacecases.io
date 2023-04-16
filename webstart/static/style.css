@@ -847,7 +847,7 @@ h1,.text-header-summary, .social-info p {
     z-index: 3;
     overflow: hidden;
 }
-.profile-inv img{
+.profile-inv img,.inventoryItem{
     min-width: 0;
     min-height: 0;
     height: 80%;

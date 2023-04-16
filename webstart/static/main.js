@@ -158,18 +158,43 @@ function textResize() {
 }
 function inventorySort() { 
     items = document.querySelectorAll(".inventoryItem");
-    for (let i = 0; i < items.length; i++) { 
-        if ((i) % 9 === 0) { 
-            console.log()
+    if (items[0] !== undefined) {
+        profileDiv = document.querySelector(".profile-inv")
+        profileGrid = document.querySelector(".profile-grid")
+        profileDiv.innerHTML = null
+        profileDiv.remove()
+        newDiv = null
+        console.log(items)
+        let counter = 0
+        for (let i = 0; i < items.length; i++) {
+            if ((i) % 9 === 0 || i === 0) {
+                counter = 0
+                if (newDiv) profileGrid.append(newDiv)
+                newDiv = document.createElement("div");
+                newDiv.classList.add("profile-inv")
+                console.log("div created")
+            }
+            newDiv.append(items[i])
+            counter += 1
+            console.log(counter)
         }
-    }
+        for (let j = 0; j < counter - 1; j++) {
+            placeHolderImg = document.createElement("img");
+            placeHolderImg.classList.add("inventoryItem");
+            placeHolderImg.src = "http://via.placeholder.com/640x360"
+            placeHolderImg.style.opacity = 0;
+            newDiv.append(placeHolderImg);
+            console.log(j);
+        }
+        profileGrid.append(newDiv)
+    };
 }
 window.onload = function () {
+    inventorySort();
     buttonHover();
     setUpEvents();
     leaderboardCycle();
     cookieMenu();
     textResize();
     window.addEventListener("scroll", scrollReveal);
-    inventorySort();
 }
