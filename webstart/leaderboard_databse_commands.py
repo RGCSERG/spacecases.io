@@ -13,6 +13,7 @@ mongo_client: pymongo.MongoClient
 leaderboard = []
 last_update = 0
 
+
 # update the leaderboard
 def get_leaderboard():
     global leaderboard, last_update

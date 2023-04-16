@@ -12,7 +12,7 @@ def iscasesin(guilds, Client_guilds):
 
 def updateLD(Client, LD_db, db, time):
     LD_db.get_leaderboard()
-    if time.time()- LD_db.last_update["time"] < 8600:
+    if time.time() - LD_db.last_update["time"] < 8600:
         return [item for item in LD_db.leaderboard], True
     db.get_leaderboard()
     leaderboard = []
@@ -38,7 +38,6 @@ def updateLD(Client, LD_db, db, time):
                 )
             )
     return leaderboard, True
-
 
 
 def get_user_inv(db, datetime, id):
