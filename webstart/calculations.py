@@ -10,47 +10,35 @@ def iscasesin(guilds, Client_guilds):
     ]  # returns servers if server is in discord bot server list
 
 
-def updateLD(Client, get_leaderboard, db):
-    get_leaderboard()
-
-    if type(db.leaderboard[0]) == str:
-        return (
-            db.leaderboard,
-            False,
-        )  # returns false iteration if index[0] is an error message
-    if type(db.leaderboard[0][0]) != str:
-        leaderboard = []
-        for id in db.leaderboard[:10]:
-            user_data = db.user_data.find_one({"_id": id[0]})
-            if len(user_data["inventory"]) > 0:
-                leaderboard.append(
-                    (
-                        Client.users.get_user(id[0]).username,
-                        id[1],
-                        id[2],
-                        Client.users.get_user(id[0]).avatar_url,
-                        user_data["inventory"][0]["name"],
-                    )
+def updateLD(Client, LD_db, db, time):
+    LD_db.get_leaderboard()
+    if time.time()- LD_db.last_update["time"] < 8600:
+        return [item for item in LD_db.leaderboard], True
+    db.get_leaderboard()
+    leaderboard = []
+    for id in db.leaderboard[:10]:
+        user_data = db.user_data.find_one({"_id": id[0]})
+        if len(user_data["inventory"]) > 0:
+            leaderboard.append(
+                (
+                    Client.users.get_user(id[0]).username,
+                    id[1],
+                    id[2],
+                    Client.users.get_user(id[0]).avatar_url,
+                    user_data["inventory"][0]["name"],
                 )
-            else:
-                leaderboard.append(
-                    (
-                        Client.users.get_user(id[0]).username,
-                        id[1],
-                        id[2],
-                        Client.users.get_user(id[0]).avatar_url,
-                    )
-                )
-        with open(
-            "leaderboard.py", "w"
-        ) as f:  # if leaderboard is updated it rewrites the saved leaderboard in the file - probaly should change this to a local db
-            f.write(
-                f"Leaderboard = {leaderboard}\nunfiltered_Leaderboard = {db.leaderboard}"
             )
-            f.close()
-        return leaderboard, True  # returns updated leaderboard # not needed right now
+        else:
+            leaderboard.append(
+                (
+                    Client.users.get_user(id[0]).username,
+                    id[1],
+                    id[2],
+                    Client.users.get_user(id[0]).avatar_url,
+                )
+            )
+    return leaderboard, True
 
-    return db.leaderboard[:10], True
 
 
 def get_user_inv(db, datetime, id):
