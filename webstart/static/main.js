@@ -156,7 +156,7 @@ function textResize() {
     }
 
 }
-function inventorySort() { 
+function inventorySort() {
     items = document.querySelectorAll(".inventoryItem");
     if (items[0] !== undefined) {
         profileDiv = document.querySelector(".profile-inv")
@@ -172,11 +172,9 @@ function inventorySort() {
                 if (newDiv) profileGrid.append(newDiv)
                 newDiv = document.createElement("div");
                 newDiv.classList.add("profile-inv")
-                console.log("div created")
             }
             newDiv.append(items[i])
             counter += 1
-            console.log(counter)
         }
         for (let j = 0; j < counter - 1; j++) {
             placeHolderImg = document.createElement("img");
@@ -184,11 +182,37 @@ function inventorySort() {
             placeHolderImg.src = "http://via.placeholder.com/640x360"
             placeHolderImg.style.opacity = 0;
             newDiv.append(placeHolderImg);
-            console.log(j);
         }
         profileGrid.append(newDiv)
     };
 }
+function switchInventoryPage() { 
+    
+    pages = document.querySelectorAll(".profile-inv");
+    leftButton = document.querySelector(".invButton1");
+    rightButton = document.querySelector(".invButton2");
+    visualIndicator = document.querySelector(".page-count")
+    function switchPages(side) {
+        if (side === "left") {
+            if (counter === 1) counter = pages.length
+            else { counter -= 1 }
+        } else if (side === "right") {
+            if (counter === pages.length) { counter = 1 }
+            else { counter += 1 }
+        }
+        visualIndicator.innerHTML = counter;
+        pages.forEach(element => element.style.visibility = "hidden");
+        pages[counter - 1].style.visibility = "visible";
+    }
+    pages.forEach(element => element.style.visibility = "hidden");
+    pages[0].style.visibility = "visible";
+    if (pages[0] !== undefined) {
+        counter = 1;
+        leftButton.addEventListener("click", () => { switchPages("left") });
+        rightButton.addEventListener("click", () => { switchPages("right") });
+    }
+}
+
 window.onload = function () {
     inventorySort();
     buttonHover();
@@ -197,4 +221,5 @@ window.onload = function () {
     cookieMenu();
     textResize();
     window.addEventListener("scroll", scrollReveal);
+    switchInventoryPage();
 }
