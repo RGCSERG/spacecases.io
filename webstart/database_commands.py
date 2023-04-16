@@ -4,15 +4,7 @@ import certifi
 from pymongo.collection import Collection
 from timeit import default_timer as timer
 from datetime import timedelta, datetime
-
-try:
-    from leaderboard import Leaderboard
-except:
-    Leaderboard = ["404 NO LEADERBOARD FOUND"]
-try:
-    from leaderboard import unfiltered_Leaderboard
-except:
-    unfiltered_Leaderboard = ["404 NO LEADERBOARD FOUND"]
+#
 
 # MongoDB collections
 user_data: Collection
@@ -24,24 +16,12 @@ patch_notes: Collection
 mongo_client: pymongo.MongoClient
 
 leaderboard = []
-unfiltered_leaderboard = []
 skin_data = {}
 
 
 # update the leaderboard
 def get_leaderboard():
-    global leaderboard, unfiltered_leaderboard
-    if (
-        datetime.now() - datetime.fromtimestamp(os.path.getmtime("leaderboard.py"))
-    ).seconds < 86400:  # 86400 is one day in seconds so updates leaderboard accordingly
-        if Leaderboard == []:
-            leaderboard = ["404 NO LEADERBOARD FOUND"]
-        leaderboard = Leaderboard
-        if unfiltered_Leaderboard == []:
-            unfiltered_leaderboard = ["404 NO LEADERBOARD FOUND"]
-        unfiltered_leaderboard = unfiltered_Leaderboard
-        print("Leaderboard retrived")
-        return
+    global leaderboard
 
     start = timer()
     all_users_data = user_data.find({}).batch_size(4)

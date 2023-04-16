@@ -2,6 +2,7 @@ from flask import Flask
 from zenora import APIClient
 from .config import Config_data, _blueprint_config_data
 import webstart.database_commands as db
+import webstart.leaderboard_databse_commands as LD_db
 
 
 Client = APIClient(
@@ -13,6 +14,7 @@ def create_app(config_class=Config_data):
     app = Flask(__name__)
     app.config.from_object(Config_data)
     db.init()
+    LD_db.init()
 
     from .bot_management.routes import bot_management
     from .errors.handlers import errors
