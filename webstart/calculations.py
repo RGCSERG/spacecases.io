@@ -42,6 +42,7 @@ def updateLD(Client, LD_db, db, time):
 
 def get_user_inv(db, datetime, id, LD_db):
     user = LD_db.Leaderboard.find_one({"_id": id})
+    LD_db.get_leaderboard()
     user["rank"] = [user for user in LD_db.leaderboard].index(user) + 1
     user["inventory"] = [
         {
@@ -59,5 +60,5 @@ def get_user_inv(db, datetime, id, LD_db):
     user["join_date"] = datetime.utcfromtimestamp(user["join_date"]).strftime(
         "%Y-%m-%d"
     )
-    
+
     return user  # returns user inventory with image_url as well as name and float
