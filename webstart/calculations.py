@@ -50,6 +50,7 @@ def get_user_inv(db, datetime, id, LD_db):
             "name": item["name"],
             "float": item["float"],
             "image_url": db.skin_data["skins"][item["name"]]["image_url"],
+            "price" : db.skindata["skins"][item["name"]]["price"] / 100
         }
         for item in user["inventory"]
     ]
