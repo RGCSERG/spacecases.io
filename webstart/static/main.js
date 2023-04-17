@@ -119,7 +119,7 @@ function leaderboardCycle() {
                 globalLB.style.visibility = "hidden";
                 text.innerHTML = "Server Leaderboard";
             } else {
-                count = 1
+                count = 1;
                 text.innerHTML = "Global Leaderboard";
                 serverLB.style.visibility = "hidden";
                 globalLB.style.visibility = "visible";
@@ -132,18 +132,94 @@ function leaderboardCycle() {
 }
 function emailRequest() {
     function addEmail() { 
-        let firstName = document.querySelector(".first-name").value
-        let surname = document.querySelector(".surname").value
-        let email = document.querySelector(".email").value
-        return
+        let firstName = document.querySelector(".first-name").value;
+        let surname = document.querySelector(".surname").value;
+        let email = document.querySelector(".email").value;
+        return;
     }
-    let submitButton = document.querySelector(".website-button")
-    submitButton.addEventListener("click",addEmail)
+    let submitButton = document.querySelector(".website-button");
+    submitButton.addEventListener("click", addEmail);
 }
-window.onload = function () { 
-    buttonHover()
+function textResize() {
+    const isEllipsis = (e) => { return (e.offsetWidth < e.scrollWidth); }
+    let username = document.querySelector(".usernameText");
+    let parentDiv = document.querySelector(".username");
+    if (username !== null && parentDiv !== null) { 
+        let i = 0.2
+        for (; i < 1.8; i += 0.1) { 
+            username.style.fontSize = `${i}vw`
+            if (isEllipsis(parentDiv)) {
+                break
+            }
+        };
+        username.style.fontSize = `${i-0.1}vw`
+    }
+
+}
+function inventorySort() {
+    items = document.querySelectorAll(".inventoryItem");
+    if (items[0] !== undefined) {
+        profileDiv = document.querySelector(".profile-inv")
+        profileGrid = document.querySelector(".profile-grid")
+        profileDiv.innerHTML = null
+        profileDiv.remove()
+        newDiv = null
+        console.log(items)
+        let counter = 0
+        for (let i = 0; i < items.length; i++) {
+            if ((i) % 9 === 0 || i === 0) {
+                counter = 0
+                if (newDiv) profileGrid.append(newDiv)
+                newDiv = document.createElement("div");
+                newDiv.classList.add("profile-inv")
+            }
+            newDiv.append(items[i])
+            counter += 1
+        }
+        for (let j = 0; j < counter - 1; j++) {
+            placeHolderImg = document.createElement("img");
+            placeHolderImg.classList.add("inventoryItem");
+            placeHolderImg.src = "http://via.placeholder.com/640x360"
+            placeHolderImg.style.opacity = 0;
+            newDiv.append(placeHolderImg);
+        }
+        profileGrid.append(newDiv)
+    };
+}
+function switchInventoryPage() { 
+    
+    pages = document.querySelectorAll(".profile-inv");
+    leftButton = document.querySelector(".invButton1");
+    rightButton = document.querySelector(".invButton2");
+    visualIndicator = document.querySelector(".page-count")
+    function switchPages(side) {
+        if (side === "left") {
+            if (counter === 1) counter = pages.length
+            else { counter -= 1 }
+        } else if (side === "right") {
+            if (counter === pages.length) { counter = 1 }
+            else { counter += 1 }
+        }
+        visualIndicator.innerHTML = counter;
+        pages.forEach(element => element.style.visibility = "hidden");
+        pages[counter - 1].style.visibility = "visible";
+    }
+    pages.forEach(element => element.style.visibility = "hidden");
+    pages[0].style.visibility = "visible";
+    if (pages[0] !== undefined) {
+        counter = 1;
+        leftButton.addEventListener("click", () => { switchPages("left") });
+        rightButton.addEventListener("click", () => { switchPages("right") });
+    }
+}
+
+window.onload = function () {
+    inventorySort();
+    buttonHover();
     setUpEvents();
     leaderboardCycle();
     cookieMenu();
+    textResize();
     window.addEventListener("scroll", scrollReveal);
+    switchInventoryPage();
 }
