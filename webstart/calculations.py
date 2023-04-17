@@ -50,7 +50,7 @@ def get_user_inv(db, datetime, id, LD_db):
             "name": item["name"],
             "float": item["float"],
             "image_url": db.skin_data["skins"][item["name"]]["image_url"],
-            "price" : db.skindata["skins"][item["name"]]["price"] / 100
+            "price" : db.skin_data["skins"][item["name"]]["price"] / 100
         }
         for item in user["inventory"]
     ]
@@ -62,5 +62,4 @@ def get_user_inv(db, datetime, id, LD_db):
     user["join_date"] = datetime.utcfromtimestamp(user["join_date"]).strftime(
         "%Y-%m-%d"
     )
-
     return user  # returns user inventory with image_url as well as name and float
