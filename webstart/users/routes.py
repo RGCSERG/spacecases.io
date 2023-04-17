@@ -2,7 +2,7 @@ from flask import render_template, request, Blueprint, session, redirect, make_r
 from zenora import APIClient
 from webstart.config import _blueprint_config_data
 from zenora.exceptions import BadTokenError
-from webstart import db
+from webstart import db, LD_db
 from webstart.calculations import get_user_inv
 from datetime import datetime
 
@@ -17,7 +17,7 @@ def profile():
             current_user = bearer_client.users.get_current_user()
             resp = make_response(redirect("/home"))
             if db.user_data.find_one({"_id": current_user.id}) is not None:
-                user_data = get_user_inv(db, datetime, current_user.id)
+                user_data = get_user_inv(db, datetime, current_user.id, LD_db)
                 resp = make_response(
                     render_template(
                         "profile.html",

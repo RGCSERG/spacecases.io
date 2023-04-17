@@ -40,26 +40,26 @@ def updateLD(Client, LD_db, db, time):
     return leaderboard, True
 
 
-def get_user_inv(db, datetime, id):
-    user = db.user_data.find_one({"_id": id})
+def get_user_inv(db, datetime, id, LD_db):
+    user = LD_db.Leaderboard.find_one({"_id": id})
+    if LD_db.leaderboard == []:
+        LD_db.get_leaderboard()
+    user["rank"] = [user for user in LD_db.leaderboard].index(user) + 1
     user["inventory"] = [
         {
             "name": item["name"],
             "float": item["float"],
             "image_url": db.skin_data["skins"][item["name"]]["image_url"],
+            "price" : db.skin_data["skins"][item["name"]]["price"] / 100
         }
         for item in user["inventory"]
     ]
     user["balance"] = user["balance"] / 100
+    user["networth"] = user["networth"] / 100
     user["return"] = round(
         (user["stats"]["total_return"] / user["stats"]["total_spent"]) * 100, 2
     )
     user["join_date"] = datetime.utcfromtimestamp(user["join_date"]).strftime(
         "%Y-%m-%d"
     )
-    for i, item in enumerate(db.unfiltered_leaderboard):
-        if item[0] == user["_id"]:
-            user["rank"] = i + 1
-            user["networth"] = item[1] / 100
-            break
     return user  # returns user inventory with image_url as well as name and float

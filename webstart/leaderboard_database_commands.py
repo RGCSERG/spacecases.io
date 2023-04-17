@@ -18,8 +18,7 @@ last_update = 0
 def get_leaderboard():
     global leaderboard, last_update
     last_update = Last_update.find_one({"_id": 1})
-    leaderboard = Leaderboard.find({}).batch_size(4)
-
+    leaderboard = Leaderboard.find().sort("networth", pymongo.DESCENDING)
 
 def init():
     global mongo_client, Leaderboard, Last_update
