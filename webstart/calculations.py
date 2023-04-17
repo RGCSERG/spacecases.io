@@ -42,7 +42,8 @@ def updateLD(Client, LD_db, db, time):
 
 def get_user_inv(db, datetime, id, LD_db):
     user = LD_db.Leaderboard.find_one({"_id": id})
-    LD_db.get_leaderboard()
+    if LD_db.leaderboard == []:
+        LD_db.get_leaderboard()
     user["rank"] = [user for user in LD_db.leaderboard].index(user) + 1
     user["inventory"] = [
         {
